@@ -5,6 +5,9 @@ on:
     - cron: '0 3 * * *'  # Runs at 3 AM UTC daily (8:30 AM IST)
   workflow_dispatch:  # Manual trigger
 
+permissions:
+  contents: write
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
