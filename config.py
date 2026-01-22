@@ -2,8 +2,8 @@
 from datetime import datetime
 
 # Scraping Configuration
-COMPANIES_PER_RUN = 120
-ROTATION_DAYS = 8
+COMPANIES_PER_RUN = 999999  # Scrape all companies
+ROTATION_DAYS = 1  # Daily scrape of all companies
 REQUEST_TIMEOUT = 15
 RATE_LIMIT_DELAY = 2
 
