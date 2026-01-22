@@ -8,9 +8,10 @@ venv/
 env/
 ENV/
 
-# State and output
-scraper_state.json
-output/
+# State file (will be committed by workflow)
+# scraper_state.json
+
+# Logs
 logs/
 
 # IDE
