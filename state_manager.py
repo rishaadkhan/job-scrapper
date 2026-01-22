@@ -19,18 +19,8 @@ class StateManager:
             json.dump(self.state, f, indent=2)
     
     def get_companies_to_scrape(self, all_companies):
-        now = datetime.now()
-        rotation_threshold = now - timedelta(days=ROTATION_DAYS)
-        
-        eligible = []
-        for company in all_companies:
-            name = company['name']
-            last_scraped = self.state['companies'].get(name, {}).get('last_scraped')
-            
-            if not last_scraped or datetime.fromisoformat(last_scraped) < rotation_threshold:
-                eligible.append(company)
-        
-        return eligible[:COMPANIES_PER_RUN]
+        # Return all companies (no rotation limit)
+        return all_companies
     
     def mark_company_scraped(self, company_name, job_count):
         self.state['companies'][company_name] = {
