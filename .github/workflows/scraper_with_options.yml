@@ -1,0 +1,81 @@
+name: Daily Job Scraper
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Runs at 3 AM UTC daily (8:30 AM IST)
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Run scraper
+      run: python main.py
+    
+    # OPTION 1: Upload as Artifact (Current - 30 days retention)
+    - name: Upload Excel as Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: job-leads-${{ github.run_number }}
+        path: output/*.xlsx
+        retention-days: 30
+    
+    # OPTION 2: Commit to Repository (Uncomment to enable)
+    # - name: Commit Excel to Repository
+    #   run: |
+    #     git config --local user.email "action@github.com"
+    #     git config --local user.name "GitHub Action"
+    #     git add output/*.xlsx
+    #     git add scraper_state.json
+    #     git commit -m "Add job leads $(date +%Y-%m-%d) [skip ci]" || echo "No changes"
+    #     git push
+    
+    # OPTION 3: Upload to Google Drive (Uncomment and add secrets)
+    # - name: Upload to Google Drive
+    #   env:
+    #     GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
+    #     GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+    #   run: |
+    #     pip install pydrive2
+    #     python upload_to_gdrive.py
+    
+    # OPTION 4: Email Excel File (Uncomment and add secrets)
+    # - name: Email Excel File
+    #   env:
+    #     EMAIL_TO: ${{ secrets.EMAIL_TO }}
+    #     EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+    #     EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+    #   run: |
+    #     python email_excel.py
+    
+    # OPTION 5: Upload to AWS S3 (Uncomment and add secrets)
+    # - name: Upload to AWS S3
+    #   env:
+    #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    #     AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
+    #   run: |
+    #     pip install boto3
+    #     python upload_to_s3.py
+    
+    # Always commit state file
+    - name: Commit state file
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add scraper_state.json
+        git diff --quiet && git diff --staged --quiet || git commit -m "Update scraper state [skip ci]"
+        git push
