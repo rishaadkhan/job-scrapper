@@ -1,1479 +1,1411 @@
 {
   "companies": {
     "Google India": {
-      "last_scraped": "2026-03-11T04:50:20.927105",
+      "last_scraped": "2026-03-12T04:54:30.617768",
       "job_count": 0
     },
     "Microsoft India": {
-      "last_scraped": "2026-03-11T04:50:23.095875",
+      "last_scraped": "2026-03-12T04:54:32.935789",
       "job_count": 0
     },
     "Amazon India": {
-      "last_scraped": "2026-03-11T04:50:25.850436",
+      "last_scraped": "2026-03-12T04:54:36.101704",
       "job_count": 0
     },
     "Meta India": {
-      "last_scraped": "2026-03-11T04:50:28.512550",
+      "last_scraped": "2026-03-12T04:54:38.726943",
       "job_count": 0
     },
     "Apple India": {
-      "last_scraped": "2026-03-11T04:50:30.744787",
+      "last_scraped": "2026-03-12T04:54:41.127233",
       "job_count": 0
     },
     "Netflix India": {
-      "last_scraped": "2026-03-11T04:50:32.893536",
+      "last_scraped": "2026-03-12T04:54:43.405519",
       "job_count": 0
     },
     "Adobe India": {
-      "last_scraped": "2026-03-11T04:50:35.835692",
+      "last_scraped": "2026-03-12T04:54:46.518087",
       "job_count": 0
     },
     "Salesforce India": {
-      "last_scraped": "2026-03-11T04:50:37.990670",
+      "last_scraped": "2026-03-12T04:54:48.655655",
       "job_count": 0
     },
     "Oracle India": {
-      "last_scraped": "2026-03-11T04:50:41.164411",
+      "last_scraped": "2026-03-12T04:54:52.079323",
       "job_count": 0
     },
     "SAP Labs India": {
-      "last_scraped": "2026-03-11T04:51:09.163201",
-      "job_count": 0
+      "last_scraped": "2026-03-12T04:55:32.131599",
+      "job_count": 2
     },
     "Uber India": {
-      "last_scraped": "2026-03-11T04:51:11.302376",
+      "last_scraped": "2026-03-12T04:55:34.311394",
       "job_count": 0
     },
     "Airbnb India": {
-      "last_scraped": "2026-03-11T04:51:31.193957",
+      "last_scraped": "2026-03-12T04:55:51.653581",
       "job_count": 0
     },
     "LinkedIn India": {
-      "last_scraped": "2026-03-11T04:51:33.332967",
+      "last_scraped": "2026-03-12T04:55:53.785191",
       "job_count": 0
     },
     "Atlassian India": {
-      "last_scraped": "2026-03-11T04:51:40.744777",
+      "last_scraped": "2026-03-12T04:55:58.175522",
       "job_count": 0
     },
     "VMware India": {
-      "last_scraped": "2026-03-11T04:51:57.866099",
+      "last_scraped": "2026-03-12T04:56:15.245226",
       "job_count": 0
     },
     "Intuit India": {
-      "last_scraped": "2026-03-11T04:52:05.660485",
+      "last_scraped": "2026-03-12T04:56:23.085521",
       "job_count": 0
     },
     "PayPal India": {
-      "last_scraped": "2026-03-11T04:52:07.727630",
+      "last_scraped": "2026-03-12T04:56:25.230186",
       "job_count": 0
     },
     "Walmart Global Tech India": {
-      "last_scraped": "2026-03-11T04:52:10.100217",
+      "last_scraped": "2026-03-12T04:56:27.522280",
       "job_count": 0
     },
     "Target India": {
-      "last_scraped": "2026-03-11T04:52:12.465949",
+      "last_scraped": "2026-03-12T04:56:30.175356",
       "job_count": 0
     },
     "Cisco India": {
-      "last_scraped": "2026-03-11T04:52:15.261204",
+      "last_scraped": "2026-03-12T04:56:33.298193",
       "job_count": 0
     },
     "IBM India": {
-      "last_scraped": "2026-03-11T04:52:17.338788",
+      "last_scraped": "2026-03-12T04:56:35.489553",
       "job_count": 0
     },
     "Intel India": {
-      "last_scraped": "2026-03-11T04:52:24.110823",
+      "last_scraped": "2026-03-12T04:56:38.117696",
       "job_count": 0
     },
     "Qualcomm India": {
-      "last_scraped": "2026-03-11T04:52:26.344166",
+      "last_scraped": "2026-03-12T04:56:41.387821",
       "job_count": 0
     },
     "NVIDIA India": {
-      "last_scraped": "2026-03-11T04:52:28.677032",
+      "last_scraped": "2026-03-12T04:56:44.034003",
       "job_count": 0
     },
     "AMD India": {
-      "last_scraped": "2026-03-11T04:52:30.700882",
+      "last_scraped": "2026-03-12T04:56:46.059143",
       "job_count": 0
     },
     "Dell Technologies India": {
-      "last_scraped": "2026-03-11T04:52:40.197643",
+      "last_scraped": "2026-03-12T04:56:48.901707",
       "job_count": 0
     },
     "HP India": {
-      "last_scraped": "2026-03-11T04:52:44.033323",
+      "last_scraped": "2026-03-12T04:56:51.637537",
       "job_count": 0
     },
     "Accenture India": {
-      "last_scraped": "2026-03-11T04:52:46.343993",
+      "last_scraped": "2026-03-12T04:56:54.488552",
       "job_count": 0
     },
     "Deloitte India": {
-      "last_scraped": "2026-03-11T04:52:48.786870",
+      "last_scraped": "2026-03-12T04:56:56.974390",
       "job_count": 0
     },
     "Goldman Sachs India": {
-      "last_scraped": "2026-03-11T04:52:51.468511",
+      "last_scraped": "2026-03-12T04:56:59.594348",
       "job_count": 0
     },
     "Morgan Stanley India": {
-      "last_scraped": "2026-03-11T04:52:54.945533",
+      "last_scraped": "2026-03-12T04:57:02.812953",
       "job_count": 0
     },
     "JP Morgan India": {
-      "last_scraped": "2026-03-11T04:52:57.714170",
+      "last_scraped": "2026-03-12T04:57:05.884520",
       "job_count": 0
     },
     "Flipkart": {
-      "last_scraped": "2026-03-11T04:53:00.749740",
+      "last_scraped": "2026-03-12T04:57:09.567030",
       "job_count": 0
     },
     "Swiggy": {
-      "last_scraped": "2026-03-11T04:53:03.283123",
+      "last_scraped": "2026-03-12T04:57:12.002153",
       "job_count": 0
     },
     "Zomato": {
-      "last_scraped": "2026-03-11T04:53:08.301542",
+      "last_scraped": "2026-03-12T04:57:17.440863",
       "job_count": 0
     },
     "Razorpay": {
-      "last_scraped": "2026-03-11T04:53:10.471925",
+      "last_scraped": "2026-03-12T04:57:19.633254",
       "job_count": 0
     },
     "CRED": {
-      "last_scraped": "2026-03-11T04:53:13.146487",
+      "last_scraped": "2026-03-12T04:57:22.381598",
       "job_count": 0
     },
     "PhonePe": {
-      "last_scraped": "2026-03-11T04:53:18.019189",
+      "last_scraped": "2026-03-12T04:57:27.755346",
       "job_count": 0
     },
     "Paytm": {
-      "last_scraped": "2026-03-11T04:53:21.249629",
+      "last_scraped": "2026-03-12T04:57:31.019572",
       "job_count": 0
     },
     "Ola": {
-      "last_scraped": "2026-03-11T04:53:23.415212",
+      "last_scraped": "2026-03-12T04:57:33.689840",
       "job_count": 0
     },
     "Meesho": {
-      "last_scraped": "2026-03-11T04:53:25.692992",
+      "last_scraped": "2026-03-12T04:57:36.009528",
       "job_count": 0
     },
     "Zerodha": {
-      "last_scraped": "2026-03-11T04:53:28.405160",
+      "last_scraped": "2026-03-12T04:57:38.891784",
       "job_count": 0
     },
     "Freshworks": {
-      "last_scraped": "2026-03-11T04:53:31.053250",
+      "last_scraped": "2026-03-12T04:57:41.258382",
       "job_count": 0
     },
     "Postman": {
-      "last_scraped": "2026-03-11T04:53:33.643159",
+      "last_scraped": "2026-03-12T04:57:43.972252",
       "job_count": 0
     },
     "Chargebee": {
-      "last_scraped": "2026-03-11T04:54:54.794525",
+      "last_scraped": "2026-03-12T04:58:54.301897",
       "job_count": 1
     },
     "Groww": {
-      "last_scraped": "2026-03-11T04:54:57.138059",
+      "last_scraped": "2026-03-12T04:58:56.725058",
       "job_count": 0
     },
     "Udaan": {
-      "last_scraped": "2026-03-11T04:54:59.237350",
+      "last_scraped": "2026-03-12T04:58:58.866971",
       "job_count": 0
     },
     "ShareChat": {
-      "last_scraped": "2026-03-11T04:55:02.506220",
+      "last_scraped": "2026-03-12T04:59:02.592198",
       "job_count": 0
     },
     "Unacademy": {
-      "last_scraped": "2026-03-11T04:55:05.518133",
+      "last_scraped": "2026-03-12T04:59:05.562136",
       "job_count": 0
     },
     "Licious": {
-      "last_scraped": "2026-03-11T04:55:11.144840",
+      "last_scraped": "2026-03-12T04:59:11.191844",
       "job_count": 0
     },
     "Urban Company": {
-      "last_scraped": "2026-03-11T04:55:13.886396",
+      "last_scraped": "2026-03-12T04:59:14.188802",
       "job_count": 0
     },
     "Acko": {
-      "last_scraped": "2026-03-11T04:55:16.548157",
+      "last_scraped": "2026-03-12T04:59:16.870028",
       "job_count": 0
     },
     "Nykaa": {
-      "last_scraped": "2026-03-11T04:55:18.734929",
+      "last_scraped": "2026-03-12T04:59:19.136366",
       "job_count": 0
     },
     "PolicyBazaar": {
-      "last_scraped": "2026-03-11T04:55:35.874989",
+      "last_scraped": "2026-03-12T04:59:36.419188",
       "job_count": 0
     },
     "Delhivery": {
-      "last_scraped": "2026-03-11T04:55:38.041971",
+      "last_scraped": "2026-03-12T04:59:38.547476",
       "job_count": 0
     },
     "BlackBuck": {
-      "last_scraped": "2026-03-11T04:55:40.880184",
+      "last_scraped": "2026-03-12T04:59:41.475767",
       "job_count": 0
     },
     "Moglix": {
-      "last_scraped": "2026-03-11T04:55:43.825120",
+      "last_scraped": "2026-03-12T04:59:44.014391",
       "job_count": 0
     },
     "Infra.Market": {
-      "last_scraped": "2026-03-11T04:55:48.918691",
+      "last_scraped": "2026-03-12T04:59:47.691909",
       "job_count": 0
     },
     "Apna": {
-      "last_scraped": "2026-03-11T04:55:52.583474",
+      "last_scraped": "2026-03-12T04:59:51.722020",
       "job_count": 0
     },
     "Cars24": {
-      "last_scraped": "2026-03-11T04:55:54.729559",
+      "last_scraped": "2026-03-12T04:59:53.889975",
       "job_count": 0
     },
     "Zetwerk": {
-      "last_scraped": "2026-03-11T04:55:59.229731",
+      "last_scraped": "2026-03-12T04:59:58.458179",
       "job_count": 0
     },
     "Innovaccer": {
-      "last_scraped": "2026-03-11T04:56:01.633413",
+      "last_scraped": "2026-03-12T05:00:00.950912",
       "job_count": 0
     },
     "Gupshup": {
-      "last_scraped": "2026-03-11T04:56:03.938223",
+      "last_scraped": "2026-03-12T05:00:03.444714",
       "job_count": 0
     },
     "Browserstack": {
-      "last_scraped": "2026-03-11T04:56:06.097198",
+      "last_scraped": "2026-03-12T05:00:05.680100",
       "job_count": 0
     },
     "Icertis": {
-      "last_scraped": "2026-03-11T04:56:08.400986",
+      "last_scraped": "2026-03-12T05:00:08.006066",
       "job_count": 0
     },
     "Druva": {
-      "last_scraped": "2026-03-11T04:56:10.832036",
+      "last_scraped": "2026-03-12T05:00:10.426640",
       "job_count": 0
     },
     "Zenoti": {
-      "last_scraped": "2026-03-11T04:56:13.287585",
+      "last_scraped": "2026-03-12T05:00:12.995057",
       "job_count": 0
     },
     "Mindtickle": {
-      "last_scraped": "2026-03-11T04:57:36.948553",
+      "last_scraped": "2026-03-12T05:00:15.164709",
       "job_count": 0
     },
     "Darwinbox": {
-      "last_scraped": "2026-03-11T04:57:40.753759",
+      "last_scraped": "2026-03-12T05:00:20.456142",
       "job_count": 0
     },
     "Tekion": {
-      "last_scraped": "2026-03-11T04:57:54.059453",
+      "last_scraped": "2026-03-12T05:00:34.164745",
       "job_count": 0
     },
     "BharatPe": {
-      "last_scraped": "2026-03-11T04:57:59.366298",
+      "last_scraped": "2026-03-12T05:00:37.197271",
       "job_count": 0
     },
     "Pine Labs": {
-      "last_scraped": "2026-03-11T04:58:02.911499",
+      "last_scraped": "2026-03-12T05:00:40.901467",
       "job_count": 0
     },
     "Slice": {
-      "last_scraped": "2026-03-11T04:58:06.953869",
+      "last_scraped": "2026-03-12T05:00:44.805248",
       "job_count": 0
     },
     "NoBroker": {
-      "last_scraped": "2026-03-11T04:58:09.367892",
+      "last_scraped": "2026-03-12T05:00:48.016279",
       "job_count": 0
     },
     "Dunzo": {
-      "last_scraped": "2026-03-11T04:58:11.525888",
+      "last_scraped": "2026-03-12T05:00:50.287822",
       "job_count": 0
     },
     "Vedantu": {
-      "last_scraped": "2026-03-11T04:58:14.238125",
+      "last_scraped": "2026-03-12T05:00:53.133061",
       "job_count": 0
     },
     "Spinny": {
-      "last_scraped": "2026-03-11T04:58:18.157365",
+      "last_scraped": "2026-03-12T05:00:55.600694",
       "job_count": 0
     },
     "Capillary Technologies": {
-      "last_scraped": "2026-03-11T04:58:20.331591",
+      "last_scraped": "2026-03-12T05:00:57.760552",
       "job_count": 0
     },
     "Hashedin": {
-      "last_scraped": "2026-03-11T04:58:23.595887",
+      "last_scraped": "2026-03-12T05:01:00.965560",
       "job_count": 0
     },
     "Whatfix": {
-      "last_scraped": "2026-03-11T04:58:25.969978",
+      "last_scraped": "2026-03-12T05:01:03.343731",
       "job_count": 0
     },
     "Observe.AI": {
-      "last_scraped": "2026-03-11T04:58:28.077092",
+      "last_scraped": "2026-03-12T05:01:05.706752",
       "job_count": 0
     },
     "Khatabook": {
-      "last_scraped": "2026-03-11T04:58:32.000481",
+      "last_scraped": "2026-03-12T05:01:09.144093",
       "job_count": 0
     },
     "Juspay": {
-      "last_scraped": "2026-03-11T04:58:34.205996",
+      "last_scraped": "2026-03-12T05:01:11.410698",
       "job_count": 0
     },
     "Cashfree": {
-      "last_scraped": "2026-03-11T04:58:36.377482",
+      "last_scraped": "2026-03-12T05:01:13.632350",
       "job_count": 0
     },
     "Instamojo": {
-      "last_scraped": "2026-03-11T04:58:39.403969",
+      "last_scraped": "2026-03-12T05:01:17.451751",
       "job_count": 0
     },
     "Jupiter": {
-      "last_scraped": "2026-03-11T04:58:41.834237",
+      "last_scraped": "2026-03-12T05:01:20.775232",
       "job_count": 0
     },
     "Niyo": {
-      "last_scraped": "2026-03-11T04:58:44.311506",
+      "last_scraped": "2026-03-12T05:01:23.270484",
       "job_count": 0
     },
     "Jar": {
-      "last_scraped": "2026-03-11T04:58:46.475036",
+      "last_scraped": "2026-03-12T05:01:25.517365",
       "job_count": 0
     },
     "Rupeek": {
-      "last_scraped": "2026-03-11T04:58:49.944114",
+      "last_scraped": "2026-03-12T05:01:28.978401",
       "job_count": 0
     },
     "Lendingkart": {
-      "last_scraped": "2026-03-11T04:58:52.372819",
+      "last_scraped": "2026-03-12T05:01:31.638299",
       "job_count": 0
     },
     "Capital Float": {
-      "last_scraped": "2026-03-11T04:58:54.501109",
+      "last_scraped": "2026-03-12T05:01:33.781073",
       "job_count": 0
     },
     "Housing.com": {
-      "last_scraped": "2026-03-11T04:58:56.598267",
+      "last_scraped": "2026-03-12T05:01:36.078620",
       "job_count": 0
     },
     "Nestaway": {
-      "last_scraped": "2026-03-11T04:58:58.808924",
+      "last_scraped": "2026-03-12T05:01:38.462865",
       "job_count": 0
     },
     "Cure.fit": {
-      "last_scraped": "2026-03-11T04:59:04.388967",
+      "last_scraped": "2026-03-12T05:01:43.073379",
       "job_count": 0
     },
     "Practo": {
-      "last_scraped": "2026-03-11T04:59:07.919997",
+      "last_scraped": "2026-03-12T05:01:46.460482",
       "job_count": 0
     },
     "1mg": {
-      "last_scraped": "2026-03-11T04:59:10.378734",
+      "last_scraped": "2026-03-12T05:01:48.962255",
       "job_count": 0
     },
     "PharmEasy": {
-      "last_scraped": "2026-03-11T04:59:12.659851",
+      "last_scraped": "2026-03-12T05:01:51.312576",
       "job_count": 0
     },
     "Lenskart": {
-      "last_scraped": "2026-03-11T04:59:16.481866",
+      "last_scraped": "2026-03-12T05:01:54.078770",
       "job_count": 0
     },
     "Boat": {
-      "last_scraped": "2026-03-11T04:59:19.066680",
+      "last_scraped": "2026-03-12T05:01:56.627832",
       "job_count": 0
     },
     "Mamaearth": {
-      "last_scraped": "2026-03-11T04:59:22.649346",
+      "last_scraped": "2026-03-12T05:02:00.366856",
       "job_count": 0
     },
     "Stripe India": {
-      "last_scraped": "2026-03-11T04:59:25.692306",
+      "last_scraped": "2026-03-12T05:02:03.590447",
       "job_count": 0
     },
     "Snowflake India": {
-      "last_scraped": "2026-03-11T04:59:28.983031",
+      "last_scraped": "2026-03-12T05:02:07.170008",
       "job_count": 0
     },
     "Databricks India": {
-      "last_scraped": "2026-03-11T04:59:33.362574",
+      "last_scraped": "2026-03-12T05:02:11.637835",
       "job_count": 0
     },
     "Confluent India": {
-      "last_scraped": "2026-03-11T04:59:35.599787",
+      "last_scraped": "2026-03-12T05:02:13.963635",
       "job_count": 0
     },
     "MongoDB India": {
-      "last_scraped": "2026-03-11T04:59:37.952397",
+      "last_scraped": "2026-03-12T05:02:16.369503",
       "job_count": 0
     },
     "Elastic India": {
-      "last_scraped": "2026-03-11T04:59:40.200601",
+      "last_scraped": "2026-03-12T05:02:18.665936",
       "job_count": 0
     },
     "HashiCorp India": {
-      "last_scraped": "2026-03-11T04:59:42.288170",
+      "last_scraped": "2026-03-12T05:02:20.790703",
       "job_count": 0
     },
     "Twilio India": {
-      "last_scraped": "2026-03-11T04:59:45.271465",
+      "last_scraped": "2026-03-12T05:02:23.811029",
       "job_count": 0
     },
     "Okta India": {
-      "last_scraped": "2026-03-11T04:59:53.619117",
+      "last_scraped": "2026-03-12T05:02:30.650443",
       "job_count": 0
     },
     "Palo Alto Networks India": {
-      "last_scraped": "2026-03-11T04:59:55.865507",
+      "last_scraped": "2026-03-12T05:02:33.154253",
       "job_count": 0
     },
     "Dream11": {
-      "last_scraped": "2026-03-11T04:59:58.200388",
+      "last_scraped": "2026-03-12T05:02:35.484047",
       "job_count": 0
     },
     "MPL": {
-      "last_scraped": "2026-03-11T05:00:00.931792",
+      "last_scraped": "2026-03-12T05:02:38.158525",
       "job_count": 0
     },
     "Games24x7": {
-      "last_scraped": "2026-03-11T05:00:03.033566",
+      "last_scraped": "2026-03-12T05:02:40.373720",
       "job_count": 0
     },
     "Hike": {
-      "last_scraped": "2026-03-11T05:00:05.411701",
+      "last_scraped": "2026-03-12T05:02:42.802740",
       "job_count": 0
     },
     "Glance": {
-      "last_scraped": "2026-03-11T05:00:07.526850",
+      "last_scraped": "2026-03-12T05:02:44.962602",
       "job_count": 0
     },
     "InMobi": {
-      "last_scraped": "2026-03-11T05:00:09.811422",
+      "last_scraped": "2026-03-12T05:02:47.260956",
       "job_count": 0
     },
     "Dailyhunt": {
-      "last_scraped": "2026-03-11T05:00:20.590976",
+      "last_scraped": "2026-03-12T05:02:58.054974",
       "job_count": 0
     },
     "Koo": {
-      "last_scraped": "2026-03-11T05:00:22.810455",
+      "last_scraped": "2026-03-12T05:03:00.383158",
       "job_count": 0
     },
     "Josh": {
-      "last_scraped": "2026-03-11T05:00:24.841506",
+      "last_scraped": "2026-03-12T05:03:02.411048",
       "job_count": 0
     },
     "Moj": {
-      "last_scraped": "2026-03-11T05:00:27.235958",
+      "last_scraped": "2026-03-12T05:03:04.842476",
       "job_count": 0
     },
     "Chingari": {
-      "last_scraped": "2026-03-11T05:00:30.425681",
+      "last_scraped": "2026-03-12T05:03:07.988424",
       "job_count": 0
     },
     "Roposo": {
-      "last_scraped": "2026-03-11T05:00:47.571881",
+      "last_scraped": "2026-03-12T05:03:25.195897",
       "job_count": 0
     },
     "Trell": {
-      "last_scraped": "2026-03-11T05:01:04.648681",
+      "last_scraped": "2026-03-12T05:03:42.288339",
       "job_count": 0
     },
     "Bulbul": {
-      "last_scraped": "2026-03-11T05:01:18.823457",
+      "last_scraped": "2026-03-12T05:04:02.948103",
       "job_count": 0
     },
     "Mitron": {
-      "last_scraped": "2026-03-11T05:01:20.844119",
+      "last_scraped": "2026-03-12T05:04:05.192418",
       "job_count": 0
     },
     "Paytm Money": {
-      "last_scraped": "2026-03-11T05:01:23.391871",
+      "last_scraped": "2026-03-12T05:04:07.827081",
       "job_count": 0
     },
     "Paytm Insider": {
-      "last_scraped": "2026-03-11T05:01:25.449942",
+      "last_scraped": "2026-03-12T05:04:09.952574",
       "job_count": 0
     },
     "MobiKwik": {
-      "last_scraped": "2026-03-11T05:01:28.478239",
+      "last_scraped": "2026-03-12T05:04:12.407526",
       "job_count": 0
     },
     "Freecharge": {
-      "last_scraped": "2026-03-11T05:01:32.307681",
+      "last_scraped": "2026-03-12T05:04:15.973976",
       "job_count": 0
     },
     "Simpl": {
-      "last_scraped": "2026-03-11T05:01:36.268926",
+      "last_scraped": "2026-03-12T05:04:19.131298",
       "job_count": 0
     },
     "LazyPay": {
-      "last_scraped": "2026-03-11T05:01:39.315586",
+      "last_scraped": "2026-03-12T05:04:22.247103",
       "job_count": 0
     },
     "ZestMoney": {
-      "last_scraped": "2026-03-11T05:01:42.190719",
+      "last_scraped": "2026-03-12T05:04:25.078651",
       "job_count": 0
     },
     "KreditBee": {
-      "last_scraped": "2026-03-11T05:01:44.539111",
+      "last_scraped": "2026-03-12T05:04:27.509475",
       "job_count": 0
     },
     "MoneyTap": {
-      "last_scraped": "2026-03-11T05:01:47.374085",
+      "last_scraped": "2026-03-12T05:04:30.394073",
       "job_count": 0
     },
     "EarlySalary": {
-      "last_scraped": "2026-03-11T05:01:50.110298",
+      "last_scraped": "2026-03-12T05:04:33.129857",
       "job_count": 0
     },
     "BYJU'S": {
-      "last_scraped": "2026-03-11T05:01:53.422386",
+      "last_scraped": "2026-03-12T05:04:36.598821",
       "job_count": 0
     },
     "upGrad": {
-      "last_scraped": "2026-03-11T05:01:56.351099",
+      "last_scraped": "2026-03-12T05:04:39.697048",
       "job_count": 0
     },
     "Eruditus": {
-      "last_scraped": "2026-03-11T05:02:13.507308",
+      "last_scraped": "2026-03-12T05:04:56.893246",
       "job_count": 0
     },
     "Simplilearn": {
-      "last_scraped": "2026-03-11T05:02:15.824127",
+      "last_scraped": "2026-03-12T05:04:59.275540",
       "job_count": 0
     },
     "Toppr": {
-      "last_scraped": "2026-03-11T05:02:17.926776",
+      "last_scraped": "2026-03-12T05:05:01.489171",
       "job_count": 0
     },
     "Doubtnut": {
-      "last_scraped": "2026-03-11T05:02:20.575985",
+      "last_scraped": "2026-03-12T05:05:04.267811",
       "job_count": 0
     },
     "Classplus": {
-      "last_scraped": "2026-03-11T05:02:23.346848",
+      "last_scraped": "2026-03-12T05:05:07.100718",
       "job_count": 0
     },
     "Teachmint": {
-      "last_scraped": "2026-03-11T05:02:26.611667",
+      "last_scraped": "2026-03-12T05:05:10.558154",
       "job_count": 0
     },
     "Leverage Edu": {
-      "last_scraped": "2026-03-11T05:02:28.883029",
+      "last_scraped": "2026-03-12T05:05:12.760685",
       "job_count": 0
     },
     "Scaler": {
-      "last_scraped": "2026-03-11T05:02:31.228199",
+      "last_scraped": "2026-03-12T05:05:15.482978",
       "job_count": 0
     },
     "Myntra": {
-      "last_scraped": "2026-03-11T05:02:33.449149",
+      "last_scraped": "2026-03-12T05:05:32.693250",
       "job_count": 0
     },
     "Ajio": {
-      "last_scraped": "2026-03-11T05:02:35.997251",
+      "last_scraped": "2026-03-12T05:05:35.316394",
       "job_count": 0
     },
     "FirstCry": {
-      "last_scraped": "2026-03-11T05:02:38.299767",
+      "last_scraped": "2026-03-12T05:05:52.524469",
       "job_count": 0
     },
     "BigBasket": {
-      "last_scraped": "2026-03-11T05:02:40.864054",
+      "last_scraped": "2026-03-12T05:05:55.361447",
       "job_count": 0
     },
     "Grofers (Blinkit)": {
-      "last_scraped": "2026-03-11T05:02:43.069839",
+      "last_scraped": "2026-03-12T05:05:57.583126",
       "job_count": 0
     },
     "Zepto": {
-      "last_scraped": "2026-03-11T05:02:47.061052",
+      "last_scraped": "2026-03-12T05:05:59.822217",
       "job_count": 0
     },
     "Instamart": {
-      "last_scraped": "2026-03-11T05:02:49.844195",
+      "last_scraped": "2026-03-12T05:06:02.217118",
       "job_count": 0
     },
     "JioMart": {
-      "last_scraped": "2026-03-11T05:02:52.526174",
+      "last_scraped": "2026-03-12T05:06:04.862636",
       "job_count": 0
     },
     "Snapdeal": {
-      "last_scraped": "2026-03-11T05:02:55.305223",
+      "last_scraped": "2026-03-12T05:06:07.777704",
       "job_count": 0
     },
     "ShopClues": {
-      "last_scraped": "2026-03-11T05:02:59.823500",
+      "last_scraped": "2026-03-12T05:06:12.390771",
       "job_count": 0
     },
     "Shopify India": {
-      "last_scraped": "2026-03-11T05:03:37.458002",
+      "last_scraped": "2026-03-12T05:06:56.108982",
       "job_count": 0
     },
     "Slack India": {
-      "last_scraped": "2026-03-11T05:03:39.767949",
+      "last_scraped": "2026-03-12T05:06:58.550879",
       "job_count": 0
     },
     "Zoom India": {
-      "last_scraped": "2026-03-11T05:04:06.885848",
+      "last_scraped": "2026-03-12T05:07:25.485683",
       "job_count": 2
     },
     "Dropbox India": {
-      "last_scraped": "2026-03-11T05:04:09.372378",
+      "last_scraped": "2026-03-12T05:07:28.272434",
       "job_count": 0
     },
     "Box India": {
-      "last_scraped": "2026-03-11T05:04:11.444940",
+      "last_scraped": "2026-03-12T05:07:30.427589",
       "job_count": 0
     },
     "Redis India": {
-      "last_scraped": "2026-03-11T05:04:13.850673",
+      "last_scraped": "2026-03-12T05:07:33.226856",
       "job_count": 0
     },
     "GitLab India": {
-      "last_scraped": "2026-03-11T05:04:16.175016",
+      "last_scraped": "2026-03-12T05:07:35.523108",
       "job_count": 0
     },
     "Splunk India": {
-      "last_scraped": "2026-03-11T05:04:18.737754",
+      "last_scraped": "2026-03-12T05:07:38.400995",
       "job_count": 0
     },
     "ServiceNow India": {
-      "last_scraped": "2026-03-11T05:04:21.011117",
+      "last_scraped": "2026-03-12T05:07:40.531107",
       "job_count": 0
     },
     "Workday India": {
-      "last_scraped": "2026-03-11T05:04:23.495547",
+      "last_scraped": "2026-03-12T05:07:43.050667",
       "job_count": 0
     },
     "Zendesk India": {
-      "last_scraped": "2026-03-11T05:04:25.810826",
+      "last_scraped": "2026-03-12T05:07:45.452673",
       "job_count": 0
     },
     "HubSpot India": {
-      "last_scraped": "2026-03-11T05:04:30.580360",
+      "last_scraped": "2026-03-12T05:07:50.729621",
       "job_count": 0
     },
     "Mailchimp India": {
-      "last_scraped": "2026-03-11T05:04:32.853298",
+      "last_scraped": "2026-03-12T05:07:53.015631",
       "job_count": 0
     },
     "SurveyMonkey India": {
-      "last_scraped": "2026-03-11T05:04:38.759019",
+      "last_scraped": "2026-03-12T05:07:57.787125",
       "job_count": 0
     },
     "Auth0 India": {
-      "last_scraped": "2026-03-11T05:04:45.525489",
+      "last_scraped": "2026-03-12T05:08:04.709217",
       "job_count": 0
     },
     "Segment India": {
-      "last_scraped": "2026-03-11T05:04:48.646871",
+      "last_scraped": "2026-03-12T05:08:08.298650",
       "job_count": 0
     },
     "Amplitude India": {
-      "last_scraped": "2026-03-11T05:04:51.151028",
+      "last_scraped": "2026-03-12T05:08:10.916796",
       "job_count": 0
     },
     "Datadog India": {
-      "last_scraped": "2026-03-11T05:04:53.331180",
+      "last_scraped": "2026-03-12T05:08:13.388578",
       "job_count": 0
     },
     "New Relic India": {
-      "last_scraped": "2026-03-11T05:04:55.984239",
+      "last_scraped": "2026-03-12T05:08:15.773356",
       "job_count": 0
     },
     "PagerDuty India": {
-      "last_scraped": "2026-03-11T05:04:58.397844",
+      "last_scraped": "2026-03-12T05:08:18.273878",
       "job_count": 0
     },
     "Cloudflare India": {
-      "last_scraped": "2026-03-11T05:05:00.644952",
+      "last_scraped": "2026-03-12T05:08:20.630745",
       "job_count": 0
     },
     "Fastly India": {
-      "last_scraped": "2026-03-11T05:05:02.767098",
+      "last_scraped": "2026-03-12T05:08:22.837417",
       "job_count": 0
     },
     "Akamai India": {
-      "last_scraped": "2026-03-11T05:05:04.893784",
+      "last_scraped": "2026-03-12T05:08:25.033010",
       "job_count": 0
     },
     "F5 Networks India": {
-      "last_scraped": "2026-03-11T05:05:07.549802",
+      "last_scraped": "2026-03-12T05:08:28.948243",
       "job_count": 0
     },
     "Fortinet India": {
-      "last_scraped": "2026-03-11T05:05:09.780829",
+      "last_scraped": "2026-03-12T05:08:31.381049",
       "job_count": 0
     },
     "Check Point India": {
-      "last_scraped": "2026-03-11T05:05:13.326462",
+      "last_scraped": "2026-03-12T05:08:34.916482",
       "job_count": 0
     },
     "CrowdStrike India": {
-      "last_scraped": "2026-03-11T05:05:18.042497",
+      "last_scraped": "2026-03-12T05:08:39.878733",
       "job_count": 0
     },
     "Zscaler India": {
-      "last_scraped": "2026-03-11T05:05:22.631836",
+      "last_scraped": "2026-03-12T05:08:44.470065",
       "job_count": 0
     },
     "Proofpoint India": {
-      "last_scraped": "2026-03-11T05:05:25.065161",
+      "last_scraped": "2026-03-12T05:08:47.104484",
       "job_count": 0
     },
     "Mimecast India": {
-      "last_scraped": "2026-03-11T05:05:27.482140",
+      "last_scraped": "2026-03-12T05:08:49.484241",
       "job_count": 0
     },
     "Spotify India": {
-      "last_scraped": "2026-03-11T05:05:29.816955",
+      "last_scraped": "2026-03-12T05:08:51.896760",
       "job_count": 0
     },
     "Klarna India": {
-      "last_scraped": "2026-03-11T05:05:32.158007",
+      "last_scraped": "2026-03-12T05:08:54.160064",
       "job_count": 0
     },
     "Revolut India": {
-      "last_scraped": "2026-03-11T05:05:34.416263",
+      "last_scraped": "2026-03-12T05:08:56.447052",
       "job_count": 0
     },
     "N26 India": {
-      "last_scraped": "2026-03-11T05:05:56.855143",
+      "last_scraped": "2026-03-12T05:09:20.047630",
       "job_count": 0
     },
     "Wise India": {
-      "last_scraped": "2026-03-11T05:06:22.309765",
+      "last_scraped": "2026-03-12T05:09:38.462101",
       "job_count": 0
     },
     "Delivery Hero India": {
-      "last_scraped": "2026-03-11T05:06:24.866356",
+      "last_scraped": "2026-03-12T05:09:41.029790",
       "job_count": 0
     },
     "Zalando India": {
-      "last_scraped": "2026-03-11T05:06:27.949405",
+      "last_scraped": "2026-03-12T05:09:44.205428",
       "job_count": 0
     },
     "Booking.com India": {
-      "last_scraped": "2026-03-11T05:06:30.380279",
+      "last_scraped": "2026-03-12T05:09:46.801232",
       "job_count": 0
     },
     "Trivago India": {
-      "last_scraped": "2026-03-11T05:06:33.777237",
+      "last_scraped": "2026-03-12T05:09:50.125781",
       "job_count": 0
     },
     "Expedia India": {
-      "last_scraped": "2026-03-11T05:06:37.053593",
+      "last_scraped": "2026-03-12T05:09:53.319455",
       "job_count": 0
     },
     "Paytm First Games": {
-      "last_scraped": "2026-03-11T05:06:40.226947",
+      "last_scraped": "2026-03-12T05:09:56.900019",
       "job_count": 0
     },
     "WinZO": {
-      "last_scraped": "2026-03-11T05:06:43.251704",
+      "last_scraped": "2026-03-12T05:09:59.828358",
       "job_count": 0
     },
     "Zupee": {
-      "last_scraped": "2026-03-11T05:06:47.090828",
+      "last_scraped": "2026-03-12T05:10:03.241242",
       "job_count": 0
     },
     "GetMega": {
-      "last_scraped": "2026-03-11T05:06:49.183127",
+      "last_scraped": "2026-03-12T05:10:05.400689",
       "job_count": 0
     },
     "InterviewBit": {
-      "last_scraped": "2026-03-11T05:06:51.622593",
+      "last_scraped": "2026-03-12T05:10:07.857037",
       "job_count": 0
     },
     "Coding Ninjas": {
-      "last_scraped": "2026-03-11T05:06:54.983232",
+      "last_scraped": "2026-03-12T05:10:10.770616",
       "job_count": 0
     },
     "Newton School": {
-      "last_scraped": "2026-03-11T05:06:58.765356",
+      "last_scraped": "2026-03-12T05:10:14.659353",
       "job_count": 0
     },
     "Masai School": {
-      "last_scraped": "2026-03-11T05:07:02.154915",
+      "last_scraped": "2026-03-12T05:10:18.093971",
       "job_count": 0
     },
     "HealthifyMe": {
-      "last_scraped": "2026-03-11T05:07:04.884678",
+      "last_scraped": "2026-03-12T05:10:20.902871",
       "job_count": 0
     },
     "Pristyn Care": {
-      "last_scraped": "2026-03-11T05:07:07.870464",
+      "last_scraped": "2026-03-12T05:10:24.918939",
       "job_count": 0
     },
     "Lybrate": {
-      "last_scraped": "2026-03-11T05:07:10.649354",
+      "last_scraped": "2026-03-12T05:10:27.701144",
       "job_count": 0
     },
     "DocsApp": {
-      "last_scraped": "2026-03-11T05:07:13.673599",
+      "last_scraped": "2026-03-12T05:10:30.783396",
       "job_count": 0
     },
     "mfine": {
-      "last_scraped": "2026-03-11T05:07:17.637793",
+      "last_scraped": "2026-03-12T05:10:34.681774",
       "job_count": 0
     },
     "Shadowfax": {
-      "last_scraped": "2026-03-11T05:07:20.484615",
+      "last_scraped": "2026-03-12T05:10:37.558019",
       "job_count": 0
     },
     "Ecom Express": {
-      "last_scraped": "2026-03-11T05:07:23.174345",
+      "last_scraped": "2026-03-12T05:10:40.347728",
       "job_count": 0
     },
     "Xpressbees": {
-      "last_scraped": "2026-03-11T05:07:26.228336",
+      "last_scraped": "2026-03-12T05:10:43.543615",
       "job_count": 0
     },
     "Porter": {
-      "last_scraped": "2026-03-11T05:07:28.698868",
+      "last_scraped": "2026-03-12T05:10:46.321463",
       "job_count": 0
     },
     "LetsTransport": {
-      "last_scraped": "2026-03-11T05:07:31.991636",
+      "last_scraped": "2026-03-12T05:10:49.607269",
       "job_count": 0
     },
     "Rivigo": {
-      "last_scraped": "2026-03-11T05:07:34.518811",
+      "last_scraped": "2026-03-12T05:10:52.174970",
       "job_count": 0
     },
     "Grofers": {
-      "last_scraped": "2026-03-11T05:07:36.618483",
+      "last_scraped": "2026-03-12T05:10:54.338408",
       "job_count": 0
     },
     "Pepperfry": {
-      "last_scraped": "2026-03-11T05:07:38.830904",
+      "last_scraped": "2026-03-12T05:10:56.671307",
       "job_count": 0
     },
     "Urban Ladder": {
-      "last_scraped": "2026-03-11T05:07:42.123815",
+      "last_scraped": "2026-03-12T05:11:01.371153",
       "job_count": 0
     },
     "Tata CLiQ": {
-      "last_scraped": "2026-03-11T05:07:44.334301",
+      "last_scraped": "2026-03-12T05:11:03.664395",
       "job_count": 0
     },
     "Nykaa Fashion": {
-      "last_scraped": "2026-03-11T05:07:46.484737",
+      "last_scraped": "2026-03-12T05:11:05.950287",
       "job_count": 0
     },
     "Purplle": {
-      "last_scraped": "2026-03-11T05:07:49.117801",
+      "last_scraped": "2026-03-12T05:11:08.675139",
       "job_count": 0
     },
     "MyGlamm": {
-      "last_scraped": "2026-03-11T05:07:51.841418",
+      "last_scraped": "2026-03-12T05:11:11.476055",
       "job_count": 0
     },
     "Sugar Cosmetics": {
-      "last_scraped": "2026-03-11T05:07:55.425813",
+      "last_scraped": "2026-03-12T05:11:14.695363",
       "job_count": 0
     },
     "Noise": {
-      "last_scraped": "2026-03-11T05:07:58.831353",
+      "last_scraped": "2026-03-12T05:11:18.885847",
       "job_count": 0
     },
     "BabyChakra": {
-      "last_scraped": "2026-03-11T05:08:02.330899",
+      "last_scraped": "2026-03-12T05:11:22.484812",
       "job_count": 0
     },
     "Hopscotch": {
-      "last_scraped": "2026-03-11T05:08:05.103489",
+      "last_scraped": "2026-03-12T05:11:25.501962",
       "job_count": 0
     },
     "Bewakoof": {
-      "last_scraped": "2026-03-11T05:08:08.766635",
+      "last_scraped": "2026-03-12T05:11:29.610729",
       "job_count": 0
     },
     "Snitch": {
-      "last_scraped": "2026-03-11T05:08:11.810315",
+      "last_scraped": "2026-03-12T05:11:32.590480",
       "job_count": 0
     },
     "FreshToHome": {
-      "last_scraped": "2026-03-11T05:08:16.226057",
+      "last_scraped": "2026-03-12T05:11:36.596320",
       "job_count": 0
     },
     "Country Delight": {
-      "last_scraped": "2026-03-11T05:08:18.954210",
+      "last_scraped": "2026-03-12T05:11:39.388364",
       "job_count": 0
     },
     "Milkbasket": {
-      "last_scraped": "2026-03-11T05:08:21.251677",
+      "last_scraped": "2026-03-12T05:11:41.739245",
       "job_count": 0
     },
     "99acres": {
-      "last_scraped": "2026-03-11T05:08:23.769218",
+      "last_scraped": "2026-03-12T05:11:44.409232",
       "job_count": 0
     },
     "MagicBricks": {
-      "last_scraped": "2026-03-11T05:08:26.587986",
+      "last_scraped": "2026-03-12T05:11:47.455669",
       "job_count": 0
     },
     "Zolo": {
-      "last_scraped": "2026-03-11T05:08:28.892111",
+      "last_scraped": "2026-03-12T05:11:49.826256",
       "job_count": 0
     },
     "OYO Life": {
-      "last_scraped": "2026-03-11T05:08:32.467874",
+      "last_scraped": "2026-03-12T05:11:53.922607",
       "job_count": 0
     },
     "Colive": {
-      "last_scraped": "2026-03-11T05:08:36.019590",
+      "last_scraped": "2026-03-12T05:11:57.638887",
       "job_count": 0
     },
     "Stanza Living": {
-      "last_scraped": "2026-03-11T05:08:39.506969",
+      "last_scraped": "2026-03-12T05:12:01.229491",
       "job_count": 0
     },
     "Your Space": {
-      "last_scraped": "2026-03-11T05:08:41.810268",
+      "last_scraped": "2026-03-12T05:12:03.971300",
       "job_count": 0
     },
     "Settl": {
-      "last_scraped": "2026-03-11T05:08:43.985276",
+      "last_scraped": "2026-03-12T05:12:06.236038",
       "job_count": 0
     },
     "Housr": {
-      "last_scraped": "2026-03-11T05:08:46.648175",
+      "last_scraped": "2026-03-12T05:12:09.043168",
       "job_count": 0
     },
     "Rapido": {
-      "last_scraped": "2026-03-11T05:08:50.080687",
+      "last_scraped": "2026-03-12T05:12:12.203947",
       "job_count": 0
     },
     "Bounce": {
-      "last_scraped": "2026-03-11T05:08:52.378538",
+      "last_scraped": "2026-03-12T05:12:14.451139",
       "job_count": 0
     },
     "Vogo": {
-      "last_scraped": "2026-03-11T05:08:54.537928",
+      "last_scraped": "2026-03-12T05:12:16.607456",
       "job_count": 0
     },
     "Yulu": {
-      "last_scraped": "2026-03-11T05:08:57.630744",
+      "last_scraped": "2026-03-12T05:12:19.962199",
       "job_count": 0
     },
     "Mobycy": {
-      "last_scraped": "2026-03-11T05:08:59.953604",
+      "last_scraped": "2026-03-12T05:12:22.320707",
       "job_count": 0
     },
     "CarDekho": {
-      "last_scraped": "2026-03-11T05:09:02.310601",
+      "last_scraped": "2026-03-12T05:12:24.750633",
       "job_count": 0
     },
     "Droom": {
-      "last_scraped": "2026-03-11T05:09:05.729471",
+      "last_scraped": "2026-03-12T05:12:28.150415",
       "job_count": 0
     },
     "CarTrade": {
-      "last_scraped": "2026-03-11T05:09:08.377739",
+      "last_scraped": "2026-03-12T05:12:30.922380",
       "job_count": 0
     },
     "OLX Autos": {
-      "last_scraped": "2026-03-11T05:09:25.593264",
+      "last_scraped": "2026-03-12T05:12:48.161461",
       "job_count": 0
     },
     "Truebil": {
-      "last_scraped": "2026-03-11T05:09:30.092516",
+      "last_scraped": "2026-03-12T05:12:51.100626",
       "job_count": 0
     },
     "OYO": {
-      "last_scraped": "2026-03-11T05:09:33.297014",
+      "last_scraped": "2026-03-12T05:12:54.463294",
       "job_count": 0
     },
     "Treebo": {
-      "last_scraped": "2026-03-11T05:09:37.215369",
+      "last_scraped": "2026-03-12T05:12:57.656202",
       "job_count": 0
     },
     "FabHotels": {
-      "last_scraped": "2026-03-11T05:09:55.088158",
+      "last_scraped": "2026-03-12T05:13:16.478988",
       "job_count": 0
     },
     "Zostel": {
-      "last_scraped": "2026-03-11T05:09:58.321526",
+      "last_scraped": "2026-03-12T05:13:19.602538",
       "job_count": 0
     },
     "MakeMyTrip": {
-      "last_scraped": "2026-03-11T05:10:15.478061",
+      "last_scraped": "2026-03-12T05:13:36.813289",
       "job_count": 0
     },
     "Goibibo": {
-      "last_scraped": "2026-03-11T05:10:18.513201",
+      "last_scraped": "2026-03-12T05:13:39.961855",
       "job_count": 0
     },
     "Cleartrip": {
-      "last_scraped": "2026-03-11T05:10:20.771661",
+      "last_scraped": "2026-03-12T05:13:42.271271",
       "job_count": 0
     },
     "Yatra": {
-      "last_scraped": "2026-03-11T05:10:37.923782",
+      "last_scraped": "2026-03-12T05:13:59.435184",
       "job_count": 0
     },
     "ixigo": {
-      "last_scraped": "2026-03-11T05:10:40.453855",
+      "last_scraped": "2026-03-12T05:14:02.046482",
       "job_count": 0
     },
     "EaseMyTrip": {
-      "last_scraped": "2026-03-11T05:10:42.819473",
+      "last_scraped": "2026-03-12T05:14:04.399638",
       "job_count": 0
     },
     "TravelTriangle": {
-      "last_scraped": "2026-03-11T05:10:45.401441",
+      "last_scraped": "2026-03-12T05:14:06.994272",
       "job_count": 0
     },
     "Thrillophilia": {
-      "last_scraped": "2026-03-11T05:10:48.442163",
+      "last_scraped": "2026-03-12T05:14:09.606749",
       "job_count": 0
     },
     "OfBusiness": {
-      "last_scraped": "2026-03-11T05:10:51.356882",
+      "last_scraped": "2026-03-12T05:14:12.747020",
       "job_count": 0
     },
     "Bijnis": {
-      "last_scraped": "2026-03-11T05:10:54.378184",
+      "last_scraped": "2026-03-12T05:14:15.838550",
       "job_count": 0
     },
     "ShopKirana": {
-      "last_scraped": "2026-03-11T05:10:56.745653",
+      "last_scraped": "2026-03-12T05:14:18.153451",
       "job_count": 0
     },
     "Jumbotail": {
-      "last_scraped": "2026-03-11T05:10:59.278789",
+      "last_scraped": "2026-03-12T05:14:20.648195",
       "job_count": 0
     },
     "Ninjacart": {
-      "last_scraped": "2026-03-11T05:11:02.046022",
+      "last_scraped": "2026-03-12T05:14:23.446555",
       "job_count": 0
     },
     "WayCool": {
-      "last_scraped": "2026-03-11T05:11:04.183219",
+      "last_scraped": "2026-03-12T05:14:25.613882",
       "job_count": 0
     },
     "Crofarm": {
-      "last_scraped": "2026-03-11T05:11:21.285511",
+      "last_scraped": "2026-03-12T05:14:42.775973",
       "job_count": 0
     },
     "DeHaat": {
-      "last_scraped": "2026-03-11T05:11:23.321966",
+      "last_scraped": "2026-03-12T05:14:44.854372",
       "job_count": 0
     },
     "AgroStar": {
-      "last_scraped": "2026-03-11T05:11:27.188534",
+      "last_scraped": "2026-03-12T05:14:48.624862",
       "job_count": 0
     },
     "BigHaat": {
-      "last_scraped": "2026-03-11T05:11:30.467143",
+      "last_scraped": "2026-03-12T05:14:51.955934",
       "job_count": 0
     },
     "Gramophone": {
-      "last_scraped": "2026-03-11T05:11:33.005453",
+      "last_scraped": "2026-03-12T05:14:54.526841",
       "job_count": 0
     },
     "Agrowave": {
-      "last_scraped": "2026-03-11T05:11:35.156592",
+      "last_scraped": "2026-03-12T05:14:56.681299",
       "job_count": 0
     },
     "Ergos": {
-      "last_scraped": "2026-03-11T05:11:39.008387",
+      "last_scraped": "2026-03-12T05:15:00.580621",
       "job_count": 0
     },
     "Stellapps": {
-      "last_scraped": "2026-03-11T05:11:43.170269",
+      "last_scraped": "2026-03-12T05:15:05.007696",
       "job_count": 0
     },
     "Intello Labs": {
-      "last_scraped": "2026-03-11T05:11:45.263411",
+      "last_scraped": "2026-03-12T05:15:07.202834",
       "job_count": 0
     },
     "Keka": {
-      "last_scraped": "2026-03-11T05:11:48.707991",
+      "last_scraped": "2026-03-12T05:15:10.688348",
       "job_count": 0
     },
     "GreytHR": {
-      "last_scraped": "2026-03-11T05:11:52.736156",
+      "last_scraped": "2026-03-12T05:15:13.606123",
       "job_count": 0
     },
     "SumHR": {
-      "last_scraped": "2026-03-11T05:11:57.868327",
+      "last_scraped": "2026-03-12T05:15:18.143225",
       "job_count": 0
     },
     "Zimyo": {
-      "last_scraped": "2026-03-11T05:12:01.778450",
+      "last_scraped": "2026-03-12T05:15:22.099499",
       "job_count": 0
     },
     "Pocket HRMS": {
-      "last_scraped": "2026-03-11T05:12:05.356710",
+      "last_scraped": "2026-03-12T05:15:25.757598",
       "job_count": 0
     },
     "Qandle": {
-      "last_scraped": "2026-03-11T05:12:08.914268",
+      "last_scraped": "2026-03-12T05:15:29.307294",
       "job_count": 0
     },
     "Beehive": {
-      "last_scraped": "2026-03-11T05:12:12.083547",
+      "last_scraped": "2026-03-12T05:15:31.605792",
       "job_count": 0
     },
     "Kredily": {
-      "last_scraped": "2026-03-11T05:12:16.961373",
+      "last_scraped": "2026-03-12T05:15:49.288297",
       "job_count": 0
     },
     "Zoho People": {
-      "last_scraped": "2026-03-11T05:12:19.253809",
+      "last_scraped": "2026-03-12T05:15:51.734931",
       "job_count": 0
     },
     "CleverTap": {
-      "last_scraped": "2026-03-11T05:12:21.344100",
+      "last_scraped": "2026-03-12T05:15:54.020352",
       "job_count": 0
     },
     "WebEngage": {
-      "last_scraped": "2026-03-11T05:12:25.172568",
+      "last_scraped": "2026-03-12T05:15:56.226605",
       "job_count": 0
     },
     "MoEngage": {
-      "last_scraped": "2026-03-11T05:12:27.464752",
+      "last_scraped": "2026-03-12T05:15:58.780065",
       "job_count": 0
     },
     "Netcore Cloud": {
-      "last_scraped": "2026-03-11T05:12:34.960279",
+      "last_scraped": "2026-03-12T05:16:04.544952",
       "job_count": 0
     },
     "Insider": {
-      "last_scraped": "2026-03-11T05:12:37.245517",
+      "last_scraped": "2026-03-12T05:16:06.909118",
       "job_count": 0
     },
     "Wigzo": {
-      "last_scraped": "2026-03-11T05:12:39.326606",
+      "last_scraped": "2026-03-12T05:16:09.122165",
       "job_count": 0
     },
     "Vizury": {
-      "last_scraped": "2026-03-11T05:12:42.293352",
+      "last_scraped": "2026-03-12T05:16:12.394387",
       "job_count": 0
     },
     "Vserv": {
-      "last_scraped": "2026-03-11T05:12:45.061873",
+      "last_scraped": "2026-03-12T05:16:15.183262",
       "job_count": 0
     },
     "AdPushup": {
-      "last_scraped": "2026-03-11T05:12:48.793859",
+      "last_scraped": "2026-03-12T05:16:18.362267",
       "job_count": 0
     },
     "Taboola India": {
-      "last_scraped": "2026-03-11T05:12:53.139521",
+      "last_scraped": "2026-03-12T05:16:22.861261",
       "job_count": 0
     },
     "Outbrain India": {
-      "last_scraped": "2026-03-11T05:12:55.641945",
+      "last_scraped": "2026-03-12T05:16:25.528899",
       "job_count": 0
     },
     "LambdaTest": {
-      "last_scraped": "2026-03-11T05:12:57.996064",
+      "last_scraped": "2026-03-12T05:16:28.076894",
       "job_count": 0
     },
     "Testsigma": {
-      "last_scraped": "2026-03-11T05:13:00.161635",
+      "last_scraped": "2026-03-12T05:16:30.434077",
       "job_count": 0
     },
     "Hevo Data": {
-      "last_scraped": "2026-03-11T05:13:03.590561",
+      "last_scraped": "2026-03-12T05:16:33.683440",
       "job_count": 0
     },
     "Atlan": {
-      "last_scraped": "2026-03-11T05:13:05.913231",
+      "last_scraped": "2026-03-12T05:16:35.936760",
       "job_count": 0
     },
     "Hasura": {
-      "last_scraped": "2026-03-11T05:13:08.251618",
+      "last_scraped": "2026-03-12T05:16:38.410732",
       "job_count": 0
     },
     "Appsmith": {
-      "last_scraped": "2026-03-11T05:13:10.686834",
+      "last_scraped": "2026-03-12T05:16:40.851587",
       "job_count": 0
     },
     "Dyte": {
-      "last_scraped": "2026-03-11T05:13:12.816651",
+      "last_scraped": "2026-03-12T05:16:43.147796",
       "job_count": 0
     },
     "100ms": {
-      "last_scraped": "2026-03-11T05:13:14.910960",
+      "last_scraped": "2026-03-12T05:16:45.314856",
       "job_count": 0
     },
     "Agora India": {
-      "last_scraped": "2026-03-11T05:13:17.363537",
+      "last_scraped": "2026-03-12T05:16:47.834097",
       "job_count": 0
     },
     "Securin": {
-      "last_scraped": "2026-03-11T05:13:22.166037",
+      "last_scraped": "2026-03-12T05:16:53.192389",
       "job_count": 0
     },
     "CloudSEK": {
-      "last_scraped": "2026-03-11T05:13:24.481415",
+      "last_scraped": "2026-03-12T05:16:55.744619",
       "job_count": 0
     },
     "Lucideus": {
-      "last_scraped": "2026-03-11T05:13:41.577240",
+      "last_scraped": "2026-03-12T05:17:12.957278",
       "job_count": 0
     },
     "Quick Heal": {
-      "last_scraped": "2026-03-11T05:13:45.244968",
+      "last_scraped": "2026-03-12T05:17:17.015059",
       "job_count": 0
     },
     "K7 Computing": {
-      "last_scraped": "2026-03-11T05:13:48.104851",
+      "last_scraped": "2026-03-12T05:17:19.881352",
       "job_count": 0
     },
     "Sequretek": {
-      "last_scraped": "2026-03-11T05:13:50.253761",
+      "last_scraped": "2026-03-12T05:17:22.111150",
       "job_count": 0
     },
     "Paladion": {
-      "last_scraped": "2026-03-11T05:13:54.430455",
+      "last_scraped": "2026-03-12T05:17:26.565070",
       "job_count": 0
     },
     "Aujas": {
-      "last_scraped": "2026-03-11T05:13:56.979427",
+      "last_scraped": "2026-03-12T05:17:29.059071",
       "job_count": 0
     },
     "Haptik": {
-      "last_scraped": "2026-03-11T05:13:59.576271",
+      "last_scraped": "2026-03-12T05:17:31.555895",
       "job_count": 0
     },
     "Yellow.ai": {
-      "last_scraped": "2026-03-11T05:14:03.481232",
+      "last_scraped": "2026-03-12T05:17:34.931969",
       "job_count": 0
     },
     "Verloop.io": {
-      "last_scraped": "2026-03-11T05:14:05.603855",
+      "last_scraped": "2026-03-12T05:17:37.119956",
       "job_count": 0
     },
     "Uniphore": {
-      "last_scraped": "2026-03-11T05:14:07.882394",
+      "last_scraped": "2026-03-12T05:17:39.492315",
       "job_count": 0
     },
     "Skit.ai": {
-      "last_scraped": "2026-03-11T05:14:10.094314",
+      "last_scraped": "2026-03-12T05:17:41.841518",
       "job_count": 0
     },
     "Vernacular.ai": {
-      "last_scraped": "2026-03-11T05:14:12.170536",
+      "last_scraped": "2026-03-12T05:17:43.897708",
       "job_count": 0
     },
     "Mad Street Den": {
-      "last_scraped": "2026-03-11T05:14:15.180819",
+      "last_scraped": "2026-03-12T05:17:46.902129",
       "job_count": 0
     },
     "SigTuple": {
-      "last_scraped": "2026-03-11T05:14:18.171004",
+      "last_scraped": "2026-03-12T05:17:49.994134",
       "job_count": 0
     },
     "Niramai": {
-      "last_scraped": "2026-03-11T05:14:28.100790",
+      "last_scraped": "2026-03-12T05:18:00.374483",
       "job_count": 0
     },
     "Qure.ai": {
-      "last_scraped": "2026-03-11T05:14:32.079758",
+      "last_scraped": "2026-03-12T05:18:04.629788",
       "job_count": 0
     },
     "Ather Energy": {
-      "last_scraped": "2026-03-11T05:14:34.241769",
+      "last_scraped": "2026-03-12T05:18:06.741081",
       "job_count": 0
     },
     "Ola Electric": {
-      "last_scraped": "2026-03-11T05:14:38.580841",
+      "last_scraped": "2026-03-12T05:18:10.367370",
       "job_count": 0
     },
     "Revolt Motors": {
-      "last_scraped": "2026-03-11T05:14:41.762822",
+      "last_scraped": "2026-03-12T05:18:13.610482",
       "job_count": 0
     },
     "Sun Mobility": {
-      "last_scraped": "2026-03-11T05:14:44.550262",
+      "last_scraped": "2026-03-12T05:18:16.373759",
       "job_count": 0
     },
     "Lithion Power": {
-      "last_scraped": "2026-03-11T05:14:48.121714",
+      "last_scraped": "2026-03-12T05:18:20.594571",
       "job_count": 0
     },
     "Log9 Materials": {
-      "last_scraped": "2026-03-11T05:14:51.851422",
+      "last_scraped": "2026-03-12T05:18:23.115121",
       "job_count": 0
     },
     "ReNew Power": {
-      "last_scraped": "2026-03-11T05:14:54.663263",
+      "last_scraped": "2026-03-12T05:18:25.950825",
       "job_count": 0
     },
     "CleanMax Solar": {
-      "last_scraped": "2026-03-11T05:14:57.172357",
+      "last_scraped": "2026-03-12T05:18:28.448574",
       "job_count": 0
     },
     "Fourth Partner Energy": {
-      "last_scraped": "2026-03-11T05:14:59.198221",
+      "last_scraped": "2026-03-12T05:18:30.502900",
       "job_count": 0
     },
     "Digit Insurance": {
-      "last_scraped": "2026-03-11T05:15:01.414978",
+      "last_scraped": "2026-03-12T05:18:32.760252",
       "job_count": 0
     },
     "Go Digit": {
-      "last_scraped": "2026-03-11T05:15:03.465744",
+      "last_scraped": "2026-03-12T05:18:34.828859",
       "job_count": 0
     },
     "Turtlemint": {
-      "last_scraped": "2026-03-11T05:15:08.266856",
+      "last_scraped": "2026-03-12T05:18:39.676436",
       "job_count": 0
     },
     "RenewBuy": {
-      "last_scraped": "2026-03-11T05:15:11.086438",
+      "last_scraped": "2026-03-12T05:18:42.554395",
       "job_count": 0
     },
     "Coverfox": {
-      "last_scraped": "2026-03-11T05:15:14.549127",
+      "last_scraped": "2026-03-12T05:18:44.659392",
       "job_count": 0
     },
     "InsuranceDekho": {
-      "last_scraped": "2026-03-11T05:15:17.016524",
+      "last_scraped": "2026-03-12T05:18:47.356256",
       "job_count": 0
     },
     "Upstox": {
-      "last_scraped": "2026-03-11T05:15:19.368798",
+      "last_scraped": "2026-03-12T05:18:49.848161",
       "job_count": 0
     },
     "Angel One": {
-      "last_scraped": "2026-03-11T05:15:21.816608",
+      "last_scraped": "2026-03-12T05:18:52.381245",
       "job_count": 0
     },
     "5paisa": {
-      "last_scraped": "2026-03-11T05:15:39.678739",
+      "last_scraped": "2026-03-12T05:19:08.749980",
       "job_count": 0
     },
     "Smallcase": {
-      "last_scraped": "2026-03-11T05:15:43.646930",
+      "last_scraped": "2026-03-12T05:19:12.593295",
       "job_count": 0
     },
     "Scripbox": {
-      "last_scraped": "2026-03-11T05:15:46.074840",
+      "last_scraped": "2026-03-12T05:19:15.601972",
       "job_count": 0
     },
     "ET Money": {
-      "last_scraped": "2026-03-11T05:15:48.602072",
+      "last_scraped": "2026-03-12T05:19:19.226155",
       "job_count": 0
     },
     "INDmoney": {
-      "last_scraped": "2026-03-11T05:15:50.700540",
+      "last_scraped": "2026-03-12T05:19:21.375472",
       "job_count": 0
     },
     "Fi Money": {
-      "last_scraped": "2026-03-11T05:15:52.817592",
+      "last_scraped": "2026-03-12T05:19:23.829370",
       "job_count": 0
     },
     "Signzy": {
-      "last_scraped": "2026-03-11T05:15:55.225724",
+      "last_scraped": "2026-03-12T05:19:26.394773",
       "job_count": 0
     },
     "IDfy": {
-      "last_scraped": "2026-03-11T05:15:57.943508",
+      "last_scraped": "2026-03-12T05:19:29.201953",
       "job_count": 0
     },
     "Digio": {
-      "last_scraped": "2026-03-11T05:16:00.686541",
+      "last_scraped": "2026-03-12T05:19:32.006321",
       "job_count": 0
     },
     "Leegality": {
-      "last_scraped": "2026-03-11T05:16:02.954535",
+      "last_scraped": "2026-03-12T05:19:34.397886",
       "job_count": 0
     },
     "SpotDraft": {
-      "last_scraped": "2026-03-11T05:16:05.116403",
+      "last_scraped": "2026-03-12T05:19:38.467654",
       "job_count": 0
     }
   },
   "seen_jobs": {
-    "SAP Labs India_https://jobs.sap.com/job/Bangalore-Developer-Java%2C-Fullstack-560066/1289354201/": {
-      "company": "SAP Labs India",
-      "first_seen": "2026-02-09T13:42:44.881201"
-    },
-    "SAP Labs India_https://jobs.sap.com/job/Bangalore-Site-Reliability-Engineer-%28AIML-Expertise%29-BTP-560066/1282256601/": {
-      "company": "SAP Labs India",
-      "first_seen": "2026-02-09T13:43:11.187496"
-    },
-    "Airbnb India_https://careers.airbnb.com/positions/7550112/": {
-      "company": "Airbnb India",
-      "first_seen": "2026-02-09T13:43:30.448205"
-    },
-    "Airbnb India_https://careers.airbnb.com/positions/7592267/": {
-      "company": "Airbnb India",
-      "first_seen": "2026-02-09T13:43:32.962283"
-    },
-    "Airbnb India_https://careers.airbnb.com/positions/7572491/": {
-      "company": "Airbnb India",
-      "first_seen": "2026-02-09T13:43:35.437918"
-    },
-    "Chargebee_https://in.linkedin.com/jobs/view/business-analyst-at-chargebee-4369524622?refId=2uCLoDvtX357QfHsHZ4y6w%3D%3D&trackingId=YzNROWLxuTFqp6aX9lFj8g%3D%3D": {
-      "company": "Chargebee",
-      "first_seen": "2026-02-09T13:45:44.826201"
-    },
-    "Chargebee_https://in.linkedin.com/jobs/view/business-analyst-at-chargebee-4369117777?refId=2uCLoDvtX357QfHsHZ4y6w%3D%3D&trackingId=M4GG69XLITzp7BOqX8QidA%3D%3D": {
-      "company": "Chargebee",
-      "first_seen": "2026-02-09T13:45:47.624212"
-    },
-    "Chargebee_https://www.linkedin.com/jobs/engineer-jobs?trk=organization_guest-browse_jobs": {
-      "company": "Chargebee",
-      "first_seen": "2026-02-09T13:46:17.980957"
-    },
-    "Chargebee_https://www.linkedin.com/jobs/analyst-jobs?trk=organization_guest-browse_jobs": {
-      "company": "Chargebee",
-      "first_seen": "2026-02-09T13:46:21.425192"
-    },
-    "Chargebee_https://www.linkedin.com/jobs/developer-jobs?trk=organization_guest-browse_jobs": {
-      "company": "Chargebee",
-      "first_seen": "2026-02-09T13:46:24.550369"
-    },
-    "Chargebee_https://www.linkedin.com/jobs/python-developer-jobs?trk=organization_guest-browse_jobs": {
-      "company": "Chargebee",
-      "first_seen": "2026-02-09T13:46:34.239191"
-    },
-    "Chargebee_https://www.linkedin.com/jobs/software-engineer-jobs?trk=organization_guest-browse_jobs": {
-      "company": "Chargebee",
-      "first_seen": "2026-02-09T13:46:37.445084"
-    },
-    "Shopify India_https://www.shopify.com/careers/deal-pricing-analyst_9d23c650-e70d-4811-b421-2683bf31db04?": {
-      "company": "Shopify India",
-      "first_seen": "2026-02-09T13:53:37.734429"
-    },
-    "Zoom India_https://careers.zoom.us/jobs/devops-engineer-india-a4923b4b-bddb-4984-a7f3-fc386b587c89": {
-      "company": "Zoom India",
-      "first_seen": "2026-02-09T13:54:20.535102"
-    },
-    "N26 India_https://n26.com/en-eu/careers/positions/7556209": {
-      "company": "N26 India",
-      "first_seen": "2026-02-09T13:56:30.903454"
-    },
-    "Chargebee_https://in.linkedin.com/jobs/view/business-analyst-at-chargebee-4369524622?refId=vArzAUxwOKDjZERYDCForg%3D%3D&trackingId=Z7CrIquDqQ5BPdnxn%2BNcWQ%3D%3D": {
-      "company": "Chargebee",
-      "first_seen": "2026-02-10T05:14:10.886005"
-    },
-    "Chargebee_https://in.linkedin.com/jobs/view/business-analyst-at-chargebee-4369117777?refId=vArzAUxwOKDjZERYDCForg%3D%3D&trackingId=TkEglqQ8oGzufyIi%2FsEm%2BA%3D%3D": {
-      "company": "Chargebee",
-      "first_seen": "2026-02-10T05:14:13.527456"
-    },
     "Zoom India_https://careers.zoom.us/jobs/product-engineer-forward-deployment-management-remote-united-states": {
       "company": "Zoom India",
       "first_seen": "2026-02-10T05:22:58.926170"
@@ -2137,6 +2069,26 @@
     "Zoom India_https://careers.zoom.us/jobs/data-engineer-india-2340cd88-eef0-444d-8570-8f438304e12b": {
       "company": "Zoom India",
       "first_seen": "2026-03-11T05:04:04.876025"
+    },
+    "SAP Labs India_https://jobs.sap.com/job/Bangalore-Java-Developer-Fullstack-Developer-560066/1367159433/": {
+      "company": "SAP Labs India",
+      "first_seen": "2026-03-12T04:55:07.698713"
+    },
+    "SAP Labs India_https://jobs.sap.com/job/Bangalore-Data-Quality-Engineer-for-Master-Data-560066/1367362033/": {
+      "company": "SAP Labs India",
+      "first_seen": "2026-03-12T04:55:10.118633"
+    },
+    "Chargebee_https://in.linkedin.com/jobs/view/software-engineer-at-chargebee-4382842294?refId=zh5Y5W2OU1%2BAuoCiv30kHQ%3D%3D&trackingId=zM5%2ByQzURwz7cDXpwLcVUg%3D%3D": {
+      "company": "Chargebee",
+      "first_seen": "2026-03-12T04:57:57.646517"
+    },
+    "Zoom India_https://careers.zoom.us/jobs/data-analyst-marketing-analytics-india": {
+      "company": "Zoom India",
+      "first_seen": "2026-03-12T05:07:04.428548"
+    },
+    "Zoom India_https://careers.zoom.us/jobs/data-engineer-people-analytics-india-71dfdcd4-1f20-44a9-a870-c695d2a817eb": {
+      "company": "Zoom India",
+      "first_seen": "2026-03-12T05:07:15.371601"
     }
   }
 }
