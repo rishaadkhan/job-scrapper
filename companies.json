@@ -160,6 +160,57 @@
     "career_url": "https://careers.jpmorgan.com/global/en/search-results?location=India"
   },
   {
+    "name": "Stripe India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://stripe.com/jobs/search?location=India"
+  },
+  {
+    "name": "Snowflake India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.snowflake.com/us/en/search-results?location=India"
+  },
+  {
+    "name": "Databricks India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.databricks.com/company/careers/open-positions?location=India"
+  },
+  {
+    "name": "Confluent India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.confluent.io/careers/?location=India"
+  },
+  {
+    "name": "MongoDB India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.mongodb.com/careers/jobs?location=India"
+  },
+  {
+    "name": "Elastic India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.elastic.co/careers/jobs?location=India"
+  },
+  {
+    "name": "HashiCorp India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.hashicorp.com/jobs?location=India"
+  },
+  {
+    "name": "Twilio India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.twilio.com/company/jobs?location=India"
+  },
+  {
+    "name": "Okta India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.okta.com/company/careers/?location=India"
+  },
+  {
+    "name": "Palo Alto Networks India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.paloaltonetworks.com/en/jobs/?location=India"
+  },
+
+  {
     "name": "Flipkart",
     "type": "Unicorn",
     "career_url": "https://www.flipkartcareers.com/#!/joblist"
@@ -230,91 +281,6 @@
     "career_url": "https://groww.in/careers"
   },
   {
-    "name": "Udaan",
-    "type": "Unicorn",
-    "career_url": "https://udaan.com/careers.html"
-  },
-  {
-    "name": "ShareChat",
-    "type": "Unicorn",
-    "career_url": "https://sharechat.com/careers"
-  },
-  {
-    "name": "Unacademy",
-    "type": "Unicorn",
-    "career_url": "https://unacademy.com/careers"
-  },
-  {
-    "name": "Licious",
-    "type": "Unicorn",
-    "career_url": "https://www.licious.in/careers"
-  },
-  {
-    "name": "Urban Company",
-    "type": "Unicorn",
-    "career_url": "https://www.urbancompany.com/careers"
-  },
-  {
-    "name": "Acko",
-    "type": "Unicorn",
-    "career_url": "https://www.acko.com/careers/"
-  },
-  {
-    "name": "Nykaa",
-    "type": "Unicorn",
-    "career_url": "https://www.nykaa.com/careers"
-  },
-  {
-    "name": "PolicyBazaar",
-    "type": "Unicorn",
-    "career_url": "https://www.policybazaar.com/about-us/careers/"
-  },
-  {
-    "name": "Delhivery",
-    "type": "Unicorn",
-    "career_url": "https://www.delhivery.com/careers"
-  },
-  {
-    "name": "BlackBuck",
-    "type": "Unicorn",
-    "career_url": "https://blackbuck.com/careers"
-  },
-  {
-    "name": "Moglix",
-    "type": "Unicorn",
-    "career_url": "https://www.moglix.com/careers"
-  },
-  {
-    "name": "Infra.Market",
-    "type": "Unicorn",
-    "career_url": "https://www.infra.market/careers"
-  },
-  {
-    "name": "Apna",
-    "type": "Unicorn",
-    "career_url": "https://apna.co/careers/"
-  },
-  {
-    "name": "Cars24",
-    "type": "Unicorn",
-    "career_url": "https://www.cars24.com/careers/"
-  },
-  {
-    "name": "Zetwerk",
-    "type": "Unicorn",
-    "career_url": "https://www.zetwerk.com/careers/"
-  },
-  {
-    "name": "Innovaccer",
-    "type": "Unicorn",
-    "career_url": "https://innovaccer.com/careers/"
-  },
-  {
-    "name": "Gupshup",
-    "type": "Unicorn",
-    "career_url": "https://www.gupshup.io/careers"
-  },
-  {
     "name": "Browserstack",
     "type": "Unicorn",
     "career_url": "https://www.browserstack.com/careers"
@@ -328,11 +294,6 @@
     "name": "Druva",
     "type": "Unicorn",
     "career_url": "https://www.druva.com/careers/"
-  },
-  {
-    "name": "Zenoti",
-    "type": "Unicorn",
-    "career_url": "https://www.zenoti.com/careers"
   },
   {
     "name": "Mindtickle",
@@ -360,55 +321,66 @@
     "career_url": "https://www.pinelabs.com/careers"
   },
   {
-    "name": "Slice",
-    "type": "Unicorn",
-    "career_url": "https://www.sliceit.com/careers"
-  },
-  {
     "name": "NoBroker",
     "type": "Unicorn",
     "career_url": "https://www.nobroker.in/careers"
   },
   {
-    "name": "Dunzo",
-    "type": "Series B-D",
-    "career_url": "https://www.dunzo.com/careers"
+    "name": "Dream11",
+    "type": "Unicorn",
+    "career_url": "https://www.dream11.com/careers"
   },
   {
-    "name": "Vedantu",
-    "type": "Series B-D",
-    "career_url": "https://www.vedantu.com/careers"
+    "name": "InMobi",
+    "type": "Unicorn",
+    "career_url": "https://www.inmobi.com/company/careers"
   },
   {
-    "name": "Spinny",
-    "type": "Series B-D",
-    "career_url": "https://www.spinny.com/careers/"
+    "name": "Glance",
+    "type": "Unicorn",
+    "career_url": "https://www.glance.com/careers"
   },
   {
-    "name": "Capillary Technologies",
-    "type": "Series B-D",
-    "career_url": "https://www.capillarytech.com/careers/"
+    "name": "Uniphore",
+    "type": "Unicorn",
+    "career_url": "https://www.uniphore.com/careers"
   },
   {
-    "name": "Hashedin",
-    "type": "Series B-D",
-    "career_url": "https://hashedin.com/careers/"
+    "name": "Lenskart",
+    "type": "Unicorn",
+    "career_url": "https://www.lenskart.com/careers.html"
   },
   {
-    "name": "Whatfix",
-    "type": "Series B-D",
-    "career_url": "https://whatfix.com/careers/"
+    "name": "Ather Energy",
+    "type": "Unicorn",
+    "career_url": "https://www.atherenergy.com/careers"
   },
   {
-    "name": "Observe.AI",
-    "type": "Series B-D",
-    "career_url": "https://www.observe.ai/careers"
+    "name": "Ola Electric",
+    "type": "Unicorn",
+    "career_url": "https://olaelectric.com/careers"
   },
   {
-    "name": "Khatabook",
-    "type": "Series B-D",
-    "career_url": "https://khatabook.com/careers"
+    "name": "ReNew Power",
+    "type": "Unicorn",
+    "career_url": "https://www.renewpower.in/careers/"
   },
+  {
+    "name": "Digit Insurance",
+    "type": "Unicorn",
+    "career_url": "https://www.godigit.com/careers"
+  },
+  {
+    "name": "Upstox",
+    "type": "Unicorn",
+    "career_url": "https://upstox.com/careers/"
+  },
+  {
+    "name": "Angel One",
+    "type": "Unicorn",
+    "career_url": "https://www.angelone.in/careers"
+  },
+
   {
     "name": "Juspay",
     "type": "Series B-D",
@@ -420,404 +392,260 @@
     "career_url": "https://www.cashfree.com/careers/"
   },
   {
-    "name": "Instamojo",
+    "name": "Whatfix",
     "type": "Series B-D",
-    "career_url": "https://www.instamojo.com/careers/"
+    "career_url": "https://whatfix.com/careers/"
   },
   {
-    "name": "Jupiter",
+    "name": "Hasura",
     "type": "Series B-D",
-    "career_url": "https://jupiter.money/careers/"
+    "career_url": "https://hasura.io/careers/"
   },
   {
-    "name": "Niyo",
+    "name": "Appsmith",
     "type": "Series B-D",
-    "career_url": "https://www.niyo.co/careers"
+    "career_url": "https://www.appsmith.com/careers"
   },
   {
-    "name": "Jar",
+    "name": "Atlan",
     "type": "Series B-D",
-    "career_url": "https://www.myjar.app/careers"
+    "career_url": "https://atlan.com/careers/"
   },
   {
-    "name": "Rupeek",
+    "name": "Hevo Data",
     "type": "Series B-D",
-    "career_url": "https://rupeek.com/careers"
+    "career_url": "https://hevodata.com/careers"
   },
   {
-    "name": "Lendingkart",
+    "name": "LambdaTest",
     "type": "Series B-D",
-    "career_url": "https://www.lendingkart.com/careers/"
+    "career_url": "https://www.lambdatest.com/careers"
   },
   {
-    "name": "Capital Float",
+    "name": "CleverTap",
     "type": "Series B-D",
-    "career_url": "https://www.capitalfloat.com/careers/"
+    "career_url": "https://clevertap.com/careers/"
   },
   {
-    "name": "Housing.com",
+    "name": "MoEngage",
     "type": "Series B-D",
-    "career_url": "https://housing.com/careers"
+    "career_url": "https://www.moengage.com/careers/"
   },
   {
-    "name": "Nestaway",
+    "name": "Yellow.ai",
     "type": "Series B-D",
-    "career_url": "https://www.nestaway.com/careers"
+    "career_url": "https://yellow.ai/careers/"
   },
   {
-    "name": "Cure.fit",
+    "name": "Dyte",
     "type": "Series B-D",
-    "career_url": "https://www.cure.fit/careers"
+    "career_url": "https://dyte.io/careers"
   },
   {
-    "name": "Practo",
+    "name": "100ms",
     "type": "Series B-D",
-    "career_url": "https://www.practo.com/company/careers"
+    "career_url": "https://www.100ms.live/careers"
   },
+
   {
-    "name": "1mg",
-    "type": "Series B-D",
-    "career_url": "https://www.1mg.com/careers"
-  },
-  {
-    "name": "PharmEasy",
-    "type": "Series B-D",
-    "career_url": "https://pharmeasy.in/careers/"
-  },
-  {
-    "name": "Lenskart",
-    "type": "Unicorn",
-    "career_url": "https://www.lenskart.com/careers.html"
-  },
-  {
-    "name": "Boat",
-    "type": "Series B-D",
-    "career_url": "https://www.boat-lifestyle.com/pages/careers"
-  },
-  {
-    "name": "Mamaearth",
-    "type": "Series B-D",
-    "career_url": "https://mamaearth.in/careers"
-  },
-  {
-    "name": "Stripe India",
+    "name": "Cohesity India",
     "type": "Tier-1 GCC",
-    "career_url": "https://stripe.com/jobs/search?location=India"
+    "career_url": "https://www.cohesity.com/company/careers/open-jobs/?location=India"
   },
   {
-    "name": "Snowflake India",
+    "name": "Pure Storage India",
     "type": "Tier-1 GCC",
-    "career_url": "https://careers.snowflake.com/us/en/search-results?location=India"
+    "career_url": "https://boards.greenhouse.io/purestorage?gh_src=redsols&location=India"
   },
   {
-    "name": "Databricks India",
+    "name": "Nutanix India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.databricks.com/company/careers/open-positions?location=India"
+    "career_url": "https://jobs.nutanix.com/search/?q=&location=India"
   },
   {
-    "name": "Confluent India",
+    "name": "Juniper Networks India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.confluent.io/careers/?location=India"
+    "career_url": "https://jobs.juniper.net/en-US/search?location=India"
   },
   {
-    "name": "MongoDB India",
+    "name": "Micron Technology India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.mongodb.com/careers/jobs?location=India"
+    "career_url": "https://micron.wd1.myworkdayjobs.com/External?locations=India"
   },
   {
-    "name": "Elastic India",
+    "name": "Texas Instruments India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.elastic.co/careers/jobs?location=India"
+    "career_url": "https://careers.ti.com/search/#t=Jobs&numberOfResults=25&locale=en_US&oly_enc_id=&q=india"
   },
   {
-    "name": "HashiCorp India",
+    "name": "Western Digital India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.hashicorp.com/jobs?location=India"
+    "career_url": "https://careers.westerndigital.com/jobs?location=India"
   },
   {
-    "name": "Twilio India",
+    "name": "Broadcom India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.twilio.com/company/jobs?location=India"
+    "career_url": "https://careers.broadcom.com/careers/search?location=India"
   },
   {
-    "name": "Okta India",
+    "name": "Marvell Technology India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.okta.com/company/careers/?location=India"
+    "career_url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers?location=India"
   },
   {
-    "name": "Palo Alto Networks India",
+    "name": "Arm India",
     "type": "Tier-1 GCC",
-    "career_url": "https://jobs.paloaltonetworks.com/en/jobs/?location=India"
+    "career_url": "https://careers.arm.com/search?q=&location=India"
   },
   {
-    "name": "Dream11",
-    "type": "Unicorn",
-    "career_url": "https://www.dream11.com/careers"
-  },
-  {
-    "name": "MPL",
-    "type": "Series B-D",
-    "career_url": "https://www.mpl.live/careers"
-  },
-  {
-    "name": "Games24x7",
-    "type": "Series B-D",
-    "career_url": "https://www.games24x7.com/careers"
-  },
-  {
-    "name": "Hike",
-    "type": "Series B-D",
-    "career_url": "https://hike.in/careers"
-  },
-  {
-    "name": "Glance",
-    "type": "Unicorn",
-    "career_url": "https://www.glance.com/careers"
-  },
-  {
-    "name": "InMobi",
-    "type": "Unicorn",
-    "career_url": "https://www.inmobi.com/company/careers"
-  },
-  {
-    "name": "Dailyhunt",
-    "type": "Series B-D",
-    "career_url": "https://www.dailyhunt.in/careers"
-  },
-  {
-    "name": "Koo",
-    "type": "Series B-D",
-    "career_url": "https://www.kooapp.com/careers"
-  },
-  {
-    "name": "Josh",
-    "type": "Series B-D",
-    "career_url": "https://www.josh.in/careers"
-  },
-  {
-    "name": "Moj",
-    "type": "Series B-D",
-    "career_url": "https://mojapp.in/careers"
-  },
-  {
-    "name": "Chingari",
-    "type": "Series B-D",
-    "career_url": "https://chingari.io/careers"
-  },
-  {
-    "name": "Roposo",
-    "type": "Series B-D",
-    "career_url": "https://www.roposo.com/careers"
-  },
-  {
-    "name": "Trell",
-    "type": "Series B-D",
-    "career_url": "https://trell.co/careers"
-  },
-  {
-    "name": "Bulbul",
-    "type": "Series B-D",
-    "career_url": "https://bulbul.tv/careers"
-  },
-  {
-    "name": "Mitron",
-    "type": "Series B-D",
-    "career_url": "https://www.mitron.tv/careers"
-  },
-  {
-    "name": "Paytm Money",
-    "type": "Series B-D",
-    "career_url": "https://www.paytmmoney.com/careers"
-  },
-  {
-    "name": "Paytm Insider",
-    "type": "Series B-D",
-    "career_url": "https://insider.in/careers"
-  },
-  {
-    "name": "MobiKwik",
-    "type": "Series B-D",
-    "career_url": "https://www.mobikwik.com/careers"
-  },
-  {
-    "name": "Freecharge",
-    "type": "Series B-D",
-    "career_url": "https://www.freecharge.in/careers"
-  },
-  {
-    "name": "Simpl",
-    "type": "Series B-D",
-    "career_url": "https://getsimpl.com/careers/"
-  },
-  {
-    "name": "LazyPay",
-    "type": "Series B-D",
-    "career_url": "https://www.lazypay.in/careers"
-  },
-  {
-    "name": "ZestMoney",
-    "type": "Series B-D",
-    "career_url": "https://www.zestmoney.in/careers"
-  },
-  {
-    "name": "KreditBee",
-    "type": "Series B-D",
-    "career_url": "https://www.kreditbee.in/careers"
-  },
-  {
-    "name": "MoneyTap",
-    "type": "Series B-D",
-    "career_url": "https://www.moneytap.com/careers"
-  },
-  {
-    "name": "EarlySalary",
-    "type": "Series B-D",
-    "career_url": "https://www.earlysalary.com/careers"
-  },
-  {
-    "name": "BYJU'S",
-    "type": "Unicorn",
-    "career_url": "https://byjus.com/careers/"
-  },
-  {
-    "name": "upGrad",
-    "type": "Unicorn",
-    "career_url": "https://www.upgrad.com/careers/"
-  },
-  {
-    "name": "Eruditus",
-    "type": "Unicorn",
-    "career_url": "https://www.eruditus.com/careers/"
-  },
-  {
-    "name": "Simplilearn",
-    "type": "Series B-D",
-    "career_url": "https://www.simplilearn.com/careers"
-  },
-  {
-    "name": "Toppr",
-    "type": "Series B-D",
-    "career_url": "https://www.toppr.com/careers/"
-  },
-  {
-    "name": "Doubtnut",
-    "type": "Series B-D",
-    "career_url": "https://doubtnut.com/careers"
-  },
-  {
-    "name": "Classplus",
-    "type": "Series B-D",
-    "career_url": "https://classplusapp.com/careers/"
-  },
-  {
-    "name": "Teachmint",
-    "type": "Series B-D",
-    "career_url": "https://www.teachmint.com/careers"
-  },
-  {
-    "name": "Leverage Edu",
-    "type": "Series B-D",
-    "career_url": "https://leverageedu.com/careers/"
-  },
-  {
-    "name": "Scaler",
-    "type": "Series B-D",
-    "career_url": "https://www.scaler.com/careers/"
-  },
-  {
-    "name": "Myntra",
-    "type": "Unicorn",
-    "career_url": "https://www.myntra.com/careers"
-  },
-  {
-    "name": "Ajio",
-    "type": "Series B-D",
-    "career_url": "https://www.ajio.com/careers"
-  },
-  {
-    "name": "FirstCry",
-    "type": "Unicorn",
-    "career_url": "https://www.firstcry.com/careers"
-  },
-  {
-    "name": "BigBasket",
-    "type": "Series B-D",
-    "career_url": "https://www.bigbasket.com/careers/"
-  },
-  {
-    "name": "Grofers (Blinkit)",
-    "type": "Series B-D",
-    "career_url": "https://blinkit.com/careers"
-  },
-  {
-    "name": "Zepto",
-    "type": "Series B-D",
-    "career_url": "https://www.zeptonow.com/careers"
-  },
-  {
-    "name": "Instamart",
-    "type": "Series B-D",
-    "career_url": "https://www.swiggy.com/instamart-careers"
-  },
-  {
-    "name": "JioMart",
-    "type": "Series B-D",
-    "career_url": "https://www.jiomart.com/careers"
-  },
-  {
-    "name": "Snapdeal",
-    "type": "Series B-D",
-    "career_url": "https://www.snapdeal.com/careers"
-  },
-  {
-    "name": "ShopClues",
-    "type": "Series B-D",
-    "career_url": "https://www.shopclues.com/careers"
-  },
-  {
-    "name": "Shopify India",
+    "name": "Synopsys India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.shopify.com/careers/search?location=India"
+    "career_url": "https://careers.synopsys.com/search/?q=&locationsearch=India"
   },
   {
-    "name": "Slack India",
+    "name": "Cadence Design Systems India",
     "type": "Tier-1 GCC",
-    "career_url": "https://slack.com/careers#openings"
+    "career_url": "https://cadence.wd1.myworkdayjobs.com/External_Careers?location=India"
   },
   {
-    "name": "Zoom India",
+    "name": "Siemens EDA India",
     "type": "Tier-1 GCC",
-    "career_url": "https://careers.zoom.us/jobs/search?location=India"
+    "career_url": "https://jobs.siemens.com/careers?query=India"
   },
   {
-    "name": "Dropbox India",
+    "name": "Bosch India",
     "type": "Tier-1 GCC",
-    "career_url": "https://jobs.dropbox.com/teams/engineering"
+    "career_url": "https://www.bosch.in/careers/job-search/?q=&location=India"
   },
   {
-    "name": "Box India",
+    "name": "Continental India",
     "type": "Tier-1 GCC",
-    "career_url": "https://careers.box.com/en/search-jobs?location=India"
+    "career_url": "https://www.continental.com/en/career/job-offers/?q=&location=India"
   },
   {
-    "name": "Redis India",
+    "name": "Harman India",
     "type": "Tier-1 GCC",
-    "career_url": "https://redis.com/company/careers/jobs/?location=India"
+    "career_url": "https://harman.com/en-US/pages/career-opportunities?location=India"
   },
   {
-    "name": "GitLab India",
+    "name": "Philips India GCC",
     "type": "Tier-1 GCC",
-    "career_url": "https://about.gitlab.com/jobs/?location=India"
+    "career_url": "https://www.careers.philips.com/global/en/search-results?location=India"
   },
   {
-    "name": "Splunk India",
+    "name": "ABB India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.splunk.com/en_us/careers/search-jobs.html?location=India"
+    "career_url": "https://careers.abb/global/en/search-results?location=India"
+  },
+  {
+    "name": "Honeywell India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.honeywell.com/us/en/search-results?location=India"
+  },
+  {
+    "name": "GE Digital India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.gecareers.com/global/en/search-results?location=India"
+  },
+  {
+    "name": "Mastercard India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.mastercard.com/us/en/search-results?location=India"
+  },
+  {
+    "name": "Visa India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.smartrecruiters.com/Visa/search?location=India"
+  },
+  {
+    "name": "American Express India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://aexp.eightfold.ai/careers?location=India"
+  },
+  {
+    "name": "Deutsche Bank India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.db.com/explore-the-bank/search-jobs/?location=India"
+  },
+  {
+    "name": "Barclays India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://search.jobs.barclays/search/?q=&location=India"
+  },
+  {
+    "name": "HSBC India GCC",
+    "type": "Tier-1 GCC",
+    "career_url": "https://mycareer.hsbc.com/en_GB/external/SearchJobs?location=India"
+  },
+  {
+    "name": "Societe Generale India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.societegenerale.com/en/search?location=India"
+  },
+  {
+    "name": "UBS India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.ubs.com/global/en/careers/job-opportunities.html?location=India"
+  },
+  {
+    "name": "Credit Suisse India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://tas-creditsuisse.taleo.net/careersection/campus/jobsearch.ftl?lang=en&location=India"
+  },
+  {
+    "name": "BNY Mellon India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.bnymellon.com/jobs/search?q=&location=India"
+  },
+  {
+    "name": "State Street India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://statestreet.wd1.myworkdayjobs.com/External?location=India"
+  },
+  {
+    "name": "Fidelity India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.fidelity.com/job-opportunities/search-results/?keywords=&location=India"
+  },
+  {
+    "name": "BlackRock India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.blackrock.com/job-search-results/?location=India"
+  },
+  {
+    "name": "Refinitiv India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.lseg.com/jobs?location=India"
+  },
+  {
+    "name": "S&P Global India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.spglobal.com/jobs?location=India"
+  },
+  {
+    "name": "Moody's India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.moodys.com/search?q=&location=India"
+  },
+  {
+    "name": "Bloomberg India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.bloomberg.com/job/search?el=India"
+  },
+  {
+    "name": "Citi India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.citi.com/search-results?location=India"
+  },
+  {
+    "name": "Wells Fargo India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.wellsfargojobs.com/en/search/#q=&t=job&l=India"
   },
   {
     "name": "ServiceNow India",
     "type": "Tier-1 GCC",
-    "career_url": "https://careers.servicenow.com/careers/jobs?location=India"
+    "career_url": "https://careers.servicenow.com/jobs?location=India"
   },
   {
     "name": "Workday India",
@@ -832,27 +660,1033 @@
   {
     "name": "HubSpot India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.hubspot.com/careers/jobs?location=India"
+    "career_url": "https://www.hubspot.com/jobs/search?hubs_content=careers&location=India"
   },
   {
-    "name": "Mailchimp India",
+    "name": "Sprinklr India",
     "type": "Tier-1 GCC",
-    "career_url": "https://mailchimp.com/jobs/?location=India"
+    "career_url": "https://www.sprinklr.com/careers/jobs/?location=India"
   },
   {
-    "name": "SurveyMonkey India",
+    "name": "Mimecast India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.surveymonkey.com/mp/jobs/?location=India"
+    "career_url": "https://www.mimecast.com/company/careers/open-roles/?location=India"
   },
   {
-    "name": "Auth0 India",
+    "name": "Zscaler India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.okta.com/company/careers/?location=India"
+    "career_url": "https://www.zscaler.com/careers/open-roles?location=India"
   },
   {
-    "name": "Segment India",
+    "name": "CrowdStrike India",
     "type": "Tier-1 GCC",
-    "career_url": "https://segment.com/careers/?location=India"
+    "career_url": "https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers?location=India"
+  },
+  {
+    "name": "Fortinet India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.fortinet.com/corporate/careers/job-search?location=India"
+  },
+  {
+    "name": "McAfee India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.trellix.com/job-search-results/?location=India"
+  },
+  {
+    "name": "Sophos India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.sophos.com/en-us/company/jobs?location=India"
+  },
+  {
+    "name": "Informatica India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://informatica.eightfold.ai/careers?location=India"
+  },
+  {
+    "name": "MicroStrategy India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.microstrategy.com/careers/search-jobs?location=India"
+  },
+  {
+    "name": "ThoughtSpot India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.thoughtspot.com/company/careers?location=India"
+  },
+  {
+    "name": "Tableau India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.salesforce.com/en/jobs/?location=India&team=Tableau"
+  },
+  {
+    "name": "Splunk India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.jobvite.com/splunk/jobs#?q=&l=India"
+  },
+  {
+    "name": "Cloudera India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://cloudera.wd5.myworkdayjobs.com/careers?location=India"
+  },
+  {
+    "name": "Teradata India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.teradata.com/jobs/search?location=India"
+  },
+  {
+    "name": "NetApp India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://netapp.eightfold.ai/careers?location=India"
+  },
+  {
+    "name": "Akamai India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://akamai.wd5.myworkdayjobs.com/careers?location=India"
+  },
+  {
+    "name": "F5 India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://ffive.wd5.myworkdayjobs.com/f5jobs?location=India"
+  },
+  {
+    "name": "Veritas India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://veritas.wd1.myworkdayjobs.com/careers?location=India"
+  },
+  {
+    "name": "Commvault India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://commvault.wd1.myworkdayjobs.com/careers?location=India"
+  },
+  {
+    "name": "Dynatrace India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.dynatrace.com/jobs/?location=India"
+  },
+  {
+    "name": "New Relic India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://newrelic.com/about/careers?location=India"
+  },
+  {
+    "name": "Datadog India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.datadoghq.com/?location=India"
+  },
+  {
+    "name": "PagerDuty India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.lever.co/pagerduty?location=India"
+  },
+  {
+    "name": "Grafana Labs India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://grafana.com/about/careers/open-positions/?location=India"
+  },
+  {
+    "name": "Harness India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.harness.io/company/careers?location=India"
+  },
+  {
+    "name": "Samsara India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.samsara.com/company/careers/roles?location=India"
+  },
+  {
+    "name": "Rubrik India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.rubrik.com/company/careers/departments?location=India"
+  },
+  {
+    "name": "Illumio India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.illumio.com/company/careers?location=India"
+  },
+  {
+    "name": "Solarwinds India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://solarwinds.pinpointhq.com/?location=India"
+  },
+  {
+    "name": "Freshdesk (Freshworks) India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.freshworks.com/company/careers/jobs/?location=India"
+  },
+  {
+    "name": "DocuSign India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.docusign.com/jobs/search?location=India"
+  },
+  {
+    "name": "Box India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://box.eightfold.ai/careers?location=India"
+  },
+  {
+    "name": "Dropbox India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.dropbox.com/jobs/search?location=India"
+  },
+  {
+    "name": "Zoom India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.zoom.us/jobs/search?location=India"
+  },
+  {
+    "name": "Slack India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.salesforce.com/en/jobs/?location=India&team=Slack"
+  },
+  {
+    "name": "Figma India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.figma.com/careers/#open-roles?location=India"
+  },
+  {
+    "name": "Canva India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.canva.com/careers/jobs/?location=India"
+  },
+  {
+    "name": "Notion India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.notion.so/careers?location=India"
+  },
+  {
+    "name": "Asana India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://asana.com/jobs/search?location=India"
+  },
+  {
+    "name": "Shopify India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.shopify.com/careers/search?location=India"
+  },
+  {
+    "name": "Cloudflare India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://cloudflare.com/careers/jobs/?location=India"
+  },
+  {
+    "name": "GitHub India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://github.com/about/careers?location=India"
+  },
+  {
+    "name": "GitLab India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://about.gitlab.com/jobs/all-jobs/?location=India"
+  },
+  {
+    "name": "JFrog India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jfrog.com/careers/#jobs?location=India"
+  },
+  {
+    "name": "CircleCI India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://circleci.com/careers/jobs/?location=India"
+  },
+  {
+    "name": "Snyk India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://snyk.io/careers/all-jobs/?location=India"
+  },
+  {
+    "name": "Veeva Systems India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.veeva.com/jobs/search?location=India"
+  },
+  {
+    "name": "Medidata India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.medidata.com/jobs?location=India"
+  },
+  {
+    "name": "Dassault Systèmes India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.3ds.com/careers/jobs?location=India"
+  },
+  {
+    "name": "PTC India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.ptc.com/en/company/job-openings?location=India"
+  },
+  {
+    "name": "Ansys India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.ansys.com/jobs/search?location=India"
+  },
+  {
+    "name": "Autodesk India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://autodesk.wd1.myworkdayjobs.com/Ext?location=India"
+  },
+  {
+    "name": "Bentley Systems India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.bentley.com/search/?q=&location=India"
+  },
+  {
+    "name": "HERE Technologies India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.here.com/us/en/search-results?location=India"
+  },
+  {
+    "name": "TomTom India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.tomtom.com/careers/jobs/?location=India"
+  },
+  {
+    "name": "Mapbox India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.mapbox.com/careers?location=India"
+  },
+  {
+    "name": "Trimble India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.trimble.com/global/en/search-results?location=India"
+  },
+  {
+    "name": "Garmin India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.garmin.com/careers-home/jobs?location=India"
+  },
+  {
+    "name": "Amadeus India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://amadeus.com/en/jobs?location=India"
+  },
+  {
+    "name": "Sabre India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://sabre.wd5.myworkdayjobs.com/sabre_jobs?location=India"
+  },
+  {
+    "name": "IHS Markit India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.spglobal.com/jobs?location=India"
+  },
+  {
+    "name": "Nielsen India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.nielsen.com/about-us/careers/job-search/?location=India"
+  },
+  {
+    "name": "Dun & Bradstreet India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.dnb.com/about-us/company/careers.html?location=India"
+  },
+
+  {
+    "name": "Setu",
+    "type": "High-Paying Startup",
+    "career_url": "https://setu.co/careers"
+  },
+  {
+    "name": "Open Financial Technologies",
+    "type": "High-Paying Startup",
+    "career_url": "https://open.money/careers"
+  },
+  {
+    "name": "Decentro",
+    "type": "High-Paying Startup",
+    "career_url": "https://decentro.tech/careers"
+  },
+  {
+    "name": "Perfios",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.perfios.com/careers"
+  },
+  {
+    "name": "Finbox",
+    "type": "High-Paying Startup",
+    "career_url": "https://finbox.in/careers"
+  },
+  {
+    "name": "Hyperface",
+    "type": "High-Paying Startup",
+    "career_url": "https://hyperface.co/careers"
+  },
+  {
+    "name": "M2P Fintech",
+    "type": "High-Paying Startup",
+    "career_url": "https://m2pfintech.com/careers/"
+  },
+  {
+    "name": "Zeta",
+    "type": "Unicorn",
+    "career_url": "https://www.zeta.tech/in/careers/"
+  },
+  {
+    "name": "Navi Technologies",
+    "type": "Unicorn",
+    "career_url": "https://navi.com/careers"
+  },
+  {
+    "name": "Kredivo India",
+    "type": "High-Paying Startup",
+    "career_url": "https://kredivocorp.com/careers"
+  },
+  {
+    "name": "Cuemath",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.cuemath.com/about/careers/"
+  },
+  {
+    "name": "Scaler Academy",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.scaler.com/company/careers/"
+  },
+  {
+    "name": "InterviewBit",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.interviewbit.com/careers/"
+  },
+  {
+    "name": "Great Learning",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.mygreatlearning.com/careers"
+  },
+  {
+    "name": "Springboard India",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.springboard.com/about/careers"
+  },
+  {
+    "name": "Conviva India",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.conviva.com/careers/?location=India"
+  },
+  {
+    "name": "Exotel",
+    "type": "High-Paying Startup",
+    "career_url": "https://exotel.com/careers/"
+  },
+  {
+    "name": "Ozonetel",
+    "type": "High-Paying Startup",
+    "career_url": "https://ozonetel.com/careers/"
+  },
+  {
+    "name": "Ameyo",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.ameyo.com/careers/"
+  },
+  {
+    "name": "Tata 1mg",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.1mg.com/careers"
+  },
+  {
+    "name": "HealthKart",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.healthkart.com/careers"
+  },
+  {
+    "name": "Portea Medical",
+    "type": "High-Paying Startup",
+    "career_url": "https://portea.com/careers"
+  },
+  {
+    "name": "mFine",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.mfine.co/careers"
+  },
+  {
+    "name": "Niramai Health",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.niramai.com/careers"
+  },
+  {
+    "name": "Sigmoid",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.sigmoid.com/careers/"
+  },
+  {
+    "name": "Fractal Analytics",
+    "type": "Unicorn",
+    "career_url": "https://fractal.ai/careers/open-positions/"
+  },
+  {
+    "name": "Tiger Analytics",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.tigeranalytics.com/careers/"
+  },
+  {
+    "name": "LatentView Analytics",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.latentview.com/careers/"
+  },
+  {
+    "name": "Mu Sigma",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.mu-sigma.com/careers"
+  },
+  {
+    "name": "Tredence",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.tredence.com/careers"
+  },
+  {
+    "name": "Quantiphi",
+    "type": "High-Paying Startup",
+    "career_url": "https://quantiphi.com/careers/"
+  },
+  {
+    "name": "Nilenso",
+    "type": "High-Paying Startup",
+    "career_url": "https://nilenso.com/careers.html"
+  },
+  {
+    "name": "Josh Software",
+    "type": "High-Paying Startup",
+    "career_url": "https://joshsoftware.com/careers"
+  },
+  {
+    "name": "Slice (formerly Slicepay)",
+    "type": "Unicorn",
+    "career_url": "https://www.sliceit.com/careers"
+  },
+  {
+    "name": "Kreditbee",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.kreditbee.in/careers"
+  },
+  {
+    "name": "OneCard (FPL Technologies)",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.onecard.io/careers/"
+  },
+  {
+    "name": "Axio (formerly Capital Float)",
+    "type": "High-Paying Startup",
+    "career_url": "https://axio.co.in/careers"
+  },
+  {
+    "name": "Hubilo",
+    "type": "High-Paying Startup",
+    "career_url": "https://hubilo.com/careers/"
+  },
+  {
+    "name": "Airmeet",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.airmeet.com/hub/careers/"
+  },
+  {
+    "name": "Springworks",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.springworks.in/careers/"
+  },
+  {
+    "name": "Keka HR",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.keka.com/careers"
+  },
+  {
+    "name": "GreytHR",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.greythr.com/careers/"
+  },
+  {
+    "name": "sumHR",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.sumhr.com/company/careers"
+  },
+  {
+    "name": "HRMantra",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.hrmantra.com/careers"
+  },
+  {
+    "name": "Leadsquared",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.leadsquared.com/careers/"
+  },
+  {
+    "name": "Wingify",
+    "type": "High-Paying Startup",
+    "career_url": "https://wingify.com/careers"
+  },
+  {
+    "name": "Razorpay X",
+    "type": "High-Paying Startup",
+    "career_url": "https://razorpay.com/jobs/"
+  },
+  {
+    "name": "Setu (Pine Labs)",
+    "type": "High-Paying Startup",
+    "career_url": "https://setu.co/careers"
+  },
+  {
+    "name": "i2c India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.i2cinc.com/careers"
+  },
+  {
+    "name": "FIS Global India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.fisglobal.com/us/en/search-results?location=India"
+  },
+  {
+    "name": "Fiserv India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.fiserv.com/en/search-jobs/India"
+  },
+  {
+    "name": "NCR Corporation India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.ncrvoyix.com/careers/job-search?location=India"
+  },
+  {
+    "name": "SS&C Technologies India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://ssctech.com/about-us/careers/job-search?location=India"
+  },
+  {
+    "name": "Cognizant",
+    "type": "Big MNC",
+    "career_url": "https://careers.cognizant.com/in/en/job-search-results/?location=India"
+  },
+  {
+    "name": "Capgemini India",
+    "type": "Big MNC",
+    "career_url": "https://www.capgemini.com/in-en/careers/job-search/?country=India"
+  },
+  {
+    "name": "Wipro",
+    "type": "Big MNC",
+    "career_url": "https://careers.wipro.com/careers-home/jobs?location=India"
+  },
+  {
+    "name": "HCL Technologies",
+    "type": "Big MNC",
+    "career_url": "https://www.hcltech.com/careers/job-search?location=India"
+  },
+  {
+    "name": "Tech Mahindra",
+    "type": "Big MNC",
+    "career_url": "https://careers.techmahindra.com/search/?q=&location=India"
+  },
+  {
+    "name": "Mphasis",
+    "type": "Big MNC",
+    "career_url": "https://careers.mphasis.com/india/job-search?location=India"
+  },
+  {
+    "name": "Hexaware",
+    "type": "Big MNC",
+    "career_url": "https://careers.hexaware.com/jobs?location=India"
+  },
+  {
+    "name": "Mindtree",
+    "type": "Big MNC",
+    "career_url": "https://www.ltimindtree.com/careers/jobs/?location=India"
+  },
+  {
+    "name": "LTIMindtree",
+    "type": "Big MNC",
+    "career_url": "https://www.ltimindtree.com/careers/jobs/?location=India"
+  },
+  {
+    "name": "Persistent Systems",
+    "type": "Big MNC",
+    "career_url": "https://www.persistent.com/careers/job-openings/?location=India"
+  },
+  {
+    "name": "KPIT Technologies",
+    "type": "Big MNC",
+    "career_url": "https://www.kpit.com/about-kpit/careers/job-openings/?location=India"
+  },
+  {
+    "name": "Cyient",
+    "type": "Big MNC",
+    "career_url": "https://www.cyient.com/careers/job-search?location=India"
+  },
+  {
+    "name": "Tata Elxsi",
+    "type": "Big MNC",
+    "career_url": "https://www.tataelxsi.com/careers/jobs?location=India"
+  },
+  {
+    "name": "Zensar Technologies",
+    "type": "Big MNC",
+    "career_url": "https://www.zensar.com/careers/jobs?location=India"
+  },
+  {
+    "name": "Mastech Digital",
+    "type": "Big MNC",
+    "career_url": "https://www.mastechdigital.com/careers/?location=India"
+  },
+  {
+    "name": "Sonata Software",
+    "type": "Big MNC",
+    "career_url": "https://www.sonata-software.com/careers/current-openings?location=India"
+  },
+  {
+    "name": "Xoriant",
+    "type": "Big MNC",
+    "career_url": "https://www.xoriant.com/careers/jobs?location=India"
+  },
+  {
+    "name": "Nagarro",
+    "type": "Big MNC",
+    "career_url": "https://www.nagarro.com/en/careers/openings?location=India"
+  },
+  {
+    "name": "EPAM Systems India",
+    "type": "Big MNC",
+    "career_url": "https://www.epam.com/careers/job-listings?search=India"
+  },
+  {
+    "name": "GlobalLogic India",
+    "type": "Big MNC",
+    "career_url": "https://www.globallogic.com/in/careers/jobs/?location=India"
+  },
+  {
+    "name": "Publicis Sapient India",
+    "type": "Big MNC",
+    "career_url": "https://careers.publicissapient.com/jobs/search?location=India"
+  },
+  {
+    "name": "ThoughtWorks India",
+    "type": "Big MNC",
+    "career_url": "https://www.thoughtworks.com/careers/jobs?location=India"
+  },
+  {
+    "name": "Equal Experts India",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.equalexperts.com/join-us/open-positions/?location=India"
+  },
+  {
+    "name": "Walmart Labs India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.walmart.com/results?q=&location=IN"
+  },
+  {
+    "name": "Expedia Group India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.expediagroup.com/jobs/search?location=India"
+  },
+  {
+    "name": "Booking.com India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.booking.com/careers?location=India"
+  },
+  {
+    "name": "MakeMyTrip",
+    "type": "Unicorn",
+    "career_url": "https://careers.makemytrip.com/"
+  },
+  {
+    "name": "Agoda India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careersatagoda.com/jobs/?location=India"
+  },
+  {
+    "name": "Trivago India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://company.trivago.com/open-positions/?location=India"
+  },
+  {
+    "name": "OYO Rooms",
+    "type": "Unicorn",
+    "career_url": "https://www.oyorooms.com/careers"
+  },
+  {
+    "name": "Treebo",
+    "type": "High-Paying Startup",
+    "career_url": "https://treebo.com/careers/"
+  },
+  {
+    "name": "Naukri.com (Info Edge)",
+    "type": "Big MNC",
+    "career_url": "https://infoedge.in/careers.html"
+  },
+  {
+    "name": "Indeed India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://indeed.com/cmp/Indeed/jobs?location=India"
+  },
+  {
+    "name": "Harver India",
+    "type": "High-Paying Startup",
+    "career_url": "https://harver.com/careers/?location=India"
+  },
+  {
+    "name": "Gartner India",
+    "type": "Big MNC",
+    "career_url": "https://jobs.gartner.com/jobs/search?location=India"
+  },
+  {
+    "name": "McKinsey Digital India",
+    "type": "Big MNC",
+    "career_url": "https://www.mckinsey.com/careers/search-jobs?location=India"
+  },
+  {
+    "name": "BCG Platinion India",
+    "type": "Big MNC",
+    "career_url": "https://careers.bcg.com/job-search?location=India"
+  },
+  {
+    "name": "EY GDS India",
+    "type": "Big MNC",
+    "career_url": "https://careers.ey.com/ey/search/?location=India"
+  },
+  {
+    "name": "PwC India",
+    "type": "Big MNC",
+    "career_url": "https://jobs.pwc.com/search/?q=&location=India"
+  },
+  {
+    "name": "KPMG India",
+    "type": "Big MNC",
+    "career_url": "https://home.kpmg/in/en/home/careers.html"
+  },
+  {
+    "name": "BDO India",
+    "type": "Big MNC",
+    "career_url": "https://bdo.in/en-gb/careers"
+  },
+  {
+    "name": "Protiviti India",
+    "type": "Big MNC",
+    "career_url": "https://www.protiviti.com/IN-en/careers?location=India"
+  },
+  {
+    "name": "Siemens India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.siemens.com/careers?query=India&domain=siemens.com"
+  },
+  {
+    "name": "Ericsson India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.ericsson.com/careers?location=India"
+  },
+  {
+    "name": "Nokia India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://nokia.wd3.myworkdayjobs.com/nokia_careers?location=India"
+  },
+  {
+    "name": "Huawei India R&D",
+    "type": "Tier-1 GCC",
+    "career_url": "https://career.huawei.com/reccampportal/portal5/campus-recruitment.html?location=India"
+  },
+  {
+    "name": "Samsung R&D India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://samsung.com/in/aboutsamsung/careers/?location=India"
+  },
+  {
+    "name": "LG Soft India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://lgsi.lg.co.kr/en/careers.do"
+  },
+  {
+    "name": "Sony India Software",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.sonybsl.co.in/careers"
+  },
+  {
+    "name": "Motorola Solutions India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://motorolasolutions.wd5.myworkdayjobs.com/Careers?location=India"
+  },
+  {
+    "name": "Zebra Technologies India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://zebra.wd1.myworkdayjobs.com/Zebra?location=India"
+  },
+  {
+    "name": "Zynga India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.zynga.com/jobs/listings?location=India"
+  },
+  {
+    "name": "Electronic Arts India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://jobs.ea.com/en_US/careers/JobDetail?location=India"
+  },
+  {
+    "name": "Ubisoft India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.ubisoft.com/en-us/company/careers/search?location=India"
+  },
+  {
+    "name": "Games24x7",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.games24x7.com/careers"
+  },
+  {
+    "name": "WinZO Games",
+    "type": "High-Paying Startup",
+    "career_url": "https://winzogames.com/careers"
+  },
+  {
+    "name": "Nazara Technologies",
+    "type": "High-Paying Startup",
+    "career_url": "https://nazara.com/careers"
+  },
+  {
+    "name": "Loco",
+    "type": "High-Paying Startup",
+    "career_url": "https://loco.gg/careers"
+  },
+  {
+    "name": "Sportzchain",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.sportzchain.com/careers"
+  },
+  {
+    "name": "GrowthX",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.growthx.club/careers"
+  },
+  {
+    "name": "Moneyview",
+    "type": "Unicorn",
+    "career_url": "https://moneyview.in/careers"
+  },
+  {
+    "name": "Lendbox",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.lendbox.in/careers"
+  },
+  {
+    "name": "Stashfin",
+    "type": "High-Paying Startup",
+    "career_url": "https://stashfin.com/careers"
+  },
+  {
+    "name": "Progcap",
+    "type": "High-Paying Startup",
+    "career_url": "https://progcap.com/careers"
+  },
+  {
+    "name": "Indifi Technologies",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.indifi.com/careers"
+  },
+  {
+    "name": "Incred Financial Services",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.incred.com/careers"
+  },
+  {
+    "name": "Fisdom",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.fisdom.com/careers"
+  },
+  {
+    "name": "Cube Wealth",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.cubewealthcoach.com/careers"
+  },
+  {
+    "name": "Wealthdesk",
+    "type": "High-Paying Startup",
+    "career_url": "https://wealthdesk.in/careers"
+  },
+  {
+    "name": "Ditto Insurance",
+    "type": "High-Paying Startup",
+    "career_url": "https://joinditto.in/careers"
+  },
+  {
+    "name": "Riskcovry",
+    "type": "High-Paying Startup",
+    "career_url": "https://riskcovry.com/careers"
+  },
+  {
+    "name": "SuperMoney India",
+    "type": "High-Paying Startup",
+    "career_url": "https://supermoney.com/careers"
+  },
+  {
+    "name": "Vymo",
+    "type": "High-Paying Startup",
+    "career_url": "https://getvymo.com/careers"
+  },
+  {
+    "name": "Darwinbox (HR Tech)",
+    "type": "Unicorn",
+    "career_url": "https://darwinbox.com/careers"
+  },
+  {
+    "name": "Multiplier",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.usemultiplier.com/careers"
+  },
+  {
+    "name": "Deel India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.deel.com/careers?location=India"
+  },
+  {
+    "name": "Remote.com India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://remote.com/careers?location=India"
+  },
+  {
+    "name": "Rippling India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.rippling.com/careers?location=India"
+  },
+  {
+    "name": "Gusto India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://gusto.com/about/careers?location=India"
+  },
+  {
+    "name": "Greenhouse India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.greenhouse.com/company/careers?location=India"
+  },
+  {
+    "name": "Lever India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.lever.co/careers?location=India"
+  },
+  {
+    "name": "Chargebee India",
+    "type": "Unicorn",
+    "career_url": "https://www.chargebee.com/careers/jobs/"
+  },
+  {
+    "name": "Zuora India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.zuora.com/about/careers/search/?location=India"
+  },
+  {
+    "name": "Recurly India",
+    "type": "High-Paying Startup",
+    "career_url": "https://recurly.com/company/careers/?location=India"
+  },
+  {
+    "name": "Paddle India",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.paddle.com/careers?location=India"
+  },
+  {
+    "name": "Unbxd",
+    "type": "High-Paying Startup",
+    "career_url": "https://unbxd.com/careers/"
+  },
+  {
+    "name": "Algolia India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.algolia.com/careers/?location=India"
+  },
+  {
+    "name": "Lucidworks India",
+    "type": "High-Paying Startup",
+    "career_url": "https://lucidworks.com/company/careers/?location=India"
+  },
+  {
+    "name": "Contentsquare India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://contentsquare.com/careers/?location=India"
   },
   {
     "name": "Amplitude India",
@@ -860,898 +1694,424 @@
     "career_url": "https://amplitude.com/careers?location=India"
   },
   {
-    "name": "Datadog India",
+    "name": "Mixpanel India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.datadoghq.com/careers/?location=India"
+    "career_url": "https://mixpanel.com/jobs/?location=India"
   },
   {
-    "name": "New Relic India",
+    "name": "Segment India",
     "type": "Tier-1 GCC",
-    "career_url": "https://newrelic.careers/careers/jobs?location=India"
+    "career_url": "https://www.twilio.com/company/jobs?location=India"
   },
   {
-    "name": "PagerDuty India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://www.pagerduty.com/careers/?location=India"
+    "name": "mParticle India",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.mparticle.com/company/careers/?location=India"
   },
   {
-    "name": "Cloudflare India",
+    "name": "Braze India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.cloudflare.com/careers/jobs/?location=India"
+    "career_url": "https://www.braze.com/company/careers/open-positions?location=India"
   },
   {
-    "name": "Fastly India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://www.fastly.com/about/careers?location=India"
+    "name": "Iterable India",
+    "type": "High-Paying Startup",
+    "career_url": "https://iterable.com/company/careers/?location=India"
   },
   {
-    "name": "Akamai India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://www.akamai.com/company/careers?location=India"
+    "name": "Sendbird India",
+    "type": "High-Paying Startup",
+    "career_url": "https://sendbird.com/company/careers?location=India"
   },
   {
-    "name": "F5 Networks India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://f5.com/company/careers?location=India"
+    "name": "Stream India",
+    "type": "High-Paying Startup",
+    "career_url": "https://getstream.io/team/#jobs?location=India"
   },
   {
-    "name": "Fortinet India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://www.fortinet.com/careers?location=India"
+    "name": "Razorpay Thirdwatch",
+    "type": "High-Paying Startup",
+    "career_url": "https://razorpay.com/jobs/"
   },
   {
-    "name": "Check Point India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://www.checkpoint.com/company/careers/?location=India"
+    "name": "Shiprocket",
+    "type": "Unicorn",
+    "career_url": "https://www.shiprocket.in/careers/"
   },
   {
-    "name": "CrowdStrike India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://www.crowdstrike.com/careers/?location=India"
+    "name": "Shadowfax",
+    "type": "High-Paying Startup",
+    "career_url": "https://shadowfax.in/careers"
   },
   {
-    "name": "Zscaler India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://www.zscaler.com/careers?location=India"
+    "name": "Ecom Express",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.ecomexpress.in/career/"
   },
   {
-    "name": "Proofpoint India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://proofpoint.wd5.myworkdayjobs.com/ProofpointCareers?location=India"
+    "name": "Xpressbees",
+    "type": "Unicorn",
+    "career_url": "https://www.xpressbees.com/careers"
   },
   {
-    "name": "Mimecast India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://www.mimecast.com/company/careers/?location=India"
+    "name": "WareIQ",
+    "type": "High-Paying Startup",
+    "career_url": "https://wareiq.com/careers"
   },
   {
-    "name": "Spotify India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://www.lifeatspotify.com/jobs?location=India"
+    "name": "Pickrr",
+    "type": "High-Paying Startup",
+    "career_url": "https://pickrr.com/careers"
   },
   {
-    "name": "Klarna India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://www.klarna.com/careers/jobs/?location=India"
+    "name": "Arzooo",
+    "type": "High-Paying Startup",
+    "career_url": "https://arzooo.com/careers"
   },
   {
-    "name": "Revolut India",
-    "type": "Tier-1 GCC",
-    "career_url": "https://www.revolut.com/careers/?location=India"
+    "name": "Jumbotail",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.jumbotail.com/careers"
   },
   {
-    "name": "N26 India",
+    "name": "Bijak",
+    "type": "High-Paying Startup",
+    "career_url": "https://bijak.in/careers"
+  },
+  {
+    "name": "Ninjacart",
+    "type": "Unicorn",
+    "career_url": "https://ninjacart.com/careers"
+  },
+  {
+    "name": "Animall",
+    "type": "High-Paying Startup",
+    "career_url": "https://animall.in/careers"
+  },
+  {
+    "name": "DeHaat",
+    "type": "High-Paying Startup",
+    "career_url": "https://dehaat.com/careers"
+  },
+  {
+    "name": "Stellapps",
+    "type": "High-Paying Startup",
+    "career_url": "https://stellapps.com/careers"
+  },
+  {
+    "name": "CropIn",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.cropin.com/careers"
+  },
+  {
+    "name": "Intello Labs",
+    "type": "High-Paying Startup",
+    "career_url": "https://intellolabs.com/careers"
+  },
+  {
+    "name": "Jai Kisan",
+    "type": "High-Paying Startup",
+    "career_url": "https://jaikisan.co/careers"
+  },
+  {
+    "name": "Arya.ag",
+    "type": "High-Paying Startup",
+    "career_url": "https://arya.ag/careers"
+  },
+  {
+    "name": "Zoho Corporation",
+    "type": "Unicorn",
+    "career_url": "https://www.zoho.com/careers.html"
+  },
+  {
+    "name": "Zoho Cliq",
+    "type": "Unicorn",
+    "career_url": "https://www.zoho.com/careers.html"
+  },
+  {
+    "name": "Infosys BPM",
+    "type": "Big MNC",
+    "career_url": "https://www.infosysbpm.com/careers/Pages/job-openings.aspx"
+  },
+  {
+    "name": "TCS",
+    "type": "Big MNC",
+    "career_url": "https://www.tcs.com/careers/jobs"
+  },
+  {
+    "name": "Infosys",
+    "type": "Big MNC",
+    "career_url": "https://www.infosys.com/careers/apply-now.html"
+  },
+  {
+    "name": "UST Global",
+    "type": "Big MNC",
+    "career_url": "https://www.ust.com/en/careers/search-jobs?location=India"
+  },
+  {
+    "name": "Nisum India",
+    "type": "Big MNC",
+    "career_url": "https://www.nisum.com/careers?location=India"
+  },
+  {
+    "name": "Virtusa India",
+    "type": "Big MNC",
+    "career_url": "https://www.virtusa.com/careers/search-jobs?location=India"
+  },
+  {
+    "name": "Kellton Tech",
+    "type": "Big MNC",
+    "career_url": "https://www.kelltontech.com/careers/job-openings?location=India"
+  },
+  {
+    "name": "Yodlee India",
     "type": "Tier-1 GCC",
-    "career_url": "https://n26.com/en/careers?location=India"
+    "career_url": "https://www.yodlee.com/company/careers?location=India"
+  },
+  {
+    "name": "Envestnet India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.envestnet.com/careers?location=India"
+  },
+  {
+    "name": "Broadridge India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.broadridge.com/careers/job-search?location=India"
+  },
+  {
+    "name": "Temenos India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.temenos.com/careers/search/?location=India"
+  },
+  {
+    "name": "Finastra India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.finastra.com/careers/search-jobs?location=India"
+  },
+  {
+    "name": "Mambu India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.mambu.com/careers?location=India"
+  },
+  {
+    "name": "nCino India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://ncino.wd5.myworkdayjobs.com/en-US/Careers?location=India"
+  },
+  {
+    "name": "Thought Machine India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://thoughtmachine.net/careers?location=India"
+  },
+  {
+    "name": "Marqeta India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.marqeta.com/company/careers?location=India"
+  },
+  {
+    "name": "Rapyd India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.rapyd.net/company/careers/?location=India"
+  },
+  {
+    "name": "Checkout.com India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.checkout.com/careers/job-openings?location=India"
+  },
+  {
+    "name": "Adyen India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.adyen.com/vacancies?location=India"
+  },
+  {
+    "name": "Braintree India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.paypal.com/us/webapps/mpp/jobs?location=India"
+  },
+  {
+    "name": "Plaid India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://plaid.com/careers/openings/?location=India"
+  },
+  {
+    "name": "Dwolla India",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.dwolla.com/about/careers/?location=India"
+  },
+  {
+    "name": "Airwallex India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.airwallex.com/careers?location=India"
   },
   {
     "name": "Wise India",
     "type": "Tier-1 GCC",
-    "career_url": "https://www.wise.jobs/?location=India"
+    "career_url": "https://wise.com/gb/jobs?location=India"
   },
   {
-    "name": "Delivery Hero India",
+    "name": "Remitly India",
     "type": "Tier-1 GCC",
-    "career_url": "https://careers.deliveryhero.com/global/en/search-results?location=India"
+    "career_url": "https://www.remitly.com/us/en/about/careers?location=India"
   },
   {
-    "name": "Zalando India",
+    "name": "Western Union India",
     "type": "Tier-1 GCC",
-    "career_url": "https://jobs.zalando.com/en/?location=India"
+    "career_url": "https://careers.westernunion.com/en/search-jobs?location=India"
   },
   {
-    "name": "Booking.com India",
+    "name": "Arcesium India",
     "type": "Tier-1 GCC",
-    "career_url": "https://careers.booking.com/jobs/?location=India"
+    "career_url": "https://www.arcesium.com/careers"
   },
   {
-    "name": "Trivago India",
+    "name": "Tower Research Capital India",
     "type": "Tier-1 GCC",
-    "career_url": "https://company.trivago.com/careers/?location=India"
+    "career_url": "https://www.tower-research.com/open-positions/"
   },
   {
-    "name": "Expedia India",
+    "name": "Atlassian",
     "type": "Tier-1 GCC",
-    "career_url": "https://lifeatexpediagroup.com/jobs?location=India"
+    "career_url": "https://www.atlassian.com/company/careers/all-jobs"
   },
   {
-    "name": "Paytm First Games",
-    "type": "Series B-D",
-    "career_url": "https://www.paytmfirstgames.com/careers"
+    "name": "Rubrik",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.rubrik.com/company/careers"
   },
   {
-    "name": "WinZO",
-    "type": "Series B-D",
-    "career_url": "https://www.winzogames.com/careers"
+    "name": "Coinbase India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.coinbase.com/careers/positions"
   },
   {
-    "name": "Zupee",
-    "type": "Series B-D",
-    "career_url": "https://www.zupee.com/careers"
+    "name": "NCR Atleos India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.ncratleos.com/company/careers"
   },
   {
-    "name": "GetMega",
-    "type": "Series B-D",
-    "career_url": "https://www.getmega.com/careers"
+    "name": "Optum India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.unitedhealthgroup.com/"
   },
   {
-    "name": "InterviewBit",
-    "type": "Series B-D",
-    "career_url": "https://www.interviewbit.com/careers/"
+    "name": "UnitedHealth Group India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.unitedhealthgroup.com/"
   },
   {
-    "name": "Coding Ninjas",
-    "type": "Series B-D",
-    "career_url": "https://www.codingninjas.com/careers"
+    "name": "American Express",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.americanexpress.com/en-us/careers/"
   },
   {
-    "name": "Newton School",
-    "type": "Series B-D",
-    "career_url": "https://www.newtonschool.co/careers"
+    "name": "Thomson Reuters India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.thomsonreuters.com/en/careers.html"
   },
   {
-    "name": "Masai School",
-    "type": "Series B-D",
-    "career_url": "https://www.masaischool.com/careers"
+    "name": "LSEG India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://careers.lseg.com/"
   },
   {
-    "name": "HealthifyMe",
-    "type": "Series B-D",
-    "career_url": "https://www.healthifyme.com/careers"
-  },
-  {
-    "name": "Pristyn Care",
-    "type": "Series B-D",
-    "career_url": "https://www.pristyncare.com/careers/"
-  },
-  {
-    "name": "Lybrate",
-    "type": "Series B-D",
-    "career_url": "https://www.lybrate.com/careers"
-  },
-  {
-    "name": "DocsApp",
-    "type": "Series B-D",
-    "career_url": "https://www.docsapp.in/careers"
-  },
-  {
-    "name": "mfine",
-    "type": "Series B-D",
-    "career_url": "https://www.mfine.co/careers"
-  },
-  {
-    "name": "Shadowfax",
-    "type": "Series B-D",
-    "career_url": "https://www.shadowfax.in/careers"
-  },
-  {
-    "name": "Ecom Express",
-    "type": "Series B-D",
-    "career_url": "https://www.ecomexpress.in/careers/"
-  },
-  {
-    "name": "Xpressbees",
-    "type": "Series B-D",
-    "career_url": "https://www.xpressbees.com/careers"
-  },
-  {
-    "name": "Porter",
-    "type": "Series B-D",
-    "career_url": "https://porter.in/careers"
-  },
-  {
-    "name": "LetsTransport",
-    "type": "Series B-D",
-    "career_url": "https://letstransport.in/careers"
-  },
-  {
-    "name": "Rivigo",
-    "type": "Series B-D",
-    "career_url": "https://rivigo.com/careers"
-  },
-  {
-    "name": "Grofers",
-    "type": "Series B-D",
-    "career_url": "https://blinkit.com/careers"
-  },
-  {
-    "name": "Pepperfry",
-    "type": "Series B-D",
-    "career_url": "https://www.pepperfry.com/careers.html"
-  },
-  {
-    "name": "Urban Ladder",
-    "type": "Series B-D",
-    "career_url": "https://www.urbanladder.com/careers"
-  },
-  {
-    "name": "Tata CLiQ",
-    "type": "Series B-D",
-    "career_url": "https://www.tatacliq.com/careers"
-  },
-  {
-    "name": "Nykaa Fashion",
+    "name": "PayU",
     "type": "Unicorn",
-    "career_url": "https://www.nykaa.com/careers"
+    "career_url": "https://corporate.payu.com/careers/"
   },
   {
-    "name": "Purplle",
-    "type": "Series B-D",
-    "career_url": "https://www.purplle.com/careers"
-  },
-  {
-    "name": "MyGlamm",
-    "type": "Series B-D",
-    "career_url": "https://www.myglamm.com/careers"
-  },
-  {
-    "name": "Sugar Cosmetics",
-    "type": "Series B-D",
-    "career_url": "https://www.sugarcosmetics.com/careers"
-  },
-  {
-    "name": "Noise",
-    "type": "Series B-D",
-    "career_url": "https://www.gonoise.com/pages/careers"
-  },
-  {
-    "name": "BabyChakra",
-    "type": "Series B-D",
-    "career_url": "https://www.babychakra.com/careers"
-  },
-  {
-    "name": "Hopscotch",
-    "type": "Series B-D",
-    "career_url": "https://www.hopscotch.in/careers"
-  },
-  {
-    "name": "Bewakoof",
-    "type": "Series B-D",
-    "career_url": "https://www.bewakoof.com/careers"
-  },
-  {
-    "name": "Snitch",
-    "type": "Series B-D",
-    "career_url": "https://www.snitch.co.in/careers"
-  },
-  {
-    "name": "FreshToHome",
-    "type": "Series B-D",
-    "career_url": "https://www.freshtohome.com/careers"
-  },
-  {
-    "name": "Country Delight",
-    "type": "Series B-D",
-    "career_url": "https://countrydelight.in/careers"
-  },
-  {
-    "name": "Milkbasket",
-    "type": "Series B-D",
-    "career_url": "https://www.milkbasket.com/careers"
-  },
-  {
-    "name": "99acres",
-    "type": "Series B-D",
-    "career_url": "https://www.99acres.com/careers"
-  },
-  {
-    "name": "MagicBricks",
-    "type": "Series B-D",
-    "career_url": "https://www.magicbricks.com/careers"
-  },
-  {
-    "name": "Zolo",
-    "type": "Series B-D",
-    "career_url": "https://www.zolo.in/careers"
-  },
-  {
-    "name": "OYO Life",
+    "name": "Gojek India",
     "type": "Unicorn",
-    "career_url": "https://www.oyorooms.com/careers"
+    "career_url": "https://www.gojek.io/careers"
   },
   {
-    "name": "Colive",
-    "type": "Series B-D",
-    "career_url": "https://www.colive.com/careers"
+    "name": "Grab India",
+    "type": "Tier-1 GCC",
+    "career_url": "https://www.grab.careers/"
   },
   {
-    "name": "Stanza Living",
-    "type": "Series B-D",
-    "career_url": "https://www.stanzaliving.com/careers"
+    "name": "Media.net",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.media.net/careers"
   },
   {
-    "name": "Your Space",
-    "type": "Series B-D",
-    "career_url": "https://www.yourspace.co.in/careers"
+    "name": "EY India",
+    "type": "Big MNC",
+    "career_url": "https://careers.ey.com/"
   },
   {
-    "name": "Settl",
-    "type": "Series B-D",
-    "career_url": "https://www.settl.co.in/careers"
+    "name": "EY GDS",
+    "type": "Big MNC",
+    "career_url": "https://careers.ey.com/ey"
   },
   {
-    "name": "Housr",
-    "type": "Series B-D",
-    "career_url": "https://www.housr.in/careers"
+    "name": "Deloitte",
+    "type": "Big MNC",
+    "career_url": "https://apply.deloitte.com/careers"
   },
   {
-    "name": "Rapido",
-    "type": "Series B-D",
-    "career_url": "https://www.rapido.bike/careers"
+    "name": "KPMG",
+    "type": "Big MNC",
+    "career_url": "https://home.kpmg/in/en/home/careers.html"
   },
   {
-    "name": "Bounce",
-    "type": "Series B-D",
-    "career_url": "https://www.bounce.bike/careers"
+    "name": "PwC",
+    "type": "Big MNC",
+    "career_url": "https://jobs.pwc.com/"
   },
   {
-    "name": "Vogo",
-    "type": "Series B-D",
-    "career_url": "https://www.vogo.in/careers"
+    "name": "McKinsey & Company",
+    "type": "Big MNC",
+    "career_url": "https://www.mckinsey.com/careers/search-jobs"
   },
   {
-    "name": "Yulu",
-    "type": "Series B-D",
-    "career_url": "https://www.yulu.bike/careers"
+    "name": "ZS Associates",
+    "type": "Big MNC",
+    "career_url": "https://www.zs.com/careers"
   },
   {
-    "name": "Mobycy",
-    "type": "Series B-D",
-    "career_url": "https://mobycy.com/careers"
-  },
-  {
-    "name": "CarDekho",
-    "type": "Series B-D",
-    "career_url": "https://www.cardekho.com/careers"
-  },
-  {
-    "name": "Droom",
-    "type": "Series B-D",
-    "career_url": "https://www.droom.in/careers"
-  },
-  {
-    "name": "CarTrade",
-    "type": "Series B-D",
-    "career_url": "https://www.cartrade.com/careers"
-  },
-  {
-    "name": "OLX Autos",
-    "type": "Series B-D",
-    "career_url": "https://www.olx.in/careers"
-  },
-  {
-    "name": "Truebil",
-    "type": "Series B-D",
-    "career_url": "https://www.truebil.com/careers"
-  },
-  {
-    "name": "OYO",
+    "name": "Fractal",
     "type": "Unicorn",
-    "career_url": "https://www.oyorooms.com/careers"
+    "career_url": "https://fractal.ai/careers/"
   },
   {
-    "name": "Treebo",
-    "type": "Series B-D",
-    "career_url": "https://www.treebo.com/careers"
-  },
-  {
-    "name": "FabHotels",
-    "type": "Series B-D",
-    "career_url": "https://www.fabhotels.com/careers"
-  },
-  {
-    "name": "Zostel",
-    "type": "Series B-D",
-    "career_url": "https://www.zostel.com/careers"
-  },
-  {
-    "name": "MakeMyTrip",
+    "name": "PhonePe",
     "type": "Unicorn",
-    "career_url": "https://www.makemytrip.com/careers/"
+    "career_url": "https://www.phonepe.com/careers/"
   },
   {
-    "name": "Goibibo",
-    "type": "Series B-D",
-    "career_url": "https://www.goibibo.com/careers/"
+    "name": "Juspay",
+    "type": "High-Paying Startup",
+    "career_url": "https://juspay.in/careers"
   },
   {
-    "name": "Cleartrip",
-    "type": "Series B-D",
-    "career_url": "https://www.cleartrip.com/careers"
-  },
-  {
-    "name": "Yatra",
-    "type": "Series B-D",
-    "career_url": "https://www.yatra.com/careers"
-  },
-  {
-    "name": "ixigo",
-    "type": "Series B-D",
-    "career_url": "https://www.ixigo.com/careers"
-  },
-  {
-    "name": "EaseMyTrip",
-    "type": "Series B-D",
-    "career_url": "https://www.easemytrip.com/careers"
-  },
-  {
-    "name": "TravelTriangle",
-    "type": "Series B-D",
-    "career_url": "https://traveltriangle.com/careers"
-  },
-  {
-    "name": "Thrillophilia",
-    "type": "Series B-D",
-    "career_url": "https://www.thrillophilia.com/careers"
-  },
-  {
-    "name": "OfBusiness",
+    "name": "Razorpay",
     "type": "Unicorn",
-    "career_url": "https://www.ofbusiness.com/careers"
+    "career_url": "https://razorpay.com/jobs/"
   },
   {
-    "name": "Bijnis",
-    "type": "Series B-D",
-    "career_url": "https://www.bijnis.com/careers"
-  },
-  {
-    "name": "ShopKirana",
-    "type": "Series B-D",
-    "career_url": "https://www.shopkirana.com/careers"
-  },
-  {
-    "name": "Jumbotail",
-    "type": "Series B-D",
-    "career_url": "https://www.jumbotail.com/careers"
-  },
-  {
-    "name": "Ninjacart",
-    "type": "Series B-D",
-    "career_url": "https://www.ninjacart.in/careers"
-  },
-  {
-    "name": "WayCool",
-    "type": "Series B-D",
-    "career_url": "https://www.waycool.in/careers"
-  },
-  {
-    "name": "Crofarm",
-    "type": "Series B-D",
-    "career_url": "https://crofarm.com/careers"
-  },
-  {
-    "name": "DeHaat",
-    "type": "Series B-D",
-    "career_url": "https://www.dehaat.in/careers"
-  },
-  {
-    "name": "AgroStar",
-    "type": "Series B-D",
-    "career_url": "https://www.agrostar.in/careers"
-  },
-  {
-    "name": "BigHaat",
-    "type": "Series B-D",
-    "career_url": "https://www.bighaat.com/careers"
-  },
-  {
-    "name": "Gramophone",
-    "type": "Series B-D",
-    "career_url": "https://www.gramophone.in/careers"
-  },
-  {
-    "name": "Agrowave",
-    "type": "Series B-D",
-    "career_url": "https://agrowave.in/careers"
-  },
-  {
-    "name": "Ergos",
-    "type": "Series B-D",
-    "career_url": "https://ergos.in/careers"
-  },
-  {
-    "name": "Stellapps",
-    "type": "Series B-D",
-    "career_url": "https://stellapps.com/careers"
-  },
-  {
-    "name": "Intello Labs",
-    "type": "Series B-D",
-    "career_url": "https://intellolabs.com/careers"
-  },
-  {
-    "name": "Keka",
-    "type": "Series B-D",
-    "career_url": "https://www.keka.com/careers"
-  },
-  {
-    "name": "GreytHR",
-    "type": "Series B-D",
-    "career_url": "https://www.greythr.com/careers"
-  },
-  {
-    "name": "SumHR",
-    "type": "Series B-D",
-    "career_url": "https://www.sumhr.com/careers"
-  },
-  {
-    "name": "Zimyo",
-    "type": "Series B-D",
-    "career_url": "https://www.zimyo.com/careers"
-  },
-  {
-    "name": "Pocket HRMS",
-    "type": "Series B-D",
-    "career_url": "https://www.pockethrms.com/careers"
-  },
-  {
-    "name": "Qandle",
-    "type": "Series B-D",
-    "career_url": "https://www.qandle.com/careers"
-  },
-  {
-    "name": "Beehive",
-    "type": "Series B-D",
-    "career_url": "https://www.beehive.ai/careers"
-  },
-  {
-    "name": "Kredily",
-    "type": "Series B-D",
-    "career_url": "https://kredily.com/careers"
-  },
-  {
-    "name": "Zoho People",
-    "type": "Series B-D",
-    "career_url": "https://www.zoho.com/people/careers.html"
-  },
-  {
-    "name": "CleverTap",
-    "type": "Series B-D",
-    "career_url": "https://clevertap.com/careers/"
-  },
-  {
-    "name": "WebEngage",
-    "type": "Series B-D",
-    "career_url": "https://webengage.com/careers/"
-  },
-  {
-    "name": "MoEngage",
-    "type": "Series B-D",
-    "career_url": "https://www.moengage.com/careers/"
-  },
-  {
-    "name": "Netcore Cloud",
-    "type": "Series B-D",
-    "career_url": "https://netcorecloud.com/careers/"
-  },
-  {
-    "name": "Insider",
-    "type": "Series B-D",
-    "career_url": "https://useinsider.com/careers/"
-  },
-  {
-    "name": "Wigzo",
-    "type": "Series B-D",
-    "career_url": "https://www.wigzo.com/careers"
-  },
-  {
-    "name": "Vizury",
-    "type": "Series B-D",
-    "career_url": "https://www.vizury.com/careers"
-  },
-  {
-    "name": "Vserv",
-    "type": "Series B-D",
-    "career_url": "https://www.vserv.com/careers"
-  },
-  {
-    "name": "AdPushup",
-    "type": "Series B-D",
-    "career_url": "https://www.adpushup.com/careers"
-  },
-  {
-    "name": "Taboola India",
-    "type": "Series B-D",
-    "career_url": "https://www.taboola.com/careers"
-  },
-  {
-    "name": "Outbrain India",
-    "type": "Series B-D",
-    "career_url": "https://www.outbrain.com/careers"
-  },
-  {
-    "name": "LambdaTest",
-    "type": "Series B-D",
-    "career_url": "https://www.lambdatest.com/careers"
-  },
-  {
-    "name": "Testsigma",
-    "type": "Series B-D",
-    "career_url": "https://testsigma.com/careers"
-  },
-  {
-    "name": "Hevo Data",
-    "type": "Series B-D",
-    "career_url": "https://hevodata.com/careers"
-  },
-  {
-    "name": "Atlan",
-    "type": "Series B-D",
-    "career_url": "https://atlan.com/careers/"
-  },
-  {
-    "name": "Hasura",
-    "type": "Series B-D",
-    "career_url": "https://hasura.io/careers/"
-  },
-  {
-    "name": "Appsmith",
-    "type": "Series B-D",
-    "career_url": "https://www.appsmith.com/careers"
-  },
-  {
-    "name": "Dyte",
-    "type": "Series B-D",
-    "career_url": "https://dyte.io/careers"
-  },
-  {
-    "name": "100ms",
-    "type": "Series B-D",
-    "career_url": "https://www.100ms.live/careers"
-  },
-  {
-    "name": "Agora India",
-    "type": "Series B-D",
-    "career_url": "https://www.agora.io/en/careers/"
-  },
-  {
-    "name": "Securin",
-    "type": "Series B-D",
-    "career_url": "https://www.securin.io/careers/"
-  },
-  {
-    "name": "CloudSEK",
-    "type": "Series B-D",
-    "career_url": "https://cloudsek.com/careers"
-  },
-  {
-    "name": "Lucideus",
-    "type": "Series B-D",
-    "career_url": "https://www.lucideus.com/careers"
-  },
-  {
-    "name": "Quick Heal",
-    "type": "Series B-D",
-    "career_url": "https://www.quickheal.co.in/careers"
-  },
-  {
-    "name": "K7 Computing",
-    "type": "Series B-D",
-    "career_url": "https://www.k7computing.com/careers"
-  },
-  {
-    "name": "Sequretek",
-    "type": "Series B-D",
-    "career_url": "https://www.sequretek.com/careers"
-  },
-  {
-    "name": "Paladion",
-    "type": "Series B-D",
-    "career_url": "https://www.paladion.net/careers"
-  },
-  {
-    "name": "Aujas",
-    "type": "Series B-D",
-    "career_url": "https://www.aujas.com/careers"
-  },
-  {
-    "name": "Haptik",
-    "type": "Series B-D",
-    "career_url": "https://www.haptik.ai/careers"
-  },
-  {
-    "name": "Yellow.ai",
-    "type": "Series B-D",
-    "career_url": "https://yellow.ai/careers/"
-  },
-  {
-    "name": "Verloop.io",
-    "type": "Series B-D",
-    "career_url": "https://verloop.io/careers/"
-  },
-  {
-    "name": "Uniphore",
+    "name": "Zeta",
     "type": "Unicorn",
-    "career_url": "https://www.uniphore.com/careers"
+    "career_url": "https://www.zeta.tech/in/careers/"
   },
   {
-    "name": "Skit.ai",
-    "type": "Series B-D",
-    "career_url": "https://skit.ai/careers/"
+    "name": "Cashfree",
+    "type": "High-Paying Startup",
+    "career_url": "https://www.cashfree.com/careers/"
   },
   {
-    "name": "Vernacular.ai",
-    "type": "Series B-D",
-    "career_url": "https://vernacular.ai/careers"
-  },
-  {
-    "name": "Mad Street Den",
-    "type": "Series B-D",
-    "career_url": "https://www.madstreetden.com/careers"
-  },
-  {
-    "name": "SigTuple",
-    "type": "Series B-D",
-    "career_url": "https://sigtuple.com/careers"
-  },
-  {
-    "name": "Niramai",
-    "type": "Series B-D",
-    "career_url": "https://www.niramai.com/careers"
-  },
-  {
-    "name": "Qure.ai",
-    "type": "Series B-D",
-    "career_url": "https://qure.ai/careers.html"
-  },
-  {
-    "name": "Ather Energy",
+    "name": "CRED",
     "type": "Unicorn",
-    "career_url": "https://www.atherenergy.com/careers"
+    "career_url": "https://careers.cred.club/"
   },
   {
-    "name": "Ola Electric",
+    "name": "Groww",
     "type": "Unicorn",
-    "career_url": "https://olaelectric.com/careers"
-  },
-  {
-    "name": "Revolt Motors",
-    "type": "Series B-D",
-    "career_url": "https://www.revoltmotors.com/careers"
-  },
-  {
-    "name": "Sun Mobility",
-    "type": "Series B-D",
-    "career_url": "https://www.sunmobility.co.in/careers"
-  },
-  {
-    "name": "Lithion Power",
-    "type": "Series B-D",
-    "career_url": "https://lithionpower.com/careers"
-  },
-  {
-    "name": "Log9 Materials",
-    "type": "Series B-D",
-    "career_url": "https://www.log9materials.com/careers"
-  },
-  {
-    "name": "ReNew Power",
-    "type": "Unicorn",
-    "career_url": "https://www.renewpower.in/careers/"
-  },
-  {
-    "name": "CleanMax Solar",
-    "type": "Series B-D",
-    "career_url": "https://cleanmaxsolar.com/careers/"
-  },
-  {
-    "name": "Fourth Partner Energy",
-    "type": "Series B-D",
-    "career_url": "https://www.fourth-partner-energy.com/careers"
-  },
-  {
-    "name": "Digit Insurance",
-    "type": "Unicorn",
-    "career_url": "https://www.godigit.com/careers"
-  },
-  {
-    "name": "Go Digit",
-    "type": "Unicorn",
-    "career_url": "https://www.godigit.com/careers"
-  },
-  {
-    "name": "Turtlemint",
-    "type": "Series B-D",
-    "career_url": "https://www.turtlemint.com/careers"
-  },
-  {
-    "name": "RenewBuy",
-    "type": "Series B-D",
-    "career_url": "https://www.renewbuy.com/careers"
-  },
-  {
-    "name": "Coverfox",
-    "type": "Series B-D",
-    "career_url": "https://www.coverfox.com/careers"
-  },
-  {
-    "name": "InsuranceDekho",
-    "type": "Series B-D",
-    "career_url": "https://www.insurancedekho.com/careers"
+    "career_url": "https://groww.in/careers"
   },
   {
     "name": "Upstox",
     "type": "Unicorn",
     "career_url": "https://upstox.com/careers/"
-  },
-  {
-    "name": "Angel One",
-    "type": "Unicorn",
-    "career_url": "https://www.angelone.in/careers"
-  },
-  {
-    "name": "5paisa",
-    "type": "Series B-D",
-    "career_url": "https://www.5paisa.com/careers"
-  },
-  {
-    "name": "Smallcase",
-    "type": "Series B-D",
-    "career_url": "https://smallcase.com/careers"
-  },
-  {
-    "name": "Scripbox",
-    "type": "Series B-D",
-    "career_url": "https://scripbox.com/careers/"
-  },
-  {
-    "name": "ET Money",
-    "type": "Series B-D",
-    "career_url": "https://www.etmoney.com/careers"
-  },
-  {
-    "name": "INDmoney",
-    "type": "Series B-D",
-    "career_url": "https://www.indmoney.com/careers"
-  },
-  {
-    "name": "Fi Money",
-    "type": "Series B-D",
-    "career_url": "https://fi.money/careers"
-  },
-  {
-    "name": "Signzy",
-    "type": "Series B-D",
-    "career_url": "https://signzy.com/careers/"
-  },
-  {
-    "name": "IDfy",
-    "type": "Series B-D",
-    "career_url": "https://idfy.com/careers/"
-  },
-  {
-    "name": "Digio",
-    "type": "Series B-D",
-    "career_url": "https://www.digio.in/careers"
-  },
-  {
-    "name": "Leegality",
-    "type": "Series B-D",
-    "career_url": "https://www.leegality.com/careers"
-  },
-  {
-    "name": "SpotDraft",
-    "type": "Series B-D",
-    "career_url": "https://www.spotdraft.com/careers"
   }
+
 ]
