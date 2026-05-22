@@ -20,8 +20,18 @@ BACKEND_KEYWORDS = [
 ]
 
 EXCLUDE_KEYWORDS = [
-    "senior", "staff", "principal", "lead", "manager", "architect",
-    "intern", "qa", "test", "support engineer"
+    "senior",
+    "staff",
+    "principal",
+    "lead",
+    "manager",
+    "architect",
+    "intern",
+    "qa engineer",        # was "qa" — too broad, blocked "qa" in descriptions
+    "quality assurance",
+    "support engineer",   # keep as phrase, not substring
+    "test engineer",      # was "test" — too broad
+    "sdet",
 ]
 
 TECH_STACK_KEYWORDS = [
