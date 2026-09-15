@@ -1,70 +1,51 @@
-"""Master script to import all company expansion files"""
-import json
-import csv
+"""
+Master Script: Import All Expansion CSV Files
+Finds all companies_expansion_part*.csv files and imports them with ATS detection,
+deduplication, atomic JSON updates, and SQLite database synchronization.
+"""
 import glob
+import os
+from import_csv import import_companies_from_csv
 
-def import_all_expansions():
-    """Import all expansion CSV files"""
-    
-    # Load existing companies
-    try:
-        with open('companies.json', 'r') as f:
-            companies = json.load(f)
-    except FileNotFoundError:
-        companies = []
-    
-    print(f"Starting with {len(companies)} companies\n")
-    
-    existing_names = {c['name'].lower() for c in companies}
-    
-    # Find all expansion CSV files
-    csv_files = glob.glob('companies_expansion_part*.csv')
-    
+
+def import_all_expansions(pattern: str = "companies_expansion_part*.csv", sync_db: bool = True):
+    """Imports all matching CSV expansion files into companies.json and SQLite."""
+    csv_files = sorted(glob.glob(pattern))
     if not csv_files:
-        print("No expansion files found!")
-        print("Looking for: companies_expansion_part*.csv")
+        print(f"No expansion files found matching '{pattern}'.")
         return
-    
-    total_new = 0
-    total_duplicates = 0
-    
-    # Import each CSV file
-    for csv_file in sorted(csv_files):
-        print(f"Importing {csv_file}...")
-        
-        new_count = 0
-        dup_count = 0
-        
-        with open(csv_file, 'r') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                name = row['name'].strip()
-                if name.lower() not in existing_names:
-                    companies.append({
-                        'name': name,
-                        'type': row['type'].strip(),
-                        'career_url': row['career_url'].strip()
-                    })
-                    existing_names.add(name.lower())
-                    new_count += 1
-                else:
-                    dup_count += 1
-        
-        print(f"  ✓ Added {new_count} companies, skipped {dup_count} duplicates\n")
-        total_new += new_count
-        total_duplicates += dup_count
-    
-    # Save updated list
-    with open('companies.json', 'w') as f:
-        json.dump(companies, f, indent=2)
-    
-    print("="*60)
-    print("✓ IMPORT COMPLETE!")
-    print("="*60)
-    print(f"New companies added: {total_new}")
-    print(f"Duplicates skipped: {total_duplicates}")
-    print(f"Total companies: {len(companies)}")
-    print("="*60)
 
-if __name__ == '__main__':
+    print(f"Found {len(csv_files)} expansion file(s) to process:\n" + "\n".join(f"  - {f}" for f in csv_files))
+    print("=" * 60)
+
+    total_added = 0
+    total_updated = 0
+    total_skipped = 0
+
+    for csv_file in csv_files:
+        print(f"\nProcessing {csv_file}...")
+        res = import_companies_from_csv(csv_file, sync_db=False)
+        total_added += res["added"]
+        total_updated += res["updated"]
+        total_skipped += res["duplicates"]
+
+    # Final DB sync if requested
+    if sync_db and os.path.exists("jobscraper.db"):
+        import json
+        from expand_companies import sync_to_sqlite
+        with open("companies.json", "r", encoding="utf-8") as f:
+            companies = json.load(f)
+        synced = sync_to_sqlite(companies)
+        print(f"\n✓ Synchronized {synced} total companies to SQLite database (jobscraper.db).")
+
+    print("\n" + "=" * 60)
+    print("🎉 ALL EXPANSION IMPORTS COMPLETE!")
+    print("=" * 60)
+    print(f"Total new companies added : {total_added}")
+    print(f"Total existing upgraded   : {total_updated}")
+    print(f"Total duplicates skipped  : {total_skipped}")
+    print("=" * 60)
+
+
+if __name__ == "__main__":
     import_all_expansions()

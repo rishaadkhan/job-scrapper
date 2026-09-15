@@ -1,279 +1,103 @@
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                    JOB SCRAPER - PROJECT STRUCTURE                           ║
-║                         Production-Ready System                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+==============================================================================
+ENTERPRISE JOB SCRAPER & RESUME INTELLIGENCE ENGINE — PROJECT STRUCTURE
+==============================================================================
 
-📁 jobscrap/
+jobscrap/
 │
-├── 🚀 CORE SYSTEM (6 modules)
-│   ├── main.py                  ⭐ Orchestrator - runs entire workflow
-│   ├── scraper.py               🌐 Multi-portal scraping engine
-│   ├── filters.py               🔍 Job filtering logic
-│   ├── state_manager.py         💾 Rotation & deduplication
-│   ├── exporter.py              📊 Excel generation
-│   └── config.py                ⚙️  Configuration constants
+├── .github/
+│   └── workflows/
+│       ├── ci.yml                    # Automated unit tests & Fly.io deployment on main merge
+│       └── scraper.yml               # Scheduled daily scrape GitHub Action workflow
 │
-├── 🛠️  UTILITIES (4 tools)
-│   ├── expand_companies.py      ➕ Add more companies easily
-│   ├── test_scraper.py          ✅ Validation script
-│   ├── validate_urls.py         🔗 URL accessibility checker
-│   └── setup.sh                 📦 Automated setup script
+├── ats_clients/                      # Direct public ATS JSON API integrations
+│   ├── __init__.py                   # Factory dispatcher & fetch_company_jobs
+│   ├── base.py                       # BaseATSClient abstract class
+│   ├── greenhouse.py                 # Greenhouse API (boards-api.greenhouse.io)
+│   ├── lever.py                      # Lever API (api.lever.co)
+│   ├── ashby.py                      # Ashby API (api.ashbyhq.com)
+│   ├── smartrecruiters.py            # SmartRecruiters API (api.smartrecruiters.com)
+│   ├── workday.py                    # Workday CXS client (/wday/cxs/{tenant}/{site}/jobs)
+│   └── html_fallback.py              # Polite async HTML career portal fallback
 │
-├── 📊 DATA FILES (2 files)
-│   ├── companies.json           🏢 155+ companies database
-│   └── requirements.txt         📋 Python dependencies
+├── backend/                          # FastAPI REST Service & Database Layer
+│   ├── __init__.py
+│   ├── api.py                        # FastAPI app setup, CORS, and lifecycle
+│   ├── auth.py                       # Password hashing & JWT token verification
+│   ├── config.py                     # Backend settings & environment variables
+│   ├── crud.py                       # Database queries & dedup warning logic
+│   ├── database.py                   # SQLAlchemy engine & session factory
+│   ├── db_service.py                 # DB service layer for scrape runs & persistence
+│   ├── exceptions.py                 # Structured exception handlers (404, 400, 401)
+│   ├── migrate.py                    # Historical JSON-to-SQLite migration
+│   ├── models.py                     # SQLAlchemy models (Company, Job, ScrapeRun, Filter, User)
+│   ├── retention.py                  # Automated retention policy cleanup worker
+│   ├── schemas.py                    # Pydantic validation schemas
+│   ├── telemetry.py                  # Sentry SDK error tracking & Heartbeat ping
+│   └── routers/                      # Modular FastAPI API route handlers
+│       ├── __init__.py
+│       ├── auth.py                   # /auth/login endpoint
+│       ├── companies.py              # /companies CRUD & dedup endpoints
+│       ├── exports.py                # /export and /exports/{id} endpoints
+│       ├── filters.py                # /filters dynamic tuning endpoints
+│       ├── jobs.py                   # /jobs search & pagination endpoints
+│       └── runs.py                   # /runs scrape telemetry logs endpoints
 │
-├── 📚 DOCUMENTATION (5 guides)
-│   ├── README.md                📖 Quick start guide
-│   ├── DOCUMENTATION.md         📘 Complete technical docs
-│   ├── PROJECT_SUMMARY.md       📄 Project overview
-│   ├── QUICK_REFERENCE.md       ⚡ Command reference
-│   └── DELIVERY_SUMMARY.md      ✅ Delivery checklist
+├── frontend/                         # Modern React 18 + Vite Web Dashboard
+│   ├── src/
+│   │   ├── api/client.ts             # Axios client with JWT interceptor
+│   │   ├── components/               # UI components (Sidebar, Badges, Modals)
+│   │   ├── contexts/                 # React AuthContext
+│   │   ├── pages/                    # Views (Login, Overview, Companies, Filters, Jobs, Runs, Exports)
+│   │   └── types/                    # TypeScript interfaces
+│   ├── Dockerfile.frontend           # Production Nginx container
+│   ├── nginx.conf                    # Nginx reverse proxy configuration
+│   └── package.json                  # Node dependencies
 │
-├── 🤖 AUTOMATION (1 workflow)
-│   └── .github/
-│       └── workflows/
-│           └── scraper.yml      ⏰ GitHub Actions workflow
+├── notifier/                         # Daily Digest Delivery Engines
+│   ├── __init__.py
+│   └── digest.py                     # Telegram MarkdownV2 & SMTP email notifier
 │
-├── ⚙️  CONFIGURATION (1 file)
-│   └── .gitignore               🚫 Git ignore rules
+├── scoring/                          # Skills Taxonomy & AI Intelligence
+│   ├── __init__.py                   # JobScorer coordinator
+│   ├── taxonomy.py                   # 150+ backend engineering ontology
+│   ├── extractor.py                  # TF-IDF prominence keyword extractor
+│   ├── matcher.py                    # 0-100 match scoring & skill gap analysis
+│   └── bullet_generator.py           # Anthropic Claude tailored bullet generator
 │
-└── 📤 OUTPUT (auto-generated)
-    ├── output/                  📁 Excel files directory
-    │   └── High_Conversion_Job_Leads_YYYY-MM-DD.xlsx
-    └── scraper_state.json       💾 State tracking file
-
-
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                           COMPONENT DETAILS                                  ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-
-🚀 CORE SYSTEM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-main.py (Orchestrator)
-├── Loads company database
-├── Selects companies to scrape (rotation logic)
-├── Coordinates scraping workflow
-├── Applies filtering pipeline
-├── Manages state persistence
-└── Triggers Excel export
-
-scraper.py (Scraping Engine)
-├── Multi-portal detection
-│   ├── Greenhouse.io parser
-│   ├── Lever.co parser
-│   ├── Workday parser
-│   └── Generic HTML parser
-├── Job listing extraction
-├── Full description fetching
-├── Rate limiting
-└── Error handling
-
-filters.py (Filtering Logic)
-├── Location validation (India cities)
-├── Role type detection (backend-focused)
-├── Experience extraction (0-3 years)
-├── Tech stack validation (Java, Spring, Cloud)
-└── Multi-stage filtering pipeline
-
-state_manager.py (State Management)
-├── Company rotation tracking
-├── Last scraped date per company
-├── Job deduplication (seen job IDs)
-├── Auto-cleanup (30-day retention)
-└── State persistence (JSON file)
-
-exporter.py (Excel Generation)
-├── DataFrame creation
-├── Column ordering
-├── Date-stamped filenames
-└── Excel file writing (openpyxl)
-
-config.py (Configuration)
-├── Scraping parameters
-├── Target locations
-├── Backend keywords
-├── Tech stack keywords
-├── Exclude keywords
-└── Output settings
-
-
-🛠️  UTILITIES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-expand_companies.py
-└── Adds new companies to database (avoids duplicates)
-
-test_scraper.py
-├── Tests company loading
-├── Tests scraper functionality
-├── Tests filtering logic
-└── Tests state manager
-
-validate_urls.py
-├── Checks URL accessibility
-├── Parallel validation (10 workers)
-└── Summary report
-
-setup.sh
-├── Creates virtual environment
-├── Installs dependencies
-└── Setup instructions
-
-
-📊 DATA FILES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-companies.json (155+ companies)
-├── Tier-1 GCCs: 35+ (Google, Microsoft, Amazon, Meta, etc.)
-├── Unicorns: 60+ (Flipkart, Swiggy, Razorpay, CRED, etc.)
-└── Series B-D: 60+ (Dunzo, Vedantu, Spinny, etc.)
-
-requirements.txt
-├── requests==2.31.0
-├── beautifulsoup4==4.12.2
-├── pandas==2.1.4
-├── openpyxl==3.1.2
-└── lxml==4.9.3
-
-
-📚 DOCUMENTATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-README.md
-├── Overview & features
-├── Installation instructions
-├── Usage guide
-├── Cron setup
-├── GitHub Actions setup
-└── Troubleshooting
-
-DOCUMENTATION.md
-├── Architecture overview
-├── Configuration guide
-├── Company database expansion
-├── Deployment options
-├── Filtering logic deep dive
-├── Performance optimization
-└── Maintenance schedule
-
-PROJECT_SUMMARY.md
-├── Delivery checklist
-├── Project structure
-├── How to run
-├── Key features
-├── Expected output
-└── Scaling guide
-
-QUICK_REFERENCE.md
-├── Common commands
-├── What gets scraped
-├── Quick customization
-├── Automation setup
-└── Troubleshooting table
-
-DELIVERY_SUMMARY.md
-├── Requirements compliance
-├── Complete deliverables
-├── Performance metrics
-├── Quality checklist
-└── Final status
-
-
-🤖 AUTOMATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-.github/workflows/scraper.yml
-├── Scheduled: Daily at 3 AM UTC (8:30 AM IST)
-├── Manual trigger: workflow_dispatch
-├── Steps:
-│   ├── Checkout repository
-│   ├── Setup Python 3.10
-│   ├── Install dependencies
-│   ├── Run scraper
-│   ├── Upload Excel artifacts
-│   └── Commit state file
-
-
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                              DATA FLOW                                       ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-
-1. START
-   ↓
-2. Load companies.json (155+ companies)
-   ↓
-3. State Manager: Select ~120 companies (rotation logic)
-   ↓
-4. For each company:
-   ├── Scraper: Fetch career page
-   ├── Scraper: Detect portal type (Greenhouse/Lever/Workday/Generic)
-   ├── Scraper: Extract job listings
-   ├── Scraper: Fetch full job descriptions
-   ├── Filters: Validate location (India cities)
-   ├── Filters: Validate role type (backend-focused)
-   ├── Filters: Validate experience (0-3 years)
-   ├── Filters: Validate tech stack (Java, Spring, Cloud)
-   └── State Manager: Check if job already seen
-   ↓
-5. Collect all valid jobs
-   ↓
-6. Exporter: Generate Excel file
-   ↓
-7. State Manager: Save state (last scraped dates, seen job IDs)
-   ↓
-8. END → Output: High_Conversion_Job_Leads_YYYY-MM-DD.xlsx
-
-
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                           QUICK START                                        ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-
-Step 1: Setup
-$ ./setup.sh
-
-Step 2: Activate
-$ source venv/bin/activate
-
-Step 3: Run
-$ python main.py
-
-Output: output/High_Conversion_Job_Leads_YYYY-MM-DD.xlsx
-
-
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                         SYSTEM STATISTICS                                    ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-
-Total Files:              18
-Lines of Code:            ~2,000
-Python Modules:           6 core + 3 utilities
-Companies:                155+ (expandable to 1000+)
-Supported Portals:        4 types (Greenhouse, Lever, Workday, Generic)
-Target Locations:         7 cities + Remote
-Backend Keywords:         8 patterns
-Tech Stack Keywords:      15+ technologies
-Filtering Stages:         4 stages
-Companies per Run:        ~120
-Rotation Cycle:           8 days
-Expected Jobs/Day:        20-50 (current), 100-200 (at scale)
-Runtime:                  ~4-5 minutes
-Dependencies:             5 packages
-Documentation Pages:      5 guides
-Automation Options:       3 (Local, Cron, GitHub Actions)
-
-
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                            STATUS                                            ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-
-✅ PRODUCTION READY
-✅ ALL REQUIREMENTS MET
-✅ FULLY DOCUMENTED
-✅ AUTOMATION CONFIGURED
-✅ READY TO DEPLOY
-
-Version: 1.0
-Status: Complete
-Quality: Production-Grade
+├── tests/                            # Automated Unit Testing Suite
+│   ├── test_ats_clients.py           # Tests for all 5 ATS clients
+│   ├── test_backend_api.py           # Tests for FastAPI routes, JWT auth, and CRUD
+│   ├── test_fixes.py                 # Tests for filtering, job ID deduplication, and export
+│   └── test_scoring.py               # Tests for skills taxonomy and match scoring
+│
+├── output/                           # Formatted daily Excel reports (.xlsx)
+├── companies.json                    # Curated target list of 590+ companies with ATS metadata
+├── config.py                         # Scraper thresholds, regexes, and constants
+├── Dockerfile                        # Multi-stage production container build
+├── docker-compose.yml                # Multi-container orchestration (API, Frontend, Scheduler)
+├── exporter.py                       # OpenPyXL 15-column spreadsheet exporter
+├── filters.py                        # Pure business filters (role, location, experience)
+├── fly.toml                          # Fly.io production cloud deployment manifest
+├── main.py                           # Async scraper pipeline orchestrator
+├── requirements.txt                  # Python dependencies
+├── resume.md                         # Candidate resume input file
+├── scraper.py                        # Async HTTP client, rate limiter, and job ID derivation
+├── setup.sh                          # Automated local setup script for macOS/Linux
+├── validate_urls.py                  # Async career URL and ATS endpoint validator
+├── expand_companies.py               # Company addition and database synchronization script
+├── import_csv.py                     # CSV company import utility with ATS detection
+├── import_all.py                     # Batch expansion CSV import runner
+├── demo.py                           # Interactive 3-company quick demonstration
+├── test_scraper.py                   # System health check & integration test
+├── ADDING_COMPANIES_GUIDE.md         # Complete guide to adding & managing target companies
+├── QUICK_ADD_COMPANIES.md            # Quick reference for company addition
+├── SOURCES.md                        # Compliance and ToS sourcing documentation
+├── MULTI_TENANT_DESIGN.md            # Multi-tenant SaaS architecture reference design
+├── FILTER_UPDATES.md                 # Filter criteria and dynamic tuning guide
+├── QUICK_REFERENCE.md                # Quick CLI and Docker command card
+├── PROJECT_SUMMARY.md                # High-level capabilities summary
+├── DOCUMENTATION.md                  # Comprehensive technical documentation
+├── START_HERE.md                     # Quick start guide
+├── WALKTHROUGH.md                    # Complete phase-by-phase system walkthrough
+└── README.md                         # Project overview and documentation
+==============================================================================

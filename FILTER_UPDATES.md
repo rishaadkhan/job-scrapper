@@ -1,104 +1,51 @@
-# FILTER UPDATES - CONSTRAINTS REMOVED
+# Job Filtering Specifications & Rules Engine
 
-## Changes Made
+## 🎯 Filtering Principles
 
-### ✅ REMOVED CONSTRAINTS
+The **Enterprise Job Scraper** employs a strict, multi-stage business logic filter (`filters.py`) designed to extract high-conversion backend engineering opportunities for early-career developers (0–3 years experience in India).
 
-1. **Tech Stack Constraint - REMOVED**
-   - Previously: Required 2+ matches from Java, Spring Boot, Microservices, etc.
-   - Now: Accepts ALL tech stacks
+---
 
-2. **Backend-Only Constraint - REMOVED**
-   - Previously: Only backend/platform engineer roles
-   - Now: Accepts ALL software engineering roles (frontend, backend, full-stack, DevOps)
+## 🔍 Core Filtering Criteria
 
-### ✅ KEPT CONSTRAINTS
+### 1. ✅ Positive Backend Role Requirement (`is_backend_role`)
+- Every job title or description **must positively match** at least one backend engineering keyword from `BACKEND_KEYWORDS` (e.g. `Backend`, `Server`, `Platform`, `Distributed Systems`, `Microservices`, `Python`, `Java`, `Go`, `Golang`, `FastAPI`, `Spring Boot`, `PostgreSQL`, `REST API`).
+- Generic software engineering titles without backend signals are disqualified.
 
-Still filtering out:
-- ✓ Senior/Staff/Principal roles
-- ✓ Internships
-- ✓ QA/Test roles
-- ✓ Manager/Lead roles
-- ✓ Non-India locations
-- ✓ >3 years experience
+### 2. ❌ Excluded Seniority & Non-Engineering Disciplines (`is_excluded_title`)
+Automatically rejects titles matching:
+- **Seniority & Management**: `Senior`, `Staff`, `Principal`, `Lead`, `Manager`, `Director`, `VP`, `Architect`, `Head of`.
+- **Internships**: `Intern`, `Internship`, `Trainee`, `Apprentice`.
+- **Non-Engineering / Other Specialties**: `QA`, `Quality Assurance`, `Test Engineer`, `SDET`, `Frontend`, `UI`, `UX`, `Designer`, `DevOps`, `SRE`, `Product Manager`, `Scrum Master`.
 
-### 📊 TEST RESULTS
+### 3. 📍 India Location Validation (`is_valid_location`)
+- Validates the scraped location against canonical India tech hubs: `Bengaluru`, `Bangalore`, `Hyderabad`, `Pune`, `Gurgaon`, `Gurugram`, `Noida`, `Delhi NCR`, `Mumbai`, `Chennai`, or `Remote (India)`.
+- Rejects postings with foreign or overseas locations (e.g. `London`, `San Francisco`, `Singapore`, `Berlin`, `Toronto`).
 
-**Before Changes:**
-- 3 companies scraped
-- 18 job listings found
-- 0 valid jobs (too strict)
+### 4. ⏳ Experience Range Parsing (`extract_experience_years`)
+- Parses natural language experience requirements in job descriptions (e.g., `"0-2 years"`, `"1-3 yrs"`, `"freshers welcome"`).
+- Automatically disqualifies roles requiring `> 3 years` of prior professional experience.
 
-**After Changes:**
-- 3 companies scraped
-- 18 job listings found
-- 13 valid jobs ✓
+---
 
-**Improvement:** From 0% to 72% pass rate
+## ⚙️ Dynamic Filter Configuration (No Code Redeployment)
 
-### 🎯 What Now Gets Accepted
+Filters can now be tuned dynamically via two interfaces:
 
-✅ Software Engineer (any stack)
-✅ Frontend Developer
-✅ Backend Developer
-✅ Full Stack Developer
-✅ DevOps Engineer
-✅ Platform Engineer
-✅ Mobile Developer
-✅ Data Engineer
-✅ Any 0-3 years engineering role in India
+### 1. Web Dashboard
+Visit [http://localhost:5173/filters](http://localhost:5173/filters) to adjust backend keywords, excluded keywords, experience thresholds, and allowed locations with immediate database persistence.
 
-### ❌ What Still Gets Rejected
-
-✗ Senior/Staff/Principal roles
-✗ Internships
-✗ QA/Test Engineer
-✗ Manager/Lead positions
-✗ >3 years experience
-✗ Non-India locations
-
-### 📁 Files Modified
-
-1. **filters.py**
-   - Removed tech stack validation
-   - Relaxed backend-only constraint
-   - Kept experience and seniority filters
-
-2. **config.py**
-   - Removed frontend/devops from exclusions
-   - Kept senior/intern/qa exclusions
-
-3. **scraper.py**
-   - Improved generic parser
-   - Added filtering for navigation elements
-   - Better job title validation
-
-### 🚀 Production Ready
-
-✓ All changes tested
-✓ Excel output verified
-✓ Filters working correctly
-✓ Configuration reset to production values (120 companies/run)
-
-### 📈 Expected Results
-
-With relaxed filters:
-- **Per run:** 50-100 valid jobs (up from 20-50)
-- **Per week:** 300-500 jobs
-- **Per month:** 1200-2000 jobs
-
-### 🎉 Summary
-
-The scraper now accepts:
-- ✅ ALL tech stacks (not just Java/Spring)
-- ✅ ALL engineering roles (not just backend)
-- ✅ Frontend, Backend, Full-Stack, DevOps, Mobile, Data roles
-- ✅ 0-3 years experience in India
-
-Still maintains quality by filtering out:
-- ❌ Senior positions
-- ❌ Internships
-- ❌ Non-engineering roles
-- ❌ >3 years experience
-
-**Status: READY FOR PRODUCTION** ✅
+### 2. FastAPI REST API
+```bash
+# Update filters dynamically via PUT /filters
+curl -X PUT http://localhost:8000/filters \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "min_experience": 0,
+    "max_experience": 3,
+    "backend_keywords": ["backend", "server", "python", "golang", "java", "spring boot", "fastapi"],
+    "exclude_keywords": ["senior", "lead", "staff", "principal", "manager", "intern"],
+    "allowed_locations": ["bengaluru", "hyderabad", "pune", "gurgaon", "noida", "remote"]
+  }'
+```
