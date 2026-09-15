@@ -1,26 +1,53 @@
-# Production Job Scraper - Backend Roles (0-3 Years, India)
+# Enterprise Job Scraper & Resume Intelligence Engine
 
 ## Overview
-Automated job scraping system that extracts backend engineering roles from official company career portals in India.
+High-throughput automated job extraction and resume intelligence pipeline targeting early-career backend engineering roles (0–3 years experience, India locations) across 390+ curated Tier-1 GCCs, Unicorns, and high-growth startups.
 
-## Features
-- Scrapes 1000+ companies (Tier-1 GCCs, Unicorns, Series B-D startups)
-- Multi-portal support (Greenhouse, Lever, Workday, custom portals)
-- Smart rotation (scrapes ~120 companies per run, 8-day rotation cycle)
-- Filters for backend roles, 0-3 years experience, India locations
-- Tech stack validation (Java, Spring Boot, Microservices, Cloud, etc.)
-- Deduplication and state management
-- Daily Excel output
+---
 
-## Installation
+## Key Features
+
+### 🚀 Direct ATS JSON APIs
+- **Greenhouse (`boards-api.greenhouse.io`)**: Ingests 100% structured data and clean descriptions directly via public JSON endpoints.
+- **Lever (`api.lever.co`)**: Extracts structured postings with full category and commitment metadata.
+- **Ashby (`api.ashbyhq.com`)**: Ingests direct posting payloads eliminating SPA JavaScript rendering failures.
+- **SmartRecruiters (`api.smartrecruiters.com`)**: Ingests structured postings and section-by-section requirements.
+- **Workday CXS (`/wday/cxs/{tenant}/{site}/jobs`)**: Queries Workday candidate services directly.
+- **HTML Fallback**: Asynchronous, polite fallback for custom career portals.
+- **Zero Third-Party Scraping**: Full compliance with ToS guidelines (no scraping of LinkedIn, Indeed, or Naukri).
+
+### ⚡ Asynchronous Engine & Concurrency Control
+- Refactored with `asyncio` and `httpx.AsyncClient` connection pooling.
+- Bounded concurrency with `asyncio.Semaphore(10)`.
+- Per-domain rate limiting (`DomainRateLimiter`) with exponential backoff and jitter on HTTP 429/5xx errors.
+
+### 🎯 Resume Intelligence & Match Scoring (`scoring/`)
+- **Curated Backend Taxonomy**: 150+ indexed backend engineering skills (Languages, Frameworks, Databases & Caching, Cloud & DevOps, Distributed Systems, Architecture).
+- **Keyword Extraction & Prominence**: TF-IDF weighting with title and requirements section boosting.
+- **0–100 Match Score**: Quantifies candidate-to-role alignment based on resume keyword intersection.
+- **Missing Skills Identification**: Explicitly flags target technologies in the JD that are absent from your resume.
+- **Anthropic Claude Bullet Generator**: Generates 2–3 high-impact, tailored resume bullet points for top-scoring leads using Claude (`claude-3-5-sonnet-latest`).
+
+### 📊 Redesigned Excel Output (15-Column Schema)
+- **Frozen Header Row**: Always visible column headers while scrolling.
+- **Auto-Filter**: Instant filtering and sorting by Match Score, Company, Location, or Keywords.
+- **Hyperlinked URLs**: Clickable apply links and career portal paths.
+- **Conditional Color Formatting**:
+  - 🟢 **Green (≥ 70)**: High alignment match
+  - 🟡 **Yellow (40–69)**: Moderate alignment match
+  - 🔴 **Red (< 40)**: Low alignment match
+
+---
+
+## Installation & Setup
 
 ### Prerequisites
-- Python 3.8+
-- pip
+- Python 3.10+
+- virtualenv
 
 ### Setup
 ```bash
-# Clone or download the project
+# Clone the repository
 cd jobscrap
 
 # Create virtual environment
@@ -31,135 +58,117 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Usage
+---
 
-### Run Locally
+## Resume Configuration (`resume.md`)
+
+Create or update your `resume.md` in the project root (or set `RESUME_FILE` in your environment):
+
+```markdown
+# John Doe — Backend Software Engineer
+Email: john@example.com | Location: Bengaluru, India | GitHub: github.com/johndoe
+
+## Technical Skills
+- Languages: Java, Python, Go, SQL
+- Frameworks: Spring Boot, FastAPI, Django, Express
+- Databases & Caching: PostgreSQL, MySQL, Redis, Apache Kafka
+- Cloud & Tools: AWS, Docker, Kubernetes, GitHub Actions, Linux
+- Architecture: Microservices, REST APIs, Distributed Systems, Unit Testing
+```
+
+---
+
+## Environment Variables (Optional)
+
+Configure optional settings in your shell or `.env`:
 ```bash
-python main.py
+export RESUME_FILE="resume.md"                       # Path to candidate resume
+export ANTHROPIC_API_KEY="sk-ant-..."                # Anthropic API key for bullet generation
+export ANTHROPIC_MODEL="claude-3-5-sonnet-latest"    # Model identifier
+export LLM_SUGGESTION_THRESHOLD=60                   # Minimum match score to trigger bullet generation
 ```
 
-Output will be generated in `output/High_Conversion_Job_Leads_YYYY-MM-DD.xlsx`
+---
 
-### Run Daily with Cron (macOS/Linux)
+## Running the Pipeline
+
+### Execute Local Async Scrape
 ```bash
-# Edit crontab
-crontab -e
-
-# Add this line to run daily at 9 AM
-0 9 * * * cd /Users/rishaadkhan/Documents/jobscrap && /Users/rishaadkhan/Documents/jobscrap/venv/bin/python main.py >> logs/scraper.log 2>&1
+./venv/bin/python main.py
 ```
 
-### Run with GitHub Actions
-
-Create `.github/workflows/scraper.yml`:
-
-```yaml
-name: Daily Job Scraper
-
-on:
-  schedule:
-    - cron: '0 3 * * *'  # Runs at 3 AM UTC daily
-  workflow_dispatch:  # Manual trigger
-
-jobs:
-  scrape:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-    
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-    
-    - name: Run scraper
-      run: python main.py
-    
-    - name: Upload Excel
-      uses: actions/upload-artifact@v3
-      with:
-        name: job-leads
-        path: output/*.xlsx
+### Output Telemetry Report
+```
+==============================================================================
+           JOB SCRAPER INGESTION ENGINE: YIELD & TELEMETRY REPORT
+==============================================================================
+Total Companies Evaluated : 397
+Total Pipeline Duration   : 12.45 seconds
+Total Raw Listings Ingested: 1,840
+Total Qualified Leads     : 42
+Companies with >=1 Listing: 118 (29.7%)
+Companies with 0 Listings : 279 (70.3%)
+------------------------------------------------------------------------------
+ATS Platform       | Companies  | With Jobs  | Zero Jobs  | Raw Jobs   | Valid Leads
+------------------------------------------------------------------------------
+html_fallback      | 287        | 22         | 265        | 45         | 4         
+greenhouse         | 52         | 52         | 0          | 1120       | 26        
+workday            | 19         | 15         | 4          | 430        | 8         
+smartrecruiters    | 17         | 17         | 0          | 145        | 3         
+ashby              | 13         | 12         | 1          | 100        | 1         
+==============================================================================
 ```
 
-## Configuration
+Output spreadsheet will be generated at:
+`output/High_Conversion_Job_Leads_YYYY-MM-DD.xlsx`
 
-Edit `config.py` to customize:
-- `COMPANIES_PER_RUN`: Number of companies per execution (default: 120)
-- `ROTATION_DAYS`: Days before re-scraping a company (default: 8)
-- `TARGET_LOCATIONS`: India cities to target
-- `TECH_STACK_KEYWORDS`: Required tech keywords
+---
 
-## File Structure
+## Running Unit Tests
+
+Run the complete 30-test automated test suite:
+```bash
+./venv/bin/python -m unittest discover tests
+```
+
+---
+
+## Excel Output Columns (15 Fields)
+
+| # | Column Header | Description |
+|---|---|---|
+| 1 | Company Name | Clean, deduplicated company name |
+| 2 | Company Type | Tier-1 GCC / Unicorn / High-Paying Startup / Big MNC |
+| 3 | Job Title | Decoupled, whitespace-clean title |
+| 4 | **Match Score** | **0–100 candidate alignment score with color coding** |
+| 5 | Experience Range | Parsed experience requirement (e.g. `0-2 years`) |
+| 6 | Location | Verified job location (India cities only) |
+| 7 | **Top JD Keywords** | **Top 8–10 emphasized backend skills in the JD** |
+| 8 | **Missing From Resume** | **Key required skills absent from candidate resume** |
+| 9 | **Suggested Bullet Edits**| **2–3 AI-tailored resume bullets generated via Claude** |
+| 10 | Job ID | Stable tracking-stripped ID or SHA-256 fallback |
+| 11 | Posted Date | ATS publication date (where available) |
+| 12 | Official Apply Link | Clickable hyperlinked direct application URL |
+| 13 | Career Portal URL | Clickable hyperlinked main company portal |
+| 14 | Full Job Description | Clean plain-text description (no SPA chrome) |
+| 15 | Scraped Timestamp | ISO execution timestamp |
+
+---
+
+## Repository Structure
 ```
 jobscrap/
-├── main.py              # Orchestrator
-├── scraper.py           # Core scraping engine
-├── filters.py           # Job filtering logic
-├── state_manager.py     # Rotation and deduplication
-├── exporter.py          # Excel generation
-├── config.py            # Configuration
-├── companies.json       # Company database (1000+)
-├── requirements.txt     # Dependencies
-├── scraper_state.json   # Auto-generated state file
-└── output/              # Excel files
+├── ats_clients/             # Dedicated ATS JSON API clients (Greenhouse, Lever, Ashby, Workday, SmartRecruiters)
+├── scoring/                 # Skills taxonomy, keyword extractor, resume matcher, and Claude bullet generator
+├── tests/                   # Automated unit test suite (30 test cases)
+├── output/                  # Formatted Excel output files (.xlsx)
+├── companies.json           # Curated database of 397 target companies with ATS metadata
+├── config.py                # System constants, column mappings, and thresholds
+├── exporter.py              # OpenPyXL styled spreadsheet exporter
+├── filters.py               # Pure business filters (role, location, experience)
+├── main.py                  # Async orchestrator with semaphore concurrency and telemetry
+├── scraper.py               # Rate limiting, backoff retries, and job ID derivation
+├── state_manager.py         # Rolling 30-day state persistence and deduplication
+├── resume.md                # Candidate resume input markdown file
+└── requirements.txt         # Project dependencies
 ```
-
-## State Management
-- `scraper_state.json` tracks:
-  - Last scraped date per company
-  - Seen job IDs (prevents duplicates)
-  - Auto-cleans jobs older than 30 days
-
-## Adding More Companies
-
-Edit `companies.json`:
-```json
-{
-  "name": "Company Name",
-  "type": "Tier-1 GCC|Unicorn|Series B-D",
-  "career_url": "https://company.com/careers"
-}
-```
-
-## Troubleshooting
-
-### No jobs found
-- Check if company career pages are accessible
-- Some portals use JavaScript rendering (consider adding Playwright/Selenium)
-
-### Rate limiting
-- Increase `RATE_LIMIT_DELAY` in `config.py`
-- Reduce `COMPANIES_PER_RUN`
-
-### Missing dependencies
-```bash
-pip install --upgrade -r requirements.txt
-```
-
-## Output Format
-Excel columns:
-1. Company Name
-2. Company Type
-3. Job Title
-4. Experience Range
-5. Location
-6. Job ID
-7. Posted Date
-8. Official Apply Link
-9. Career Portal URL
-10. Full Job Description
-11. Scraped Timestamp
-
-## Notes
-- Respects robots.txt and rate limits
-- No job boards (LinkedIn, Indeed, Naukri)
-- Only official company portals
-- Backend-focused roles only
-- 0-3 years experience filter
-- India locations only

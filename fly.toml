@@ -1,0 +1,61 @@
+# ─── Fly.io Application Configuration ────────────────────────────────────────
+# Deploy: fly launch (first time) or fly deploy (subsequent)
+# Secrets:  fly secrets set JWT_SECRET=... ANTHROPIC_API_KEY=... etc.
+# Volume:   fly volumes create jobscraper_data --size 5 --region sin
+# ─────────────────────────────────────────────────────────────────────────────
+
+app = "jobscraper-enterprise"
+primary_region = "sin"   # Singapore — closest to India
+
+[build]
+  dockerfile = "Dockerfile"
+
+# Persistent volume for SQLite database + Excel outputs
+[[mounts]]
+  source      = "jobscraper_data"
+  destination = "/data"
+
+[env]
+  DATABASE_URL = "sqlite+aiosqlite:////data/jobscraper.db"
+  OUTPUT_DIR   = "/data/output"
+  PORT         = "8000"
+
+[[services]]
+  internal_port = 8000
+  protocol      = "tcp"
+  auto_stop_machines  = true   # Scale to zero when idle (free tier)
+  auto_start_machines = true
+
+  [[services.ports]]
+    port     = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port     = 443
+    handlers = ["tls", "http"]
+
+  [services.concurrency]
+    type       = "connections"
+    hard_limit = 100
+    soft_limit = 80
+
+  [[services.http_checks]]
+    interval     = "30s"
+    timeout      = "5s"
+    grace_period = "20s"
+    method       = "GET"
+    path         = "/health"
+
+[checks]
+  [checks.alive]
+    type     = "http"
+    interval = "15s"
+    timeout  = "3s"
+    path     = "/health"
+
+# Resource allocation — nano machine is sufficient for personal use
+[[vm]]
+  cpu_kind  = "shared"
+  cpus      = 1
+  memory_mb = 512

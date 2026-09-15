@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.so
+
+# Virtualenv
+venv/
+.venv/
+env/
+
+# Development and testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# Database files (persisted via Docker volume, not baked in)
+*.db
+*.db-shm
+*.db-wal
+
+# Excel outputs (generated at runtime)
+output/
+
+# Version control
+.git/
+.gitignore
+
+# IDE and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Node / Frontend (built separately)
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Documentation only
+*.md
+!README.md
+
+# CI
+.github/
+
+# Test data
+tests/
+companies_expansion_*.csv

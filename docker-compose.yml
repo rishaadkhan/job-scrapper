@@ -1,0 +1,82 @@
+# Job Scraper Enterprise — Docker Compose (local dev / staging)
+# ─────────────────────────────────────────────────────────────
+# Usage:
+#   cp .env.example .env   # fill in secrets
+#   docker-compose up -d
+#
+# The SQLite database and Excel output files are persisted in a
+# named volume (jobscraper_data) mapped to /data inside each container.
+# ─────────────────────────────────────────────────────────────
+
+version: '3.9'
+
+services:
+
+  # ── FastAPI Backend ──────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: jobscraper-api:latest
+    container_name: jobscraper_api
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:////data/jobscraper.db
+      OUTPUT_DIR: /data/output
+    ports:
+      - "8000:8000"
+    volumes:
+      - jobscraper_data:/data
+      # Mount resume file from host so it can be updated without rebuild
+      - ./resume.md:/app/resume.md:ro
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  # ── Daily Scheduler ─────────────────────────────────────────
+  # This container uses the same image as the API but runs the
+  # scraper pipeline and then exits. Restart policy "no" means
+  # Docker won't loop it; use a host cron / Fly.io schedule
+  # (or the GitHub Actions workflow) to invoke it daily.
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: jobscraper-api:latest
+    container_name: jobscraper_scheduler
+    restart: "no"
+    command: ["python", "main.py"]
+    env_file: .env
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:////data/jobscraper.db
+      OUTPUT_DIR: /data/output
+    volumes:
+      - jobscraper_data:/data
+      - ./resume.md:/app/resume.md:ro
+    depends_on:
+      api:
+        condition: service_healthy
+
+  # ── Frontend (Nginx serving Vite build) ─────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    image: jobscraper-frontend:latest
+    container_name: jobscraper_frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+
+volumes:
+  jobscraper_data:
+    driver: local

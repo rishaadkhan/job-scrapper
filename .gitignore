@@ -1,4 +1,4 @@
-# Python
+# Python & Virtualenv
 __pycache__/
 *.py[cod]
 *$py.class
@@ -8,18 +8,37 @@ venv/
 env/
 ENV/
 
-# State file (will be committed by workflow)
-# scraper_state.json
+# Environment & Secrets (NEVER COMMIT)
+.env
+*.env
+.env.local
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+jobscraper.db
+
+# Excel Outputs (Avoid binary git bloat - use DB & artifact uploads)
+output/*.xlsx
+!output/.gitkeep
+
+# State file (Migrated to DB)
+scraper_state.json
+
+# Test & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
 
 # Logs
 logs/
+*.log
 
-# IDE
+# IDE & OS
 .vscode/
 .idea/
 *.swp
 *.swo
-
-# OS
 .DS_Store
 Thumbs.db
