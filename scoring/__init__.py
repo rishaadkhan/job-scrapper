@@ -37,17 +37,26 @@ class JobScorer:
         job['top_jd_keywords'] = top_keywords
         job['missing_from_resume'] = missing_keywords
 
-        # Generate LLM bullets if applicable
-        suggested_bullets = await self.bullet_generator.generate_bullets(
-            company=company,
-            title=title,
-            description=description,
-            resume_text=self.matcher.resume_text,
-            top_keywords=top_keywords,
-            missing_keywords=missing_keywords,
-            match_score=match_score,
-            client=client
-        )
+        # Generate LLM bullets if applicable (isolated error handling)
+        suggested_bullets = ""
+        try:
+            suggested_bullets = await self.bullet_generator.generate_bullets(
+                company=company,
+                title=title,
+                description=description,
+                resume_text=self.matcher.resume_text,
+                top_keywords=top_keywords,
+                missing_keywords=missing_keywords,
+                match_score=match_score,
+                client=client
+            )
+        except Exception as exc:
+            import logging
+            logging.getLogger("jobscraper.scoring").warning(
+                f"Bullet generation failed for '{title}' at '{company}': {exc} — continuing with empty bullets."
+            )
+            suggested_bullets = ""
+
         job['suggested_bullets'] = suggested_bullets
 
         return job

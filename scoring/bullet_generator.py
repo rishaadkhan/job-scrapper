@@ -1,8 +1,15 @@
-"""Anthropic Claude API client for generating tailored resume bullet suggestions"""
+"""
+Anthropic Claude API client for generating tailored resume bullet suggestions.
+Designed for graceful degradation: missing API key, timeouts, rate limits, or
+network failures will log a warning and return an empty string without failing the pipeline.
+"""
 import os
+import logging
 from typing import Optional, List
 import httpx
-from config import ANTHROPIC_API_KEY, ANTHROPIC_MODEL, LLM_SUGGESTION_THRESHOLD
+from config.settings import settings
+
+logger = logging.getLogger("jobscraper.scoring.bullets")
 
 
 class BulletGenerator:
@@ -14,9 +21,13 @@ class BulletGenerator:
         model: Optional[str] = None,
         threshold: Optional[int] = None
     ):
-        self.api_key = api_key if api_key is not None else ANTHROPIC_API_KEY
-        self.model = model or ANTHROPIC_MODEL or "claude-3-5-sonnet-latest"
-        self.threshold = threshold if threshold is not None else LLM_SUGGESTION_THRESHOLD
+        cfg_key = settings.ANTHROPIC_API_KEY if settings else os.getenv("ANTHROPIC_API_KEY", "")
+        cfg_model = settings.ANTHROPIC_MODEL if settings else os.getenv("ANTHROPIC_MODEL", "claude-3-5-sonnet-latest")
+        cfg_threshold = settings.LLM_SUGGESTION_THRESHOLD if settings else int(os.getenv("LLM_SUGGESTION_THRESHOLD", "60"))
+
+        self.api_key = api_key if api_key is not None else cfg_key
+        self.model = model or cfg_model or "claude-3-5-sonnet-latest"
+        self.threshold = threshold if threshold is not None else cfg_threshold
 
     async def generate_bullets(
         self,
@@ -36,7 +47,8 @@ class BulletGenerator:
         if match_score < self.threshold:
             return ""
 
-        if not self.api_key:
+        if not self.api_key or not self.api_key.strip():
+            logger.debug(f"Skipping bullet generation for '{title}' at '{company}': ANTHROPIC_API_KEY not set.")
             return ""
 
         prompt = f"""You are an elite technical resume strategist.
@@ -76,9 +88,9 @@ Instructions:
 
         try:
             if client:
-                response = await client.post(url, headers=headers, json=payload, timeout=20.0)
+                response = await client.post(url, headers=headers, json=payload, timeout=15.0)
             else:
-                async with httpx.AsyncClient(timeout=20.0) as temp_client:
+                async with httpx.AsyncClient(timeout=15.0) as temp_client:
                     response = await temp_client.post(url, headers=headers, json=payload)
 
             if response.status_code == 200:
@@ -87,12 +99,20 @@ Instructions:
                 if content_blocks and isinstance(content_blocks, list):
                     text_parts = [b.get("text", "") for b in content_blocks if b.get("type") == "text"]
                     return "\n".join(text_parts).strip()
+                return ""
+            elif response.status_code == 429:
+                logger.warning(f"Anthropic API rate limit exceeded (429) for '{company}' — continuing with empty bullets.")
+                return ""
+            elif response.status_code in (401, 403):
+                logger.warning(f"Anthropic API authentication failed ({response.status_code}) — check ANTHROPIC_API_KEY. Continuing with empty bullets.")
+                return ""
             else:
-                print(f"  [LLM Warning] Anthropic API returned status {response.status_code} for {company}")
+                logger.warning(f"Anthropic API returned status {response.status_code} for '{company}' — continuing with empty bullets.")
                 return ""
 
-        except Exception as e:
-            print(f"  [LLM Warning] Could not generate bullets for {company}: {str(e)}")
+        except httpx.TimeoutException:
+            logger.warning(f"Anthropic API call timed out for '{company}' — continuing pipeline with empty bullets.")
             return ""
-
-        return ""
+        except Exception as exc:
+            logger.warning(f"Could not generate bullets for '{company}' ({type(exc).__name__}: {str(exc)}) — continuing pipeline with empty bullets.")
+            return ""

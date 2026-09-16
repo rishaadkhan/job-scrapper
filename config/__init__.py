@@ -1,6 +1,9 @@
-"""Configuration constants for job scraper"""
+"""
+Configuration constants and settings for the Enterprise Job Scraper.
+Provides backward-compatible constants alongside the new Pydantic Settings system.
+"""
 import os
-from datetime import datetime
+from .settings import Settings, get_settings, settings, log_startup_capabilities
 
 # Scraping Configuration
 COMPANIES_PER_RUN = 999999
@@ -41,14 +44,15 @@ TECH_STACK_KEYWORDS = [
     "aws", "azure", "gcp", "cloud", "backend", "api", "python", "golang"
 ]
 
-# Resume & Scoring Configuration
-RESUME_FILE = os.getenv("RESUME_FILE", "resume.md")
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-3-5-sonnet-latest")
-LLM_SUGGESTION_THRESHOLD = int(os.getenv("LLM_SUGGESTION_THRESHOLD", "60"))
+# Dynamic settings resolved from environment / .env via Settings
+_active_settings = settings or (get_settings() if os.getenv("DATABASE_URL") else None)
 
-# Output Configuration
-OUTPUT_DIR = "output"
+RESUME_FILE = _active_settings.RESUME_FILE if _active_settings else os.getenv("RESUME_FILE", "resume.md")
+ANTHROPIC_API_KEY = _active_settings.ANTHROPIC_API_KEY if _active_settings else os.getenv("ANTHROPIC_API_KEY", "")
+ANTHROPIC_MODEL = _active_settings.ANTHROPIC_MODEL if _active_settings else os.getenv("ANTHROPIC_MODEL", "claude-3-5-sonnet-latest")
+LLM_SUGGESTION_THRESHOLD = _active_settings.LLM_SUGGESTION_THRESHOLD if _active_settings else int(os.getenv("LLM_SUGGESTION_THRESHOLD", "60"))
+OUTPUT_DIR = _active_settings.OUTPUT_DIR if _active_settings else os.getenv("OUTPUT_DIR", "output")
+
 STATE_FILE = "scraper_state.json"
 EXCEL_FILENAME_TEMPLATE = "High_Conversion_Job_Leads_{date}.xlsx"
 
@@ -73,3 +77,27 @@ EXCEL_COLUMNS = [
 
 # User Agent
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
+__all__ = [
+    "Settings",
+    "get_settings",
+    "settings",
+    "log_startup_capabilities",
+    "COMPANIES_PER_RUN",
+    "ROTATION_DAYS",
+    "REQUEST_TIMEOUT",
+    "RATE_LIMIT_DELAY",
+    "TARGET_LOCATIONS",
+    "BACKEND_KEYWORDS",
+    "EXCLUDE_KEYWORDS",
+    "TECH_STACK_KEYWORDS",
+    "RESUME_FILE",
+    "ANTHROPIC_API_KEY",
+    "ANTHROPIC_MODEL",
+    "LLM_SUGGESTION_THRESHOLD",
+    "OUTPUT_DIR",
+    "STATE_FILE",
+    "EXCEL_FILENAME_TEMPLATE",
+    "EXCEL_COLUMNS",
+    "USER_AGENT"
+]

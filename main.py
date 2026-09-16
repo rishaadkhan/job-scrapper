@@ -44,51 +44,71 @@ async def process_company(
     company_name = company['name']
 
     async with semaphore:
-        print(f"[{idx}/{total}] Scraping {company_name} (ATS: {ats_type})...")
-        raw_jobs = await fetch_company_jobs(company, client)
-        print(f"  [{company_name}] Found {len(raw_jobs)} raw listings")
+        try:
+            print(f"[{idx}/{total}] Scraping {company_name} (ATS: {ats_type})...")
+            raw_jobs = await fetch_company_jobs(company, client)
+            print(f"  [{company_name}] Found {len(raw_jobs)} raw listings")
 
-        valid_jobs = []
-        skipped_count = 0
+            valid_jobs = []
+            skipped_count = 0
 
-        for job in raw_jobs:
-            desc = job.get('description', '')
+            for job in raw_jobs:
+                desc = job.get('description', '')
 
-            # Validate page content (reject empty, 404, or SPA shells)
-            is_valid_page, reason = validate_job_page(desc)
-            if not is_valid_page:
-                skipped_count += 1
-                continue
+                # Validate page content (reject empty, 404, or SPA shells)
+                is_valid_page, reason = validate_job_page(desc)
+                if not is_valid_page:
+                    skipped_count += 1
+                    continue
 
-            # Apply business filtering (location, positive backend role, experience)
-            if JobFilter.filter_job(job, company):
-                job_id = f"{company_name}_{job['job_id']}"
-
-                async with state_lock:
-                    is_seen = state_manager.is_job_seen(job_id)
-
-                if not is_seen:
-                    # Enrich with match score, top keywords, missing keywords, and LLM bullets
-                    scored_job = await scorer.score_and_enrich_job(job, client)
-                    scored_job['scraped_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                # Apply business filtering (location, positive backend role, experience)
+                if JobFilter.filter_job(job, company):
+                    job_id = f"{company_name}_{job['job_id']}"
 
                     async with state_lock:
-                        valid_jobs.append(scored_job)
-                        state_manager.mark_job_seen(job_id, company_name)
+                        is_seen = state_manager.is_job_seen(job_id)
 
-                    print(f"  ✓ [{company_name}] '{job['title']}': Match Score {scored_job.get('match_score', 0)}/100")
+                    if not is_seen:
+                        # Enrich with match score, top keywords, missing keywords, and LLM bullets
+                        try:
+                            scored_job = await scorer.score_and_enrich_job(job, client)
+                        except Exception as exc:
+                            logger.warning(f"Error enriching '{job.get('title')}' at '{company_name}': {exc}")
+                            scored_job = dict(job)
+                            scored_job['match_score'] = 50
+                            scored_job['top_jd_keywords'] = []
+                            scored_job['missing_from_resume'] = []
+                            scored_job['suggested_bullets'] = ""
 
-        async with state_lock:
-            state_manager.mark_company_scraped(company_name, len(valid_jobs))
+                        scored_job['scraped_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-        return {
-            'company': company_name,
-            'ats': ats_type,
-            'raw_count': len(raw_jobs),
-            'valid_count': len(valid_jobs),
-            'skipped_count': skipped_count,
-            'valid_jobs': valid_jobs
-        }
+                        async with state_lock:
+                            valid_jobs.append(scored_job)
+                            state_manager.mark_job_seen(job_id, company_name)
+
+                        print(f"  ✓ [{company_name}] '{job['title']}': Match Score {scored_job.get('match_score', 0)}/100")
+
+            async with state_lock:
+                state_manager.mark_company_scraped(company_name, len(valid_jobs))
+
+            return {
+                'company': company_name,
+                'ats': ats_type,
+                'raw_count': len(raw_jobs),
+                'valid_count': len(valid_jobs),
+                'skipped_count': skipped_count,
+                'valid_jobs': valid_jobs
+            }
+        except Exception as exc:
+            logger.error(f"Failed to scrape company '{company_name}' ({ats_type}): {exc}")
+            return {
+                'company': company_name,
+                'ats': ats_type,
+                'raw_count': 0,
+                'valid_count': 0,
+                'skipped_count': 0,
+                'valid_jobs': []
+            }
 
 
 def print_yield_comparison(stats: List[Dict[str, Any]], total_companies: int, duration_sec: float):
@@ -152,6 +172,11 @@ async def async_main():
     print(f"Concurrency Limit: {MAX_CONCURRENT_COMPANIES} simultaneous workers")
     print(f"Resume Source    : {RESUME_FILE}\n")
 
+    print("Optional Feature Capabilities Status:")
+    from config.settings import log_startup_capabilities
+    log_startup_capabilities(custom_logger=logger)
+    print()
+
     state_manager = StateManager()
     exporter = ExcelExporter()
     scorer = JobScorer(resume_path=RESUME_FILE)
@@ -194,7 +219,13 @@ async def async_main():
             for i, company in enumerate(companies_to_scrape, 1)
         ]
 
-        results = await asyncio.gather(*tasks, return_exceptions=False)
+        raw_results = await asyncio.gather(*tasks, return_exceptions=True)
+        results = []
+        for r in raw_results:
+            if isinstance(r, Exception):
+                logger.error(f"Task worker error during scrape: {r}")
+            else:
+                results.append(r)
 
     all_valid_jobs = []
     for r in results:
