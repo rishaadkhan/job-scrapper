@@ -2,7 +2,7 @@
 import bcrypt
 from datetime import datetime, timedelta
 from typing import Optional
-from fastapi import Depends, status
+from fastapi import Depends, Query, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from sqlalchemy import select
@@ -14,7 +14,7 @@ from backend.models import User
 from backend.exceptions import AuthError, ForbiddenError, NotFoundError
 
 # OAuth2 scheme for Swagger UI & token header extraction
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token", auto_error=False)
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
@@ -45,14 +45,18 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
 
 
 async def get_current_user(
-    token: str = Depends(oauth2_scheme),
+    auth_header_token: Optional[str] = Depends(oauth2_scheme),
+    token_query: Optional[str] = Query(None, alias="token"),
     db: AsyncSession = Depends(get_db)
 ) -> User:
-    """Dependency that decodes Bearer JWT, validates signature, and returns the DB User."""
+    """Dependency that decodes Bearer JWT (or query parameter), validates signature, and returns the DB User."""
+    token = auth_header_token or token_query
     credentials_exception = AuthError(
         message="Could not validate credentials or token expired",
         details={"header": "WWW-Authenticate: Bearer"}
     )
+    if not token:
+        raise credentials_exception
     try:
         payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
         email: str = payload.get("sub")

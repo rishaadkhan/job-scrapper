@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import api from '../api/client'
 import type { FilterConfig, FilterConfigUpdate } from '../types'
-import { Save, Plus, X, AlertTriangle, SlidersHorizontal } from 'lucide-react'
+import { Save, Plus, AlertTriangle, SlidersHorizontal } from 'lucide-react'
 
 // Reusable editable tag-list with input
 function TagEditor({

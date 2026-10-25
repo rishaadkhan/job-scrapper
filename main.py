@@ -3,7 +3,7 @@ import asyncio
 import json
 import logging
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
 import httpx
 from ats_clients import fetch_company_jobs
@@ -164,10 +164,12 @@ def print_yield_comparison(stats: List[Dict[str, Any]], total_companies: int, du
     print("=" * 78 + "\n")
 
 
-async def async_main():
+async def async_main(run_id: Optional[int] = None):
     start_time_mono = time.monotonic()
-    start_time_dt = datetime.utcnow()
+    start_time_dt = datetime.now(timezone.utc).replace(tzinfo=None)
     print("=== Async Job Scraper Engine Started ===")
+    if run_id:
+        print(f"Tracking DB ScrapeRun ID : #{run_id}")
     print(f"Timestamp: {start_time_dt.strftime('%Y-%m-%d %H:%M:%S UTC')}")
     print(f"Concurrency Limit: {MAX_CONCURRENT_COMPANIES} simultaneous workers")
     print(f"Resume Source    : {RESUME_FILE}\n")
@@ -249,23 +251,26 @@ async def async_main():
         print("No new jobs to export in this run.")
 
     # Persist run results, leads, and export to Database
-    run_id: Optional[int] = None
+    logged_run_id: Optional[int] = run_id
     try:
         from backend.db_service import db_save_scrape_results
-        run_id = await db_save_scrape_results(
+        saved_id = await db_save_scrape_results(
             valid_jobs=all_valid_jobs,
             company_stats=results,
             start_time_dt=start_time_dt,
             duration_sec=duration,
-            export_filepath=export_filepath
+            export_filepath=export_filepath,
+            run_id=run_id
         )
+        if saved_id:
+            logged_run_id = saved_id
     except Exception as exc:
         logger.warning(f"Could not sync scrape run to DB: {exc}")
 
     # Send daily digest notification (Telegram primary, SMTP fallback)
     try:
         from notifier.digest import send_daily_digest
-        await send_daily_digest(valid_jobs=all_valid_jobs, run_id=run_id)
+        await send_daily_digest(valid_jobs=all_valid_jobs, run_id=logged_run_id)
     except Exception as exc:
         logger.warning(f"Digest notification failed (non-fatal): {exc}")
 

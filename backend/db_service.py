@@ -47,7 +47,8 @@ async def db_save_scrape_results(
     company_stats: List[Dict[str, Any]],
     start_time_dt: datetime,
     duration_sec: float,
-    export_filepath: Optional[str] = None
+    export_filepath: Optional[str] = None,
+    run_id: Optional[int] = None
 ) -> Optional[int]:
     """
     Persist all valid leads, update company scrape timestamps,
@@ -81,19 +82,38 @@ async def db_save_scrape_results(
                 if total_valid > 0 else 0.0
             )
 
-            run = ScrapeRun(
-                started_at=start_time_dt,
-                completed_at=utc_now(),
-                duration_sec=round(duration_sec, 2),
-                total_companies=len(company_stats),
-                companies_with_jobs=companies_with_jobs,
-                companies_zero_jobs=companies_zero,
-                total_raw_jobs=total_raw,
-                total_valid_leads=total_valid,
-                avg_match_score=avg_score,
-                status="completed"
-            )
-            db.add(run)
+            run: Optional[ScrapeRun] = None
+            if run_id:
+                stmt_run = select(ScrapeRun).where(ScrapeRun.id == run_id)
+                res = await db.execute(stmt_run)
+                run = res.scalar_one_or_none()
+
+            if run:
+                run.completed_at = utc_now()
+                run.duration_sec = round(duration_sec, 2)
+                run.total_companies = len(company_stats)
+                run.companies_with_jobs = companies_with_jobs
+                run.companies_zero_jobs = companies_zero
+                run.total_raw_jobs = total_raw
+                run.total_valid_leads = total_valid
+                run.avg_match_score = avg_score
+                run.status = "completed"
+                run.error_log = None
+            else:
+                run = ScrapeRun(
+                    started_at=start_time_dt,
+                    completed_at=utc_now(),
+                    duration_sec=round(duration_sec, 2),
+                    total_companies=len(company_stats),
+                    companies_with_jobs=companies_with_jobs,
+                    companies_zero_jobs=companies_zero,
+                    total_raw_jobs=total_raw,
+                    total_valid_leads=total_valid,
+                    avg_match_score=avg_score,
+                    status="completed"
+                )
+                db.add(run)
+
             await db.flush()
 
             # 4. If an Excel file was generated, record it in exports

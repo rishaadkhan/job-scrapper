@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
-import { Briefcase, Mail, Lock, AlertTriangle, Loader2 } from 'lucide-react'
+import { Briefcase, Mail, Lock, AlertTriangle } from 'lucide-react'
 
 export default function LoginPage() {
   const { login } = useAuth()

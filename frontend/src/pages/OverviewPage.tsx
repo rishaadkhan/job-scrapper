@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import api from '../api/client'
 import type { JobStats, ScrapeRun } from '../types'
 import { format } from 'date-fns'
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell
 } from 'recharts'
-import { TrendingUp, Users, Award, AlertCircle, Zap, Code2 } from 'lucide-react'
+import { TrendingUp, Users, Award, AlertCircle, Zap, Code2, Play } from 'lucide-react'
 
 export default function OverviewPage() {
   const [stats, setStats] = useState<JobStats | null>(null)
@@ -45,11 +46,16 @@ export default function OverviewPage() {
             <h1 className="page-title">Overview</h1>
             <p className="page-subtitle">Real-time pipeline health and job lead statistics</p>
           </div>
-          {latestRun && (
-            <span className={`badge ${latestRun.status === 'completed' ? 'badge-green' : latestRun.status === 'running' ? 'badge-accent' : 'badge-red'}`}>
-              Last run: {format(new Date(latestRun.started_at), 'MMM d, HH:mm')}
-            </span>
-          )}
+          <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+            {latestRun && (
+              <span className={`badge ${latestRun.status === 'completed' ? 'badge-green' : latestRun.status === 'running' ? 'badge-accent' : 'badge-red'}`}>
+                Last run: {format(new Date(latestRun.started_at), 'MMM d, HH:mm')}
+              </span>
+            )}
+            <Link to="/runs" className="btn btn-primary btn-sm">
+              <Play size={13} /> Run Scraper
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -130,7 +136,12 @@ export default function OverviewPage() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {runs.length === 0 ? (
-                <div className="empty-state">No runs recorded yet</div>
+                <div className="empty-state">
+                  <div style={{ marginBottom: 8 }}>No runs recorded yet</div>
+                  <Link to="/runs" className="btn btn-primary btn-sm">
+                    <Play size={13} /> Launch First Scrape Run
+                  </Link>
+                </div>
               ) : runs.map(run => (
                 <div key={run.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 12px', background: 'var(--bg-raised)', borderRadius: 8, border: '1px solid var(--border)' }}>
                   <div>

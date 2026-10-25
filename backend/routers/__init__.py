@@ -5,6 +5,7 @@ from backend.routers.filters import router as filters_router
 from backend.routers.jobs import router as jobs_router
 from backend.routers.runs import router as runs_router
 from backend.routers.exports import router as exports_router
+from backend.routers.resumes import router as resumes_router
 
 __all__ = [
     "auth_router",
@@ -12,5 +13,7 @@ __all__ = [
     "filters_router",
     "jobs_router",
     "runs_router",
-    "exports_router"
+    "exports_router",
+    "resumes_router"
 ]
+

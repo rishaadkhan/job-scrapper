@@ -1,16 +1,47 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import api from '../api/client'
-import type { Export, ExportListResponse, ExportRequest } from '../types'
+import type { Export, ExportListResponse, ExportRequest, JobListResponse } from '../types'
 import { format } from 'date-fns'
-import { Download, Trash2, Plus, FileSpreadsheet, AlertTriangle, X, Check } from 'lucide-react'
+import { Download, Trash2, Plus, FileSpreadsheet, AlertTriangle, X, RotateCcw } from 'lucide-react'
 
 // ── Generate Export Modal ──────────────────────────────────
 function GenerateModal({ onClose, onDone }: { onClose: () => void; onDone: () => void }) {
   const [form, setForm] = useState<ExportRequest>({ min_score: undefined, limit: 1000 })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [matchCount, setMatchCount] = useState<number | null>(null)
+  const [checkingCount, setCheckingCount] = useState(false)
+  const debounceTimer = useRef<any>(null)
 
-  const set = (k: keyof ExportRequest, v: any) => setForm(f => ({ ...f, [k]: v || undefined }))
+  const set = (k: keyof ExportRequest, v: any) => {
+    setForm(f => ({ ...f, [k]: v || undefined }))
+  }
+
+  // Live count preview
+  useEffect(() => {
+    clearTimeout(debounceTimer.current)
+    debounceTimer.current = setTimeout(async () => {
+      setCheckingCount(true)
+      try {
+        const params = new URLSearchParams()
+        params.append('page', '1')
+        params.append('page_size', '1')
+        if (form.min_score !== undefined) params.append('min_score', String(form.min_score))
+        if (form.company) params.append('company', form.company)
+        if (form.date_from) params.append('date_from', form.date_from)
+        if (form.date_to) params.append('date_to', form.date_to)
+
+        const { data: res } = await api.get<JobListResponse>(`/jobs?${params.toString()}`)
+        setMatchCount(res.total)
+      } catch {
+        setMatchCount(null)
+      } finally {
+        setCheckingCount(false)
+      }
+    }, 250)
+
+    return () => clearTimeout(debounceTimer.current)
+  }, [form.min_score, form.company, form.date_from, form.date_to])
 
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -24,6 +55,10 @@ function GenerateModal({ onClose, onDone }: { onClose: () => void; onDone: () =>
     } finally {
       setLoading(false)
     }
+  }
+
+  const clearDates = () => {
+    setForm(f => ({ ...f, date_from: undefined, date_to: undefined }))
   }
 
   return (
@@ -40,23 +75,40 @@ function GenerateModal({ onClose, onDone }: { onClose: () => void; onDone: () =>
           <div className="grid-2">
             <div className="form-group">
               <label className="label">Min Match Score</label>
-              <input type="number" min={0} max={100} className="input" placeholder="0 = all" value={form.min_score ?? ''} onChange={e => set('min_score', parseInt(e.target.value))} />
+              <input type="number" min={0} max={100} className="input" placeholder="0 = all" value={form.min_score ?? ''} onChange={e => set('min_score', e.target.value ? parseInt(e.target.value) : undefined)} />
             </div>
             <div className="form-group">
               <label className="label">Max Rows</label>
-              <input type="number" min={1} max={5000} className="input" value={form.limit ?? 1000} onChange={e => set('limit', parseInt(e.target.value))} />
+              <input type="number" min={1} max={5000} className="input" value={form.limit ?? 1000} onChange={e => set('limit', parseInt(e.target.value) || 1000)} />
             </div>
           </div>
 
           <div className="grid-2">
             <div className="form-group">
-              <label className="label">Date From</label>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <label className="label">Date From</label>
+                {form.date_from && (
+                  <button type="button" onClick={() => set('date_from', undefined)} style={{ background: 'none', border: 'none', color: 'var(--accent)', fontSize: 11, cursor: 'pointer', padding: 0 }}>
+                    Clear
+                  </button>
+                )}
+              </div>
               <input type="date" className="input" value={form.date_from ?? ''} onChange={e => set('date_from', e.target.value)} />
             </div>
             <div className="form-group">
-              <label className="label">Date To</label>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <label className="label">Date To</label>
+                {form.date_to && (
+                  <button type="button" onClick={() => set('date_to', undefined)} style={{ background: 'none', border: 'none', color: 'var(--accent)', fontSize: 11, cursor: 'pointer', padding: 0 }}>
+                    Clear
+                  </button>
+                )}
+              </div>
               <input type="date" className="input" value={form.date_to ?? ''} onChange={e => set('date_to', e.target.value)} />
             </div>
+          </div>
+          <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: -6 }}>
+            💡 Tip: Leave both date fields empty to export all available leads in the database.
           </div>
 
           <div className="form-group">
@@ -64,9 +116,47 @@ function GenerateModal({ onClose, onDone }: { onClose: () => void; onDone: () =>
             <input className="input" placeholder="Leave blank for all" value={form.company ?? ''} onChange={e => set('company', e.target.value)} />
           </div>
 
+          {/* Lead count preview badge */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            background: 'var(--bg-subtle, rgba(255,255,255,0.04))',
+            padding: '10px 14px',
+            borderRadius: 6,
+            border: '1px solid var(--border-subtle, rgba(255,255,255,0.08))',
+            fontSize: 12
+          }}>
+            <span style={{ color: 'var(--text-secondary)' }}>Matching leads ready to export:</span>
+            <span style={{ fontWeight: 700, color: matchCount === 0 ? 'var(--red)' : 'var(--green)' }}>
+              {checkingCount ? 'Checking…' : matchCount !== null ? `${matchCount.toLocaleString()} leads` : '—'}
+            </span>
+          </div>
+
+          {matchCount === 0 && (
+            <div className="alert alert-warn" style={{ fontSize: 12, padding: '10px 12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span>No leads match these criteria. Try clearing the date filters or running a scrape.</span>
+              {(form.date_from || form.date_to) && (
+                <button
+                  type="button"
+                  className="btn btn-ghost btn-sm"
+                  style={{ height: 'auto', padding: '3px 8px', fontSize: 11 }}
+                  onClick={clearDates}
+                >
+                  <RotateCcw size={11} /> Clear Dates
+                </button>
+              )}
+            </div>
+          )}
+
           <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginTop: 6 }}>
             <button type="button" className="btn btn-ghost" onClick={onClose}>Cancel</button>
-            <button type="submit" className="btn btn-primary" disabled={loading}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={loading || matchCount === 0}
+              title={matchCount === 0 ? "No matching leads to export" : "Generate Excel spreadsheet"}
+            >
               {loading ? <div className="spinner" style={{ width: 14, height: 14 }} /> : <FileSpreadsheet size={14} />}
               Generate Excel
             </button>
@@ -83,6 +173,7 @@ export default function ExportsPage() {
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
   const [deleting, setDeleting] = useState<number | null>(null)
+  const [downloadingId, setDownloadingId] = useState<number | null>(null)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -107,9 +198,33 @@ export default function ExportsPage() {
     }
   }
 
-  const handleDownload = (exp: Export) => {
-    // Open the download URL in a new tab — browser will prompt file download
-    window.open(`/api${exp.download_url}`, '_blank')
+  const handleDownload = async (exp: Export) => {
+    setDownloadingId(exp.id)
+    try {
+      // 1. Fetch via authenticated Axios instance (carries Bearer token in headers)
+      const res = await api.get(exp.download_url, { responseType: 'blob' })
+      const blob = new Blob([res.data], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+      })
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.setAttribute('download', exp.filename)
+      document.body.appendChild(link)
+      link.click()
+      link.remove()
+      window.URL.revokeObjectURL(url)
+    } catch (err: any) {
+      console.error('Blob download failed, falling back to direct token query:', err)
+      const token = localStorage.getItem('access_token')
+      if (token) {
+        window.open(`/api${exp.download_url}?token=${encodeURIComponent(token)}`, '_blank')
+      } else {
+        alert('Download failed. Please log in again.')
+      }
+    } finally {
+      setDownloadingId(null)
+    }
   }
 
   return (
@@ -196,9 +311,15 @@ export default function ExportsPage() {
                       <button
                         className="btn btn-green btn-sm"
                         onClick={() => handleDownload(exp)}
+                        disabled={downloadingId === exp.id}
                         title="Download Excel"
                       >
-                        <Download size={13} /> Download
+                        {downloadingId === exp.id ? (
+                          <div className="spinner" style={{ width: 13, height: 13 }} />
+                        ) : (
+                          <Download size={13} />
+                        )}
+                        {downloadingId === exp.id ? 'Downloading...' : 'Download'}
                       </button>
                       <button
                         className="btn btn-danger btn-icon btn-sm"

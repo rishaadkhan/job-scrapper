@@ -53,6 +53,9 @@ class Job(Base):
     created_at = Column(DateTime, default=utc_now, nullable=False)
 
 
+    applications = relationship("Application", back_populates="job", cascade="all, delete-orphan")
+
+
 class ScrapeRun(Base):
     """Telemetry and execution logs for automated scrape runs"""
     __tablename__ = "scrape_runs"
@@ -101,6 +104,9 @@ class User(Base):
     created_at = Column(DateTime, default=utc_now, nullable=False)
     last_login_at = Column(DateTime, nullable=True)
 
+    resumes = relationship("Resume", back_populates="user", cascade="all, delete-orphan")
+    applications = relationship("Application", back_populates="user", cascade="all, delete-orphan")
+
 
 class ExportRecord(Base):
     """Generated Excel extract tracking and download management"""
@@ -113,3 +119,53 @@ class ExportRecord(Base):
     avg_match_score = Column(Float, default=0.0)
     created_at = Column(DateTime, default=utc_now, nullable=False)
     deleted_at = Column(DateTime, nullable=True)
+
+
+class Resume(Base):
+    """Candidate LaTeX resume templates, versions, and compiled references"""
+    __tablename__ = "resumes"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    label = Column(String(255), nullable=False)
+    latex_source = Column(Text, nullable=False)
+    is_master = Column(Boolean, default=False, nullable=False, index=True)
+    pdf_url = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=utc_now, nullable=False)
+    updated_at = Column(DateTime, default=utc_now, onupdate=utc_now, nullable=False)
+
+    user = relationship("User", back_populates="resumes")
+    applications = relationship("Application", back_populates="resume")
+
+
+class Application(Base):
+    """Job application tracker linking candidate resumes to scraped job leads"""
+    __tablename__ = "applications"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    job_id = Column(Integer, ForeignKey("jobs.id", ondelete="CASCADE"), nullable=False, index=True)
+    resume_id = Column(Integer, ForeignKey("resumes.id", ondelete="SET NULL"), nullable=True, index=True)
+    status = Column(String(50), default="not_applied", nullable=False, index=True)
+    applied_date = Column(DateTime, nullable=True)
+    notes = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=utc_now, nullable=False)
+    updated_at = Column(DateTime, default=utc_now, onupdate=utc_now, nullable=False)
+
+    user = relationship("User", back_populates="applications")
+    job = relationship("Job", back_populates="applications")
+    resume = relationship("Resume", back_populates="applications")
+
+
+class LLMCall(Base):
+    """Observability log tracking LLM attempts, fallbacks, and latencies across models"""
+    __tablename__ = "llm_calls"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    model_used = Column(String(255), nullable=False, index=True)
+    success = Column(Boolean, default=True, nullable=False, index=True)
+    latency_ms = Column(Float, default=0.0, nullable=False)
+    purpose = Column(String(255), default="bullet_generation", nullable=False)
+    error_message = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=utc_now, nullable=False, index=True)
+

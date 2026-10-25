@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import api from '../api/client'
 import type { Job, JobListResponse } from '../types'
 import { Search, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'

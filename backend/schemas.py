@@ -217,6 +217,75 @@ class ExportListResponse(BaseModel):
     total: int
 
 
+# --- Resume Schemas ---
+class ResumeBase(BaseModel):
+    label: str = Field(..., min_length=1, max_length=255)
+    is_master: bool = False
+    pdf_url: Optional[str] = None
+
+
+class ResumeCreate(ResumeBase):
+    latex_source: str = Field(..., min_length=1)
+
+
+class ResumeUpdate(BaseModel):
+    label: Optional[str] = None
+    latex_source: Optional[str] = None
+    is_master: Optional[bool] = None
+    pdf_url: Optional[str] = None
+
+
+class ResumeResponse(ResumeBase):
+    id: int
+    user_id: int
+    latex_source: str
+    created_at: datetime
+    updated_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class ResumeListResponse(BaseModel):
+    items: List[ResumeResponse]
+    total: int
+    page: int = 1
+    page_size: int = 50
+
+
+# --- Application Schemas ---
+class ApplicationBase(BaseModel):
+    job_id: int
+    resume_id: Optional[int] = None
+    status: str = "not_applied"
+    applied_date: Optional[datetime] = None
+    notes: Optional[str] = None
+
+
+class ApplicationCreate(ApplicationBase):
+    pass
+
+
+class ApplicationUpdate(BaseModel):
+    status: Optional[str] = None
+    applied_date: Optional[datetime] = None
+    notes: Optional[str] = None
+    resume_id: Optional[int] = None
+
+
+class ApplicationResponse(ApplicationBase):
+    id: int
+    user_id: int
+    created_at: datetime
+    updated_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class ApplicationListResponse(BaseModel):
+    items: List[ApplicationResponse]
+    total: int
+
+
 # --- Standard Error Response ---
 class ErrorResponse(BaseModel):
     error: str
@@ -224,3 +293,4 @@ class ErrorResponse(BaseModel):
     detail: str
     timestamp: datetime = Field(default_factory=utc_now)
     details: Optional[Dict[str, Any]] = None
+

@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import api from '../api/client'
-import type { Company, CompanyListResponse, CompanyCreate, CompanyUpdate } from '../types'
+import type { Company, CompanyListResponse, CompanyCreate } from '../types'
 import { Plus, Search, Edit2, Trash2, AlertTriangle, X, Check } from 'lucide-react'
 
 const ATS_OPTIONS = ['greenhouse', 'lever', 'ashby', 'smartrecruiters', 'workday', 'html_fallback']
@@ -165,7 +165,6 @@ export default function CompaniesPage() {
   const [atsFilter, setAtsFilter] = useState('')
   const [activeOnly, setActiveOnly] = useState(true)
   const [loading, setLoading] = useState(true)
-  const [modalCompany, setModalCompany] = useState<Company | null | 'new'>('new' as any)
   const [showModal, setShowModal] = useState(false)
   const [editTarget, setEditTarget] = useState<Company | null>(null)
 

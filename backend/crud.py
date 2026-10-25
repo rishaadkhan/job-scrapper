@@ -5,9 +5,13 @@ from typing import List, Optional, Tuple, Dict, Any
 from sqlalchemy import select, update, delete, func, or_, and_, desc
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.models import Company, Job, ScrapeRun, FilterConfig, User, ExportRecord
+from backend.models import (
+    Company, Job, ScrapeRun, FilterConfig, User, ExportRecord,
+    Resume, Application, LLMCall
+)
 from backend.schemas import (
-    CompanyCreate, CompanyUpdate, FilterConfigUpdate, JobCreate, UserCreate
+    CompanyCreate, CompanyUpdate, FilterConfigUpdate, JobCreate, UserCreate,
+    ResumeCreate, ResumeUpdate, ApplicationCreate, ApplicationUpdate
 )
 from backend.exceptions import NotFoundError, ConflictError
 from backend.config import utc_now
@@ -220,7 +224,9 @@ async def get_jobs(
             pass
     if date_to:
         try:
-            dt = datetime.fromisoformat(date_to)
+            dt = datetime.fromisoformat(date_to.strip())
+            if len(date_to.strip()) == 10:
+                dt = dt.replace(hour=23, minute=59, second=59, microsecond=999999)
             clauses.append(Job.scraped_at <= dt)
         except Exception:
             pass
@@ -317,6 +323,12 @@ async def get_scrape_runs(db: AsyncSession, page: int = 1, page_size: int = 20) 
     total = (await db.execute(count_stmt)).scalar_one()
     items = list((await db.execute(stmt)).scalars().all())
     return items, total
+
+
+async def get_active_scrape_run(db: AsyncSession) -> Optional[ScrapeRun]:
+    stmt = select(ScrapeRun).where(ScrapeRun.status == "running").order_by(desc(ScrapeRun.id))
+    result = await db.execute(stmt)
+    return result.scalars().first()
 
 
 async def create_scrape_run(db: AsyncSession, status: str = "running") -> ScrapeRun:
@@ -416,3 +428,115 @@ async def delete_export_record(db: AsyncSession, export_id: int) -> bool:
     record.deleted_at = utc_now()
     await db.commit()
     return True
+
+
+# --- Resume Operations ---
+
+async def create_resume(
+    db: AsyncSession,
+    user_id: int,
+    label: str,
+    latex_source: str,
+    is_master: bool = False,
+    pdf_url: Optional[str] = None
+) -> Resume:
+    """Create a new resume template. If marked as master, unsets previous master for this user."""
+    if is_master:
+        # Demote any current master resume for this user
+        demote_stmt = (
+            update(Resume)
+            .where(and_(Resume.user_id == user_id, Resume.is_master.is_(True)))
+            .values(is_master=False, updated_at=utc_now())
+        )
+        await db.execute(demote_stmt)
+
+    resume = Resume(
+        user_id=user_id,
+        label=label.strip(),
+        latex_source=latex_source,
+        is_master=is_master,
+        pdf_url=pdf_url,
+        created_at=utc_now(),
+        updated_at=utc_now()
+    )
+    db.add(resume)
+    await db.commit()
+    await db.refresh(resume)
+    return resume
+
+
+async def get_resumes(
+    db: AsyncSession,
+    user_id: int,
+    page: int = 1,
+    page_size: int = 50
+) -> Tuple[List[Resume], int]:
+    """Retrieve paginated resumes belonging to a user, prioritizing master resume."""
+    count_stmt = select(func.count(Resume.id)).where(Resume.user_id == user_id)
+    total = (await db.execute(count_stmt)).scalar() or 0
+
+    offset = (page - 1) * page_size
+    stmt = (
+        select(Resume)
+        .where(Resume.user_id == user_id)
+        .order_by(desc(Resume.is_master), desc(Resume.created_at))
+        .offset(offset)
+        .limit(page_size)
+    )
+    result = await db.execute(stmt)
+    return list(result.scalars().all()), total
+
+
+async def get_resume_by_id(
+    db: AsyncSession,
+    resume_id: int,
+    user_id: Optional[int] = None
+) -> Optional[Resume]:
+    """Fetch resume by ID with optional user authorization scoping."""
+    conditions = [Resume.id == resume_id]
+    if user_id is not None:
+        conditions.append(Resume.user_id == user_id)
+    stmt = select(Resume).where(and_(*conditions))
+    result = await db.execute(stmt)
+    return result.scalar_one_or_none()
+
+
+async def delete_resume(
+    db: AsyncSession,
+    resume_id: int,
+    user_id: Optional[int] = None
+) -> Optional[Resume]:
+    """Permanently delete a resume record by ID."""
+    resume = await get_resume_by_id(db, resume_id, user_id=user_id)
+    if not resume:
+        return None
+
+    await db.delete(resume)
+    await db.commit()
+    return resume
+
+
+# --- LLM Log Operations ---
+
+async def log_llm_call(
+    db: AsyncSession,
+    model_used: str,
+    success: bool,
+    latency_ms: float,
+    purpose: str = "bullet_generation",
+    error_message: Optional[str] = None
+) -> LLMCall:
+    """Record single LLM model attempt into llm_calls table for observability."""
+    record = LLMCall(
+        model_used=model_used,
+        success=success,
+        latency_ms=latency_ms,
+        purpose=purpose,
+        error_message=error_message,
+        created_at=utc_now()
+    )
+    db.add(record)
+    await db.commit()
+    await db.refresh(record)
+    return record
+

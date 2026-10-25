@@ -48,10 +48,15 @@ TECH_STACK_KEYWORDS = [
 _active_settings = settings or (get_settings() if os.getenv("DATABASE_URL") else None)
 
 RESUME_FILE = _active_settings.RESUME_FILE if _active_settings else os.getenv("RESUME_FILE", "resume.md")
+OPENROUTER_API_KEY = _active_settings.OPENROUTER_API_KEY if _active_settings else os.getenv("OPENROUTER_API_KEY", "")
+OPENROUTER_MODEL_PRIORITY = _active_settings.OPENROUTER_MODEL_PRIORITY if _active_settings else [
+    m.strip() for m in os.getenv("OPENROUTER_MODEL_PRIORITY", "anthropic/claude-3.5-sonnet,openai/gpt-4o-mini").split(",") if m.strip()
+]
 ANTHROPIC_API_KEY = _active_settings.ANTHROPIC_API_KEY if _active_settings else os.getenv("ANTHROPIC_API_KEY", "")
 ANTHROPIC_MODEL = _active_settings.ANTHROPIC_MODEL if _active_settings else os.getenv("ANTHROPIC_MODEL", "claude-3-5-sonnet-latest")
 LLM_SUGGESTION_THRESHOLD = _active_settings.LLM_SUGGESTION_THRESHOLD if _active_settings else int(os.getenv("LLM_SUGGESTION_THRESHOLD", "60"))
 OUTPUT_DIR = _active_settings.OUTPUT_DIR if _active_settings else os.getenv("OUTPUT_DIR", "output")
+
 
 STATE_FILE = "scraper_state.json"
 EXCEL_FILENAME_TEMPLATE = "High_Conversion_Job_Leads_{date}.xlsx"

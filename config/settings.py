@@ -48,7 +48,25 @@ class Settings(BaseSettings):
     # 2. OPTIONAL INTEGRATIONS (Graceful degradation — app runs without them)
     # =========================================================================
     
-    # ── Anthropic Claude LLM (Resume bullet suggestions) ──────────────────
+    # ── OpenRouter LLM (Multi-Model Resume Tailoring) ─────────────────────
+    OPENROUTER_API_KEY: Optional[str] = Field(
+        default="",
+        description="OpenRouter API key for LLM resume tailoring with model fallback. If omitted, bullet tailoring is disabled."
+    )
+    openrouter_model_priority_raw: Union[str, List[str]] = Field(
+        default="anthropic/claude-3.5-sonnet,openai/gpt-4o-mini",
+        alias="OPENROUTER_MODEL_PRIORITY",
+        description="Comma-separated ordered list of OpenRouter model slugs to try in priority order"
+    )
+
+    @property
+    def OPENROUTER_MODEL_PRIORITY(self) -> List[str]:
+        val = self.openrouter_model_priority_raw
+        if isinstance(val, str):
+            return [m.strip() for m in val.split(",") if m.strip()]
+        return list(val)
+
+    # ── Legacy Anthropic Claude LLM (Fallback / Backward Compatibility) ──
     ANTHROPIC_API_KEY: Optional[str] = Field(
         default="",
         description="Anthropic API key for Claude resume bullet suggestions. If omitted, bullet generation is disabled."
@@ -65,6 +83,35 @@ class Settings(BaseSettings):
         default="resume.md",
         description="Path to candidate resume markdown file"
     )
+
+    # ── Sandboxed LaTeX Compiler Service ─────────────────────────────────
+    LATEX_COMPILER_URL: str = Field(
+        default="http://localhost:8001",
+        description="Internal HTTP URL for sandboxed Tectonic LaTeX compiler microservice"
+    )
+
+    # ── Cloudflare R2 (S3-Compatible) Object Storage ──────────────────────
+    R2_ACCESS_KEY: Optional[str] = Field(
+        default="",
+        description="Cloudflare R2 access key ID"
+    )
+    R2_SECRET_KEY: Optional[str] = Field(
+        default="",
+        description="Cloudflare R2 secret access key"
+    )
+    R2_BUCKET: Optional[str] = Field(
+        default="",
+        description="Cloudflare R2 storage bucket name"
+    )
+    R2_ENDPOINT: Optional[str] = Field(
+        default="",
+        description="Cloudflare R2 endpoint URL (https://<account_id>.r2.cloudflarestorage.com)"
+    )
+    R2_PUBLIC_URL: Optional[str] = Field(
+        default="",
+        description="Optional public domain or CDN URL prefix for direct PDF downloads"
+    )
+
 
     # ── Observability (Sentry & Heartbeat) ────────────────────────────────
     SENTRY_DSN: Optional[str] = Field(
@@ -190,9 +237,27 @@ class Settings(BaseSettings):
     # CAPABILITY PROPERTIES
     # =========================================================================
     @property
+    def is_openrouter_enabled(self) -> bool:
+        """True if OpenRouter API key is configured."""
+        return bool(self.OPENROUTER_API_KEY and self.OPENROUTER_API_KEY.strip())
+
+    @property
     def is_bullet_generation_enabled(self) -> bool:
-        """True if Anthropic API key is configured."""
-        return bool(self.ANTHROPIC_API_KEY and self.ANTHROPIC_API_KEY.strip())
+        """True if OpenRouter or Anthropic API key is configured."""
+        return bool(
+            (self.OPENROUTER_API_KEY and self.OPENROUTER_API_KEY.strip()) or
+            (self.ANTHROPIC_API_KEY and self.ANTHROPIC_API_KEY.strip())
+        )
+
+    @property
+    def is_r2_storage_enabled(self) -> bool:
+        """True if Cloudflare R2 credentials, bucket, and endpoint are configured."""
+        return bool(
+            self.R2_ACCESS_KEY and self.R2_ACCESS_KEY.strip() and
+            self.R2_SECRET_KEY and self.R2_SECRET_KEY.strip() and
+            self.R2_BUCKET and self.R2_BUCKET.strip() and
+            self.R2_ENDPOINT and self.R2_ENDPOINT.strip()
+        )
 
     @property
     def is_telegram_digest_enabled(self) -> bool:
@@ -255,36 +320,46 @@ def log_startup_capabilities(custom_settings: Optional[Settings] = None, custom_
 
     lines = []
 
-    # 1. Resume bullet suggestions
-    if cfg.is_bullet_generation_enabled:
-        lines.append("Resume bullet suggestions: ENABLED")
+    # 1. Resume tailoring (OpenRouter / Anthropic)
+    if cfg.is_openrouter_enabled:
+        lines.append(f"Resume bullet suggestions: ENABLED (Resume tailoring: ENABLED - OpenRouter models: {', '.join(cfg.OPENROUTER_MODEL_PRIORITY)})")
+    elif cfg.ANTHROPIC_API_KEY and cfg.ANTHROPIC_API_KEY.strip():
+        lines.append(f"Resume bullet suggestions: ENABLED (Resume tailoring: ENABLED - Legacy Anthropic: {cfg.ANTHROPIC_MODEL})")
     else:
-        lines.append("Resume bullet suggestions: DISABLED (ANTHROPIC_API_KEY not set)")
+        lines.append("Resume bullet suggestions: DISABLED (Resume tailoring: DISABLED)")
 
-    # 2. Telegram digest
+
+    # 2. Cloudflare R2 object storage
+    if cfg.is_r2_storage_enabled:
+        lines.append(f"Cloudflare R2 PDF storage: ENABLED (Bucket: {cfg.R2_BUCKET})")
+    else:
+        lines.append("Cloudflare R2 PDF storage: DISABLED (R2 credentials/bucket not set)")
+
+    # 3. Telegram digest
     if cfg.is_telegram_digest_enabled:
         lines.append("Telegram digest: ENABLED")
     else:
         reason = "TELEGRAM_BOT_TOKEN not set" if not cfg.TELEGRAM_BOT_TOKEN else "TELEGRAM_CHAT_ID not set"
         lines.append(f"Telegram digest: DISABLED ({reason})")
 
-    # 3. SMTP email digest
+    # 4. SMTP email digest
     if cfg.is_smtp_digest_enabled:
         lines.append("SMTP email digest: ENABLED")
     else:
         lines.append("SMTP email digest: DISABLED (SMTP credentials/recipient not set)")
 
-    # 4. Sentry error tracking
+    # 5. Sentry error tracking
     if cfg.is_sentry_enabled:
         lines.append("Sentry error tracking: ENABLED")
     else:
         lines.append("Sentry error tracking: DISABLED (SENTRY_DSN not set)")
 
-    # 5. Heartbeat monitoring
+    # 6. Heartbeat monitoring
     if cfg.is_heartbeat_enabled:
         lines.append("Heartbeat monitoring: ENABLED")
     else:
         lines.append("Heartbeat monitoring: DISABLED (HEARTBEAT_URL not set)")
+
 
     log_fn = custom_logger.info if custom_logger else print
     for line in lines:

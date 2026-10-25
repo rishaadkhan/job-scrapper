@@ -1,0 +1,97 @@
+================================================================================
+                    COMPANY INGESTION SUMMARY REPORT
+================================================================================
+Execution Time   : 2026-09-25T15:28:19.822433Z
+Storage Target   : sqlite+aiosqlite:///jobscraper.db
+Dry Run Mode     : NO (Live DB Updates)
+Total Processed  : 15
+Added (Verified) : 7
+Flagged Dups     : 6 (Flagged for manual review, NOT added)
+ATS Unresolved   : 2 (Marked 'unknown', flagged for follow-up)
+================================================================================
+
+--- 1. VERIFIED & ADDED TO DATABASE (7) ---
+  ✓ Monzo
+    - Category : Tier-1 GCC
+    - ATS      : greenhouse (token: monzo)
+    - URL      : https://boards.greenhouse.io/monzo
+  ✓ Brex
+    - Category : Unicorn
+    - ATS      : greenhouse (token: brex)
+    - URL      : https://boards.greenhouse.io/brex
+  ✓ Supabase
+    - Category : High-Paying Startup
+    - ATS      : ashby (token: supabase)
+    - URL      : https://jobs.ashbyhq.com/supabase
+  ✓ Modal
+    - Category : High-Paying Startup
+    - ATS      : ashby (token: modal)
+    - URL      : https://jobs.ashbyhq.com/modal
+  ✓ Resend
+    - Category : High-Paying Startup
+    - ATS      : ashby (token: resend)
+    - URL      : https://jobs.ashbyhq.com/resend
+  ✓ Warp
+    - Category : High-Paying Startup
+    - ATS      : greenhouse (token: warp)
+    - URL      : https://boards.greenhouse.io/warp
+  ✓ Palantir Technologies
+    - Category : Big MNC
+    - ATS      : lever (token: palantir)
+    - URL      : https://jobs.lever.co/palantir
+
+--- 2. FLAGGED DUPLICATES & NEAR-MATCHES (6) ---
+  [!] Candidate: 'Zoom'
+      - Matched Existing : 'Zoom India'
+      - Match Type       : Normalized Base Match
+      - Similarity Score : 0.99
+      - Reason           : Candidate 'Zoom' matches existing 'Zoom India' after stripping corporate/geographic suffixes (normalized base: 'zoom').
+      - Existing URL     : https://careers.zoom.us/jobs/search?location=India
+      - Action           : FLAGGED FOR MANUAL REVIEW (Not inserted)
+  [!] Candidate: 'Nutanix'
+      - Matched Existing : 'Nutanix India'
+      - Match Type       : Normalized Base Match
+      - Similarity Score : 0.99
+      - Reason           : Candidate 'Nutanix' matches existing 'Nutanix India' after stripping corporate/geographic suffixes (normalized base: 'nutanix').
+      - Existing URL     : https://jobs.nutanix.com/search/?q=&location=India
+      - Action           : FLAGGED FOR MANUAL REVIEW (Not inserted)
+  [!] Candidate: 'Cisco Systems India Pvt Ltd'
+      - Matched Existing : 'Cisco India'
+      - Match Type       : Normalized Base Match
+      - Similarity Score : 0.99
+      - Reason           : Candidate 'Cisco Systems India Pvt Ltd' matches existing 'Cisco India' after stripping corporate/geographic suffixes (normalized base: 'cisco').
+      - Existing URL     : https://jobs.cisco.com/jobs/SearchJobs/?location=India
+      - Action           : FLAGGED FOR MANUAL REVIEW (Not inserted)
+  [!] Candidate: 'Chargebee Technologies Pvt Ltd'
+      - Matched Existing : 'Chargebee'
+      - Match Type       : Normalized Base Match
+      - Similarity Score : 0.99
+      - Reason           : Candidate 'Chargebee Technologies Pvt Ltd' matches existing 'Chargebee' after stripping corporate/geographic suffixes (normalized base: 'chargebee').
+      - Existing URL     : https://www.chargebee.com/careers/jobs/
+      - Action           : FLAGGED FOR MANUAL REVIEW (Not inserted)
+  [!] Candidate: 'Ramp Technologies Inc'
+      - Matched Existing : 'Ramp'
+      - Match Type       : Normalized Base Match
+      - Similarity Score : 0.99
+      - Reason           : Candidate 'Ramp Technologies Inc' matches existing 'Ramp' after stripping corporate/geographic suffixes (normalized base: 'ramp').
+      - Existing URL     : https://jobs.ashbyhq.com/ramp
+      - Action           : FLAGGED FOR MANUAL REVIEW (Not inserted)
+  [!] Candidate: 'Plaid'
+      - Matched Existing : 'Plaid India'
+      - Match Type       : Normalized Base Match
+      - Similarity Score : 0.99
+      - Reason           : Candidate 'Plaid' matches existing 'Plaid India' after stripping corporate/geographic suffixes (normalized base: 'plaid').
+      - Existing URL     : https://plaid.com/careers/openings/?location=India
+      - Action           : FLAGGED FOR MANUAL REVIEW (Not inserted)
+
+--- 3. ATS UNRESOLVED - MARKED 'unknown' (2) ---
+  [?] Candidate: 'Initech Software Solutions'
+      - ATS Status       : unknown
+      - Probed Platforms : Greenhouse, Lever, Ashby, SmartRecruiters, Workday
+      - Manual Action    : Search official career portal or inspect network API for 'Initech Software Solutions'.
+  [?] Candidate: 'Acme Cloud Platforms'
+      - ATS Status       : unknown
+      - Probed Platforms : Greenhouse, Lever, Ashby, SmartRecruiters, Workday
+      - Manual Action    : Search official career portal or inspect network API for 'Acme Cloud Platforms'.
+
+================================================================================

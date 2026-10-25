@@ -25,13 +25,17 @@ services:
     environment:
       DATABASE_URL: sqlite+aiosqlite:////data/jobscraper.db
       OUTPUT_DIR: /data/output
+      LATEX_COMPILER_URL: http://latex-compiler:8001
     ports:
       - "8000:8000"
     volumes:
       - jobscraper_data:/data
       # Mount resume file from host so it can be updated without rebuild
       - ./resume.md:/app/resume.md:ro
+    depends_on:
+      - latex-compiler
     healthcheck:
+
       test: ["CMD", "python", "-c",
              "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
       interval: 30s
@@ -77,6 +81,21 @@ services:
     depends_on:
       - api
 
+  # ── Sandboxed LaTeX Compiler (Tectonic) ─────────────────────
+  # Internal service only: not mapped to host ports; reached via Railway private network or docker network
+  latex-compiler:
+    build:
+      context: ./services/latex-compiler
+      dockerfile: Dockerfile
+    image: jobscraper-latex-compiler:latest
+    container_name: jobscraper_latex_compiler
+    restart: unless-stopped
+    expose:
+      - "8001"
+    environment:
+      PYTHONUNBUFFERED: "1"
+
 volumes:
   jobscraper_data:
     driver: local
+

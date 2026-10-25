@@ -34,14 +34,29 @@ ADMIN_EMAIL: str = _cfg.ADMIN_EMAIL if _cfg else os.getenv("ADMIN_EMAIL", "admin
 ADMIN_PASSWORD: str = _cfg.ADMIN_PASSWORD if _cfg else os.getenv("ADMIN_PASSWORD", "admin123")
 
 # LLM & Resume
+OPENROUTER_API_KEY: str = _cfg.OPENROUTER_API_KEY if _cfg else os.getenv("OPENROUTER_API_KEY", "")
+OPENROUTER_MODEL_PRIORITY: List[str] = _cfg.OPENROUTER_MODEL_PRIORITY if _cfg else [
+    m.strip() for m in os.getenv("OPENROUTER_MODEL_PRIORITY", "anthropic/claude-3.5-sonnet,openai/gpt-4o-mini").split(",") if m.strip()
+]
 ANTHROPIC_API_KEY: str = _cfg.ANTHROPIC_API_KEY if _cfg else os.getenv("ANTHROPIC_API_KEY", "")
 ANTHROPIC_MODEL: str = _cfg.ANTHROPIC_MODEL if _cfg else os.getenv("ANTHROPIC_MODEL", "claude-3-5-sonnet-latest")
 LLM_SUGGESTION_THRESHOLD: int = _cfg.LLM_SUGGESTION_THRESHOLD if _cfg else int(os.getenv("LLM_SUGGESTION_THRESHOLD", "60"))
 RESUME_FILE: str = _cfg.RESUME_FILE if _cfg else os.getenv("RESUME_FILE", "resume.md")
 
+# LaTeX Compiler Microservice
+LATEX_COMPILER_URL: str = _cfg.LATEX_COMPILER_URL if _cfg else os.getenv("LATEX_COMPILER_URL", "http://localhost:8001")
+
+# Cloudflare R2 Storage
+R2_ACCESS_KEY: str = _cfg.R2_ACCESS_KEY if _cfg else os.getenv("R2_ACCESS_KEY", "")
+R2_SECRET_KEY: str = _cfg.R2_SECRET_KEY if _cfg else os.getenv("R2_SECRET_KEY", "")
+R2_BUCKET: str = _cfg.R2_BUCKET if _cfg else os.getenv("R2_BUCKET", "")
+R2_ENDPOINT: str = _cfg.R2_ENDPOINT if _cfg else os.getenv("R2_ENDPOINT", "")
+R2_PUBLIC_URL: str = _cfg.R2_PUBLIC_URL if _cfg else os.getenv("R2_PUBLIC_URL", "")
+
 # Storage & Retention
 OUTPUT_DIR: str = _cfg.OUTPUT_DIR if _cfg else os.getenv("OUTPUT_DIR", "output")
 RETENTION_DAYS: int = _cfg.RETENTION_DAYS if _cfg else int(os.getenv("RETENTION_DAYS", "14"))
+
 
 # Observability
 SENTRY_DSN: str = _cfg.SENTRY_DSN if _cfg else os.getenv("SENTRY_DSN", "")

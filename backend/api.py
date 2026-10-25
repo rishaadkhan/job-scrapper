@@ -16,8 +16,9 @@ from backend.schemas import ErrorResponse
 from backend.telemetry import init_sentry
 from backend.routers import (
     auth_router, companies_router, filters_router,
-    jobs_router, runs_router, exports_router
+    jobs_router, runs_router, exports_router, resumes_router
 )
+
 
 # Configure structured logging
 logger = logging.getLogger("jobscraper.api")
@@ -155,3 +156,5 @@ app.include_router(filters_router)
 app.include_router(jobs_router)
 app.include_router(runs_router)
 app.include_router(exports_router)
+app.include_router(resumes_router)
+

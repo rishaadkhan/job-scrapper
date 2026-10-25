@@ -48,8 +48,27 @@ class BulletGenerator:
             return ""
 
         if not self.api_key or not self.api_key.strip():
-            logger.debug(f"Skipping bullet generation for '{title}' at '{company}': ANTHROPIC_API_KEY not set.")
-            return ""
+            # Check if OpenRouter is configured instead
+            openrouter_key = settings.OPENROUTER_API_KEY if settings else os.getenv("OPENROUTER_API_KEY", "")
+            if not openrouter_key:
+                logger.debug(f"Skipping bullet generation for '{title}' at '{company}': OPENROUTER_API_KEY and ANTHROPIC_API_KEY not set.")
+                return ""
+
+        openrouter_key = settings.OPENROUTER_API_KEY if settings else os.getenv("OPENROUTER_API_KEY", "")
+        if openrouter_key:
+            from llm.openrouter_client import generate_bullet
+            context_info = f"Role: {title} at {company}. Top Skills: {', '.join(top_keywords[:8])}. Missing: {', '.join(missing_keywords[:5])}"
+            res = await generate_bullet(
+                snippet=resume_text,
+                jd_text=description,
+                context=context_info,
+                api_key=openrouter_key,
+                client=client
+            )
+            if res.result and res.result != "disabled":
+                return res.result
+            if not self.api_key:
+                return ""
 
         prompt = f"""You are an elite technical resume strategist.
 Generate 2-3 high-impact, tailored resume bullet points that the candidate can use when applying for this role.
@@ -57,6 +76,7 @@ Generate 2-3 high-impact, tailored resume bullet points that the candidate can u
 Role: {title} at {company}
 Top Emphasized Skills: {', '.join(top_keywords[:8])}
 Missing/Skills to Highlight: {', '.join(missing_keywords[:5]) if missing_keywords else 'None'}
+
 
 Job Description Summary:
 {description[:1500]}

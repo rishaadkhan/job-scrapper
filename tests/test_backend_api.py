@@ -33,15 +33,14 @@ async def override_get_db():
             await session.close()
 
 
-app.dependency_overrides[get_db] = override_get_db
-
-
 @pytest_asyncio.fixture(autouse=True)
 async def setup_db():
     """Create fresh schema and seed admin user & test data before each test."""
+    app.dependency_overrides[get_db] = override_get_db
     async with test_engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
+
 
     async with TestSessionLocal() as session:
         # 1. Admin user
@@ -305,10 +304,19 @@ async def test_exports_and_downloads():
         assert r.status_code == 200
         assert len(r.json()["items"]) >= 1
 
-        # Download export
+        # Download export via header
         r = await client.get(f"/exports/{export_id}/download", headers=headers)
         assert r.status_code == 200
         assert r.headers["content-type"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
+        # Download export via query parameter token
+        r_query = await client.get(f"/exports/{export_id}/download?token={token}")
+        assert r_query.status_code == 200
+        assert r_query.headers["content-type"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
+        # Unauthenticated download without header or query token should be 401
+        r_unauth = await client.get(f"/exports/{export_id}/download")
+        assert r_unauth.status_code == 401
 
         # Delete export
         r = await client.delete(f"/exports/{export_id}", headers=headers)
@@ -333,6 +341,11 @@ async def test_runs_and_trigger():
             r = await client.post("/runs/trigger", headers=headers)
             assert r.status_code == 202
             assert r.json()["status"] == "running"
+
+            # Concurrent trigger attempt while run is in progress should return 409 Conflict
+            r_conflict = await client.post("/runs/trigger", headers=headers)
+            assert r_conflict.status_code == 409
+            assert "already in progress" in r_conflict.json()["detail"].lower()
 
 
 @pytest.mark.asyncio
@@ -372,3 +385,80 @@ async def test_retention_purge_dry_run():
     summary = await run_retention_purge(days=0, dry_run=True)
     assert summary["dry_run"] is True
     assert "purged_count" in summary
+
+
+@pytest.mark.asyncio
+async def test_db_save_scrape_results_with_run_id():
+    """Verify that passing an existing run_id updates the run rather than duplicating it."""
+    from backend.db_service import db_save_scrape_results
+    from datetime import datetime, timezone
+    from sqlalchemy import select
+
+    async with TestSessionLocal() as session:
+        # Create an initial running ScrapeRun
+        init_run = ScrapeRun(status="running", started_at=datetime.now(timezone.utc).replace(tzinfo=None))
+        session.add(init_run)
+        await session.commit()
+        await session.refresh(init_run)
+        run_id = init_run.id
+
+    valid_jobs = [{
+        "company": "Acme Corp",
+        "title": "Backend Python Engineer",
+        "job_id": "acme-123",
+        "match_score": 85,
+        "location": "Bengaluru",
+        "description": "Python, FastAPI, Postgres"
+    }]
+    company_stats = [{
+        "company": "Acme Corp",
+        "raw_count": 5,
+        "valid_count": 1
+    }]
+
+    with patch("backend.db_service.AsyncSessionLocal", TestSessionLocal):
+        res_run_id = await db_save_scrape_results(
+            valid_jobs=valid_jobs,
+            company_stats=company_stats,
+            start_time_dt=datetime.now(timezone.utc).replace(tzinfo=None),
+            duration_sec=12.5,
+            run_id=run_id
+        )
+
+    assert res_run_id == run_id
+
+    async with TestSessionLocal() as session:
+        # Verify the same run was updated and no second run was created
+        all_runs = (await session.execute(select(ScrapeRun))).scalars().all()
+        assert len(all_runs) == 1
+        updated = all_runs[0]
+        assert updated.id == run_id
+        assert updated.status == "completed"
+        assert updated.total_valid_leads == 1
+        assert updated.avg_match_score == 85.0
+        assert updated.total_raw_jobs == 5
+
+
+@pytest.mark.asyncio
+async def test_jobs_date_filtering_boundary():
+    """Ensure date_to (YYYY-MM-DD) includes jobs scraped on that day (end-of-day boundary)."""
+    from datetime import datetime
+    from backend.crud import get_jobs
+
+    async with TestSessionLocal() as session:
+        # Insert a job scraped at 2026-10-25 15:30:00
+        job = Job(
+            company_name="Date Test Co",
+            title="Senior Engineer",
+            job_id="date-test-1",
+            match_score=90,
+            location="Remote",
+            scraped_at=datetime(2026, 10, 25, 15, 30, 0)
+        )
+        session.add(job)
+        await session.commit()
+
+        # Query with date_to='2026-10-25' and company='Date Test Co'
+        jobs, total = await get_jobs(session, company="Date Test Co", date_from="2026-10-25", date_to="2026-10-25")
+        assert total == 1
+        assert jobs[0].company_name == "Date Test Co"
