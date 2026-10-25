@@ -80,7 +80,7 @@ async def process_company(
                             scored_job['missing_from_resume'] = []
                             scored_job['suggested_bullets'] = ""
 
-                        scored_job['scraped_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                        scored_job['scraped_at'] = datetime.now(timezone.utc).replace(tzinfo=None)
 
                         async with state_lock:
                             valid_jobs.append(scored_job)

@@ -264,9 +264,25 @@ async def create_or_update_job(db: AsyncSession, job_data: dict) -> Job:
     job_id = job_data["job_id"]
     existing = await get_job_by_job_id(db, job_id)
 
+    # Ensure scraped_at is a native datetime object for SQLite/SQLAlchemy compatibility
+    raw_scraped_at = job_data.get("scraped_at")
+    if isinstance(raw_scraped_at, datetime):
+        scraped_at_dt = raw_scraped_at
+    elif isinstance(raw_scraped_at, str) and raw_scraped_at.strip():
+        try:
+            scraped_at_dt = datetime.fromisoformat(raw_scraped_at.strip())
+        except Exception:
+            scraped_at_dt = utc_now()
+    else:
+        scraped_at_dt = utc_now()
+
     if existing:
         for k, v in job_data.items():
-            if hasattr(existing, k) and k not in ("id", "created_at"):
+            if k in ("id", "created_at"):
+                continue
+            if k == "scraped_at":
+                setattr(existing, k, scraped_at_dt)
+            elif hasattr(existing, k):
                 setattr(existing, k, v)
         await db.commit()
         await db.refresh(existing)
@@ -288,7 +304,7 @@ async def create_or_update_job(db: AsyncSession, job_data: dict) -> Job:
             portal_url=job_data.get("portal_url"),
             description=job_data.get("description"),
             stack_match=job_data.get("stack_match", False),
-            scraped_at=utc_now()
+            scraped_at=scraped_at_dt
         )
         db.add(job)
         await db.commit()

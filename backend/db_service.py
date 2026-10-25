@@ -56,9 +56,12 @@ async def db_save_scrape_results(
     """
     async with AsyncSessionLocal() as db:
         try:
-            # 1. Insert/Update Scored Jobs
+            # 1. Insert/Update Scored Jobs (fault isolated per job)
             for j in valid_jobs:
-                await create_or_update_job(db, j)
+                try:
+                    await create_or_update_job(db, j)
+                except Exception as job_exc:
+                    logger.warning(f"Could not persist lead '{j.get('title')}' for '{j.get('company')}': {job_exc}")
 
             # 2. Update company scrape timestamps and counts
             for stat in company_stats:

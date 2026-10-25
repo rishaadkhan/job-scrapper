@@ -63,7 +63,7 @@ PIDS+=($LATEX_PID)
 
 # 2. Start FastAPI Backend REST API (Port 8000)
 echo -e "${CYAN}[2/3] Starting FastAPI Backend API (Port 8000)...${NC}"
-uvicorn backend.api:app --host 127.0.0.1 --port 8000 > output/backend_api.log 2>&1 &
+uvicorn backend.api:app --host 127.0.0.1 --port 8000 --reload > output/backend_api.log 2>&1 &
 BACKEND_PID=$!
 PIDS+=($BACKEND_PID)
 
