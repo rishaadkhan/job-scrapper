@@ -21,6 +21,36 @@ class HTMLFallbackClient(BaseATSClient):
 
         jobs: List[Dict[str, Any]] = []
 
+        # Specialized native handler for Amazon Jobs public JSON API
+        if 'amazon.jobs' in career_url.lower():
+            try:
+                amz_url = "https://www.amazon.jobs/en/search.json?base_query=&loc_query=India&result_limit=40"
+                amz_resp = await client.get(amz_url, headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}, timeout=15.0)
+                if amz_resp.status_code == 200:
+                    amz_data = amz_resp.json()
+                    for raw in amz_data.get('jobs', []):
+                        title = (raw.get('title') or '').strip()
+                        if not title:
+                            continue
+                        job_path = raw.get('job_path', '')
+                        link = f"https://www.amazon.jobs{job_path}" if job_path else career_url
+                        desc_text = clean_html_to_text(raw.get('description', ''))
+                        jobs.append({
+                            'company': company['name'],
+                            'company_type': company.get('type', 'Tier-1 GCC'),
+                            'title': title,
+                            'location': raw.get('location', '') or raw.get('city', '') or 'India',
+                            'link': link,
+                            'job_id': str(raw.get('id', '')) or link,
+                            'description': desc_text,
+                            'posted_date': raw.get('posted_date', ''),
+                            'portal_url': career_url
+                        })
+                    if jobs:
+                        return jobs
+            except Exception:
+                pass
+
         try:
             response = await client.get(career_url, timeout=15.0, follow_redirects=True)
             if response.status_code != 200:
@@ -29,9 +59,12 @@ class HTMLFallbackClient(BaseATSClient):
             soup = BeautifulSoup(response.text, 'html.parser')
 
             job_elements = (
-                soup.find_all('div', class_=re.compile(r'job|position|opening|career', re.I)) +
-                soup.find_all('li', class_=re.compile(r'job|position|opening', re.I)) +
-                soup.find_all('a', href=re.compile(r'job|career|position', re.I))
+                soup.find_all('div', class_=re.compile(r'job|position|opening|career|listing|role|vacancy', re.I)) +
+                soup.find_all('li', class_=re.compile(r'job|position|opening|career|listing|role|vacancy', re.I)) +
+                soup.find_all('article', class_=re.compile(r'job|position|opening|career|listing|role|vacancy', re.I)) +
+                soup.find_all('tr', class_=re.compile(r'job|position|opening|career|listing|role|vacancy', re.I)) +
+                soup.find_all('div', attrs={"data-testid": re.compile(r'job', re.I)}) +
+                soup.find_all('a', href=re.compile(r'job|career|position|opening|vacancy', re.I))
             )
 
             exclude_titles = [
@@ -40,7 +73,12 @@ class HTMLFallbackClient(BaseATSClient):
                 'search', 'apply', 'view', 'home', 'about', 'contact'
             ]
 
-            job_keywords = ['engineer', 'developer', 'architect', 'analyst', 'designer', 'manager', 'lead', 'sde', 'specialist']
+            job_keywords = [
+                'engineer', 'developer', 'architect', 'analyst', 'designer', 'manager',
+                'lead', 'sde', 'specialist', 'software', 'backend', 'fullstack',
+                'full-stack', 'frontend', 'platform', 'programmer', 'devops', 'cloud',
+                'data', 'systems', 'infrastructure', 'security', 'ml', 'ai'
+            ]
 
             seen_links = set()
 

@@ -875,7 +875,7 @@
   {
     "name": "Razorpay",
     "type": "Unicorn",
-    "career_url": "https://razorpay.com/jobs/",
+    "career_url": "https://boards.greenhouse.io/razorpaysoftwareprivatelimited",
     "location_filter": [
       "India",
       "Bengaluru",
@@ -889,7 +889,8 @@
       "Mumbai",
       "Remote"
     ],
-    "ats": "html_fallback"
+    "ats": "greenhouse",
+    "ats_token": "razorpaysoftwareprivatelimited"
   },
   {
     "name": "CRED",
@@ -914,7 +915,7 @@
   {
     "name": "PhonePe",
     "type": "Unicorn",
-    "career_url": "https://www.phonepe.com/careers/",
+    "career_url": "https://www.phonepe.com/careers/job-openings/?department=engineering",
     "location_filter": [
       "India",
       "Bengaluru",
@@ -1083,7 +1084,7 @@
   {
     "name": "Browserstack",
     "type": "Unicorn",
-    "career_url": "https://www.browserstack.com/careers",
+    "career_url": "https://browserstack.wd3.myworkdayjobs.com/External",
     "location_filter": [
       "India",
       "Bengaluru",
@@ -1097,7 +1098,8 @@
       "Mumbai",
       "Remote"
     ],
-    "ats": "html_fallback"
+    "ats": "workday",
+    "ats_token": "browserstack"
   },
   {
     "name": "Icertis",
@@ -2523,7 +2525,7 @@
   {
     "name": "Zendesk India",
     "type": "Tier-1 GCC",
-    "career_url": "https://jobs.zendesk.com/us/en/search-results?location=India",
+    "career_url": "https://zendesk.wd1.myworkdayjobs.com/zendesk",
     "location_filter": [
       "India",
       "Bengaluru",
@@ -2537,7 +2539,8 @@
       "Mumbai",
       "Remote"
     ],
-    "ats": "html_fallback"
+    "ats": "workday",
+    "ats_token": "zendesk"
   },
   {
     "name": "HubSpot India",
@@ -3509,7 +3512,7 @@
     "ats": "html_fallback"
   },
   {
-    "name": "Dassault Systèmes India",
+    "name": "Dassault Syst\u00e8mes India",
     "type": "Tier-1 GCC",
     "career_url": "https://www.3ds.com/careers/jobs?location=India",
     "location_filter": [
@@ -6414,7 +6417,7 @@
   {
     "name": "Amplitude India",
     "type": "Tier-1 GCC",
-    "career_url": "https://amplitude.com/careers?location=India",
+    "career_url": "https://jobs.ashbyhq.com/amplitude",
     "location_filter": [
       "India",
       "Bengaluru",
@@ -6428,7 +6431,7 @@
       "Mumbai",
       "Remote"
     ],
-    "ats": "greenhouse",
+    "ats": "ashby",
     "ats_token": "amplitude"
   },
   {
@@ -7671,7 +7674,7 @@
   {
     "name": "Fractal",
     "type": "Unicorn",
-    "career_url": "https://fractal.ai/careers/",
+    "career_url": "https://fractal.wd1.myworkdayjobs.com/careers",
     "location_filter": [
       "India",
       "Bengaluru",
@@ -7685,7 +7688,8 @@
       "Mumbai",
       "Remote"
     ],
-    "ats": "html_fallback"
+    "ats": "workday",
+    "ats_token": "fractal"
   },
   {
     "name": "Databricks",
@@ -7874,7 +7878,7 @@
   {
     "name": "Notion",
     "type": "Tier-1 GCC",
-    "career_url": "https://jobs.lever.co/notion",
+    "career_url": "https://jobs.ashbyhq.com/notion",
     "location_filter": [
       "India",
       "Bengaluru",
@@ -7889,7 +7893,7 @@
       "Mumbai",
       "Remote"
     ],
-    "ats": "lever",
+    "ats": "ashby",
     "ats_token": "notion",
     "ats_id": null,
     "active": true
@@ -8350,7 +8354,7 @@
       "Remote"
     ],
     "ats": "workday",
-    "ats_token": "wd5",
+    "ats_token": "proofpoint",
     "ats_id": "ProofpointCareers",
     "active": true
   },
@@ -11416,7 +11420,7 @@
   {
     "name": "CloudSEK",
     "type": "Series B-D",
-    "career_url": "https://cloudsek.com/careers",
+    "career_url": "https://boards.greenhouse.io/cloudsek",
     "location_filter": [
       "India",
       "Bengaluru",
@@ -11431,8 +11435,8 @@
       "Mumbai",
       "Remote"
     ],
-    "ats": "html_fallback",
-    "ats_token": null,
+    "ats": "greenhouse",
+    "ats_token": "cloudsek",
     "ats_id": null,
     "active": true
   },

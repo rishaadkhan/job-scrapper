@@ -13,14 +13,14 @@ from filters import JobFilter
 from scraper import validate_job_page
 from scoring import JobScorer
 
-# Curated test companies with public ATS endpoints
+# Curated test companies with public ATS endpoints (Greenhouse, Ashby, Workday)
 DEMO_COMPANIES = [
     {
         "name": "Razorpay",
         "type": "Unicorn",
-        "career_url": "https://boards.greenhouse.io/razorpay",
+        "career_url": "https://boards.greenhouse.io/razorpaysoftwareprivatelimited",
         "ats": "greenhouse",
-        "ats_token": "razorpay"
+        "ats_token": "razorpaysoftwareprivatelimited"
     },
     {
         "name": "Databricks",
@@ -30,11 +30,18 @@ DEMO_COMPANIES = [
         "ats_token": "databricks"
     },
     {
-        "name": "Postman",
+        "name": "Notion",
         "type": "Unicorn",
-        "career_url": "https://jobs.lever.co/postman",
-        "ats": "lever",
-        "ats_token": "postman"
+        "career_url": "https://jobs.ashbyhq.com/notion",
+        "ats": "ashby",
+        "ats_token": "notion"
+    },
+    {
+        "name": "NVIDIA India",
+        "type": "Tier-1 GCC",
+        "career_url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite?locations=India",
+        "ats": "workday",
+        "ats_token": "nvidia"
     }
 ]
 
