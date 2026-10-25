@@ -462,3 +462,95 @@ async def test_jobs_date_filtering_boundary():
         jobs, total = await get_jobs(session, company="Date Test Co", date_from="2026-10-25", date_to="2026-10-25")
         assert total == 1
         assert jobs[0].company_name == "Date Test Co"
+
+
+@pytest.mark.asyncio
+async def test_bulk_delete_and_download_exports():
+    """Test bulk deletion and bulk downloading (zip) of exports."""
+    import tempfile
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        # Login as admin
+        r = await client.post("/auth/login", json={"email": "admin@test.com", "password": "password123"})
+        token = r.json()["access_token"]
+        headers = {"Authorization": f"Bearer {token}"}
+
+        # Create 2 dummy export records with temporary files
+        with tempfile.NamedTemporaryFile(suffix=".xlsx", delete=False) as f1, \
+             tempfile.NamedTemporaryFile(suffix=".xlsx", delete=False) as f2:
+            f1.write(b"dummy excel 1")
+            f2.write(b"dummy excel 2")
+            path1, path2 = f1.name, f2.name
+
+        async with TestSessionLocal() as session:
+            exp1 = ExportRecord(filename="export_1.xlsx", filepath=path1, row_count=10, avg_match_score=75.0)
+            exp2 = ExportRecord(filename="export_2.xlsx", filepath=path2, row_count=20, avg_match_score=85.0)
+            session.add_all([exp1, exp2])
+            await session.commit()
+            await session.refresh(exp1)
+            await session.refresh(exp2)
+            id1, id2 = exp1.id, exp2.id
+
+        # Test bulk download as ZIP
+        res_dl = await client.post("/exports/bulk-download", json={"ids": [id1, id2]}, headers=headers)
+        assert res_dl.status_code == 200
+        assert "zip" in res_dl.headers.get("content-type", "")
+
+        # Test bulk delete
+        res_del = await client.post("/exports/bulk-delete", json={"ids": [id1, id2]}, headers=headers)
+        assert res_del.status_code == 200
+        assert res_del.json()["affected_count"] == 2
+
+        # Verify soft deleted in DB
+        async with TestSessionLocal() as session:
+            e1 = await session.get(ExportRecord, id1)
+            e2 = await session.get(ExportRecord, id2)
+            assert e1.deleted_at is not None
+            assert e2.deleted_at is not None
+
+
+@pytest.mark.asyncio
+async def test_bulk_delete_and_download_runs():
+    """Test single & bulk deletion and bulk download of scrape runs."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        # Login as admin
+        r = await client.post("/auth/login", json={"email": "admin@test.com", "password": "password123"})
+        token = r.json()["access_token"]
+        headers = {"Authorization": f"Bearer {token}"}
+
+        async with TestSessionLocal() as session:
+            r1 = ScrapeRun(status="completed", duration_sec=10.0, total_valid_leads=5, avg_match_score=70.0)
+            r2 = ScrapeRun(status="failed", duration_sec=5.0, error_log="Timeout")
+            r3 = ScrapeRun(status="running")
+            session.add_all([r1, r2, r3])
+            await session.commit()
+            await session.refresh(r1)
+            await session.refresh(r2)
+            await session.refresh(r3)
+            id1, id2, id3 = r1.id, r2.id, r3.id
+
+        # Test single download
+        res_dl_single = await client.get(f"/runs/{id1}/download", headers=headers)
+        assert res_dl_single.status_code == 200
+        assert "openxmlformats" in res_dl_single.headers.get("content-type", "")
+
+        # Test bulk download
+        res_dl_bulk = await client.post("/runs/bulk-download", json={"ids": [id1, id2]}, headers=headers)
+        assert res_dl_bulk.status_code == 200
+        assert "openxmlformats" in res_dl_bulk.headers.get("content-type", "")
+
+        # Test cannot delete running run directly
+        res_del_running = await client.delete(f"/runs/{id3}", headers=headers)
+        assert res_del_running.status_code == 409
+
+        # Test bulk delete (r1 and r2 deleted, r3 skipped because active)
+        res_del_bulk = await client.post("/runs/bulk-delete", json={"ids": [id1, id2, id3]}, headers=headers)
+        assert res_del_bulk.status_code == 200
+        assert res_del_bulk.json()["affected_count"] == 2
+
+        # Verify DB state
+        async with TestSessionLocal() as session:
+            assert await session.get(ScrapeRun, id1) is None
+            assert await session.get(ScrapeRun, id2) is None
+            assert await session.get(ScrapeRun, id3) is not None

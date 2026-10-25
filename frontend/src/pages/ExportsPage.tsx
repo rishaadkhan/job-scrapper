@@ -3,6 +3,7 @@ import api from '../api/client'
 import type { Export, ExportListResponse, ExportRequest, JobListResponse } from '../types'
 import { format } from 'date-fns'
 import { Download, Trash2, Plus, FileSpreadsheet, AlertTriangle, X, RotateCcw } from 'lucide-react'
+import ConfirmModal from '../components/ConfirmModal'
 
 // ── Generate Export Modal ──────────────────────────────────
 function GenerateModal({ onClose, onDone }: { onClose: () => void; onDone: () => void }) {
@@ -172,8 +173,13 @@ export default function ExportsPage() {
   const [data, setData] = useState<ExportListResponse | null>(null)
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
-  const [deleting, setDeleting] = useState<number | null>(null)
   const [downloadingId, setDownloadingId] = useState<number | null>(null)
+  const [selectedIds, setSelectedIds] = useState<number[]>([])
+  const [bulkLoading, setBulkLoading] = useState(false)
+  const [bulkDownloading, setBulkDownloading] = useState(false)
+  const [alertMessage, setAlertMessage] = useState<{ type: 'info' | 'warn' | 'error'; message: string } | null>(null)
+
+  const headerCheckboxRef = useRef<HTMLInputElement>(null)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -187,21 +193,91 @@ export default function ExportsPage() {
 
   useEffect(() => { load() }, [load])
 
-  const handleDelete = async (id: number) => {
-    if (!confirm('Delete this export? This cannot be undone.')) return
-    setDeleting(id)
+  // Selection state calculations
+  const allIds = data?.items.map(e => e.id) ?? []
+  const isAllSelected = allIds.length > 0 && allIds.every(id => selectedIds.includes(id))
+  const isSomeSelected = selectedIds.length > 0 && !isAllSelected
+
+  useEffect(() => {
+    if (headerCheckboxRef.current) {
+      headerCheckboxRef.current.indeterminate = isSomeSelected
+    }
+  }, [isSomeSelected])
+
+  const toggleSelectAll = () => {
+    if (isAllSelected) {
+      setSelectedIds([])
+    } else {
+      setSelectedIds(allIds)
+    }
+  }
+
+  const toggleSelectRow = (id: number) => {
+    setSelectedIds(prev =>
+      prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
+    )
+  }
+
+  const clearSelection = () => setSelectedIds([])
+
+  const [deleteModal, setDeleteModal] = useState<{
+    isOpen: boolean
+    ids: number[]
+    label: string
+  }>({
+    isOpen: false,
+    ids: [],
+    label: ''
+  })
+
+  const promptDeleteOne = (exp: Export) => {
+    setDeleteModal({
+      isOpen: true,
+      ids: [exp.id],
+      label: `"${exp.filename}"`
+    })
+  }
+
+  const promptBulkDelete = () => {
+    if (selectedIds.length === 0) return
+    setDeleteModal({
+      isOpen: true,
+      ids: selectedIds,
+      label: `${selectedIds.length} export spreadsheet(s)`
+    })
+  }
+
+  const handleConfirmDelete = async () => {
+    if (deleteModal.ids.length === 0) return
+    setBulkLoading(true)
+    setAlertMessage(null)
     try {
-      await api.delete(`/exports/${id}`)
-      load()
+      if (deleteModal.ids.length === 1) {
+        const id = deleteModal.ids[0]
+        await api.delete(`/exports/${id}`)
+        setSelectedIds(prev => prev.filter(x => x !== id))
+        setAlertMessage({ type: 'info', message: 'Export spreadsheet successfully deleted.' })
+      } else {
+        const res = await api.post<{ message: string; affected_count: number }>('/exports/bulk-delete', { ids: deleteModal.ids })
+        setAlertMessage({ type: 'info', message: res.data.message })
+        setSelectedIds(prev => prev.filter(id => !deleteModal.ids.includes(id)))
+      }
+      setDeleteModal({ isOpen: false, ids: [], label: '' })
+      await load()
+    } catch (err: any) {
+      console.error('Delete failed:', err)
+      setAlertMessage({
+        type: 'error',
+        message: err?.response?.data?.detail ?? 'Failed to delete export(s).'
+      })
     } finally {
-      setDeleting(null)
+      setBulkLoading(false)
     }
   }
 
   const handleDownload = async (exp: Export) => {
     setDownloadingId(exp.id)
     try {
-      // 1. Fetch via authenticated Axios instance (carries Bearer token in headers)
       const res = await api.get(exp.download_url, { responseType: 'blob' })
       const blob = new Blob([res.data], {
         type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
@@ -227,6 +303,37 @@ export default function ExportsPage() {
     }
   }
 
+  const handleBulkDownload = async () => {
+    if (selectedIds.length === 0) return
+    setBulkDownloading(true)
+    try {
+      const res = await api.post('/exports/bulk-download', { ids: selectedIds }, { responseType: 'blob' })
+      const isZip = selectedIds.length > 1
+      const defaultFilename = isZip
+        ? `exports_bundle_${format(new Date(), 'yyyyMMdd_HHmmss')}.zip`
+        : (data?.items.find(e => e.id === selectedIds[0])?.filename ?? 'export.xlsx')
+
+      const contentType = isZip
+        ? 'application/zip'
+        : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+
+      const blob = new Blob([res.data], { type: contentType })
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.setAttribute('download', defaultFilename)
+      document.body.appendChild(link)
+      link.click()
+      link.remove()
+      window.URL.revokeObjectURL(url)
+    } catch (err: any) {
+      console.error('Bulk download failed:', err)
+      alert(err?.response?.data?.detail ?? 'Failed to download selected exports.')
+    } finally {
+      setBulkDownloading(false)
+    }
+  }
+
   return (
     <>
       <div className="page-header">
@@ -242,6 +349,19 @@ export default function ExportsPage() {
       </div>
 
       <div className="page-body">
+        {/* Feedback alert */}
+        {alertMessage && (
+          <div
+            className={`alert alert-${alertMessage.type}`}
+            style={{ marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
+          >
+            <span>{alertMessage.message}</span>
+            <button className="btn btn-ghost btn-sm btn-icon" onClick={() => setAlertMessage(null)}>
+              <X size={14} />
+            </button>
+          </div>
+        )}
+
         {/* Stats summary */}
         {data && data.items.length > 0 && (
           <div className="grid-3" style={{ marginBottom: 20 }}>
@@ -262,10 +382,68 @@ export default function ExportsPage() {
           </div>
         )}
 
+        {/* Bulk Action Bar */}
+        {selectedIds.length > 0 && (
+          <div className="bulk-actions-bar">
+            <div className="bulk-count">
+              <span className="bulk-badge">{selectedIds.length}</span>
+              <span>{selectedIds.length === 1 ? '1 export selected' : `${selectedIds.length} exports selected`}</span>
+            </div>
+            <div className="bulk-btns">
+              <button
+                id="bulk-download-btn"
+                className="btn btn-green btn-sm"
+                onClick={handleBulkDownload}
+                disabled={bulkDownloading}
+                title="Download selected exports"
+              >
+                {bulkDownloading ? (
+                  <div className="spinner" style={{ width: 13, height: 13 }} />
+                ) : (
+                  <Download size={13} />
+                )}
+                {bulkDownloading ? 'Downloading…' : selectedIds.length > 1 ? 'Download Bundle (ZIP)' : 'Download Excel'}
+              </button>
+              <button
+                id="bulk-delete-btn"
+                className="btn btn-danger btn-sm"
+                onClick={promptBulkDelete}
+                disabled={bulkLoading}
+                title="Delete selected exports"
+              >
+                {bulkLoading ? (
+                  <div className="spinner" style={{ width: 13, height: 13 }} />
+                ) : (
+                  <Trash2 size={13} />
+                )}
+                {bulkLoading ? 'Deleting…' : 'Delete Selected'}
+              </button>
+              <button
+                className="btn btn-ghost btn-sm"
+                onClick={clearSelection}
+                title="Deselect all"
+              >
+                <X size={13} /> Deselect
+              </button>
+            </div>
+          </div>
+        )}
+
         <div className="table-wrap">
           <table>
             <thead>
               <tr>
+                <th className="checkbox-cell">
+                  <input
+                    ref={headerCheckboxRef}
+                    type="checkbox"
+                    className="custom-checkbox"
+                    checked={isAllSelected}
+                    onChange={toggleSelectAll}
+                    aria-label="Select all exports"
+                    title={isAllSelected ? "Deselect all" : "Select all exports"}
+                  />
+                </th>
                 <th>Filename</th>
                 <th>Rows</th>
                 <th>Avg Score</th>
@@ -275,64 +453,81 @@ export default function ExportsPage() {
             </thead>
             <tbody>
               {loading ? (
-                <tr><td colSpan={5} style={{ textAlign: 'center', padding: 40 }}><div className="spinner" style={{ margin: '0 auto' }} /></td></tr>
+                <tr><td colSpan={6} style={{ textAlign: 'center', padding: 40 }}><div className="spinner" style={{ margin: '0 auto' }} /></td></tr>
               ) : (data?.items ?? []).length === 0 ? (
-                <tr><td colSpan={5}>
+                <tr><td colSpan={6}>
                   <div className="empty-state">
                     <FileSpreadsheet size={40} />
                     <div>No exports yet</div>
                     <button className="btn btn-primary btn-sm" onClick={() => setShowModal(true)}>Generate first export</button>
                   </div>
                 </td></tr>
-              ) : (data?.items ?? []).map(exp => (
-                <tr key={exp.id}>
-                  <td>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <FileSpreadsheet size={16} style={{ color: 'var(--green)', flexShrink: 0 }} />
-                      <span style={{ fontWeight: 500, fontFamily: 'monospace', fontSize: 12 }}>{exp.filename}</span>
-                    </div>
-                  </td>
-                  <td style={{ fontWeight: 700, color: 'var(--accent)' }}>{exp.row_count.toLocaleString()}</td>
-                  <td>
-                    <span style={{
-                      fontWeight: 700,
-                      color: exp.avg_match_score >= 70 ? 'var(--green)'
-                           : exp.avg_match_score >= 40 ? 'var(--amber)'
-                           : 'var(--red)'
-                    }}>
-                      {exp.avg_match_score.toFixed(1)}%
-                    </span>
-                  </td>
-                  <td style={{ fontSize: 12, color: 'var(--text-secondary)' }}>
-                    {format(new Date(exp.created_at), 'MMM d, yyyy HH:mm')}
-                  </td>
-                  <td>
-                    <div className="flex gap-2">
-                      <button
-                        className="btn btn-green btn-sm"
-                        onClick={() => handleDownload(exp)}
-                        disabled={downloadingId === exp.id}
-                        title="Download Excel"
-                      >
-                        {downloadingId === exp.id ? (
-                          <div className="spinner" style={{ width: 13, height: 13 }} />
-                        ) : (
-                          <Download size={13} />
-                        )}
-                        {downloadingId === exp.id ? 'Downloading...' : 'Download'}
-                      </button>
-                      <button
-                        className="btn btn-danger btn-icon btn-sm"
-                        onClick={() => handleDelete(exp.id)}
-                        disabled={deleting === exp.id}
-                        title="Delete export"
-                      >
-                        {deleting === exp.id ? <div className="spinner" style={{ width: 12, height: 12 }} /> : <Trash2 size={13} />}
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+              ) : (data?.items ?? []).map(exp => {
+                const isSelected = selectedIds.includes(exp.id)
+                return (
+                  <tr
+                    key={exp.id}
+                    className={isSelected ? 'selected-row' : ''}
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => toggleSelectRow(exp.id)}
+                  >
+                    <td className="checkbox-cell" onClick={e => e.stopPropagation()}>
+                      <input
+                        type="checkbox"
+                        className="custom-checkbox"
+                        checked={isSelected}
+                        onChange={() => toggleSelectRow(exp.id)}
+                        aria-label={`Select ${exp.filename}`}
+                      />
+                    </td>
+                    <td>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <FileSpreadsheet size={16} style={{ color: 'var(--green)', flexShrink: 0 }} />
+                        <span style={{ fontWeight: 500, fontFamily: 'monospace', fontSize: 12 }}>{exp.filename}</span>
+                      </div>
+                    </td>
+                    <td style={{ fontWeight: 700, color: 'var(--accent)' }}>{exp.row_count.toLocaleString()}</td>
+                    <td>
+                      <span style={{
+                        fontWeight: 700,
+                        color: exp.avg_match_score >= 70 ? 'var(--green)'
+                             : exp.avg_match_score >= 40 ? 'var(--amber)'
+                             : 'var(--red)'
+                      }}>
+                        {exp.avg_match_score.toFixed(1)}%
+                      </span>
+                    </td>
+                    <td style={{ fontSize: 12, color: 'var(--text-secondary)' }}>
+                      {format(new Date(exp.created_at), 'MMM d, yyyy HH:mm')}
+                    </td>
+                    <td onClick={e => e.stopPropagation()}>
+                      <div className="flex gap-2">
+                        <button
+                          className="btn btn-green btn-sm"
+                          onClick={(e) => { e.stopPropagation(); handleDownload(exp) }}
+                          disabled={downloadingId === exp.id}
+                          title="Download Excel"
+                        >
+                          {downloadingId === exp.id ? (
+                            <div className="spinner" style={{ width: 13, height: 13 }} />
+                          ) : (
+                            <Download size={13} />
+                          )}
+                          {downloadingId === exp.id ? 'Downloading...' : 'Download'}
+                        </button>
+                        <button
+                          className="btn btn-danger btn-icon btn-sm"
+                          onClick={(e) => { e.stopPropagation(); promptDeleteOne(exp) }}
+                          disabled={bulkLoading}
+                          title="Delete export"
+                        >
+                          <Trash2 size={13} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
@@ -344,6 +539,15 @@ export default function ExportsPage() {
           onDone={() => { setShowModal(false); load() }}
         />
       )}
+
+      <ConfirmModal
+        isOpen={deleteModal.isOpen}
+        title={deleteModal.ids.length === 1 ? 'Delete Export Spreadsheet' : 'Delete Selected Export Spreadsheets'}
+        message={`Are you sure you want to permanently delete ${deleteModal.label}? This action will remove the spreadsheet from disk and database.`}
+        loading={bulkLoading}
+        onConfirm={handleConfirmDelete}
+        onCancel={() => !bulkLoading && setDeleteModal({ isOpen: false, ids: [], label: '' })}
+      />
     </>
   )
 }

@@ -1,4 +1,61 @@
-# Python & Virtualenv
+# ==============================================================================
+# Job Scraper Enterprise — Git Ignore Configuration
+# Protects private secrets, process IDs, outputs, resumes, and historical state
+# ==============================================================================
+
+# ── 1. Process IDs & Runtime Control ─────────────────────────────────────────
+.app_pids
+*.pid
+*.pids
+
+# ── 2. Environment, Secrets & Private Credentials (NEVER COMMIT) ─────────────
+.env
+*.env
+.env.*
+!*.env.example
+!frontend/.env.example
+*.pem
+*.key
+*.cert
+*.crt
+credentials*.json
+token*.json
+client_secret*.json
+service_account*.json
+id_rsa*
+
+# ── 3. Personal Resumes & LaTeX Sources ──────────────────────────────────────
+resume.md
+resume.txt
+resume.pdf
+resume/
+resume_latex/
+*.pdf
+
+# ── 4. Historical Ran Jobs & State Tracking ──────────────────────────────────
+scraper_state.json
+scraper_state*.json
+candidate_batch.txt
+jobscraper.db
+*.db
+*.sqlite
+*.sqlite3
+
+# ── 5. Output Files & Generated Exports ──────────────────────────────────────
+output/*
+!output/.gitkeep
+output/temp_downloads/
+*.xlsx
+*.zip
+temp_downloads/
+exports/
+
+# ── 6. Logs & Diagnostics ───────────────────────────────────────────────────
+*.log
+logs/
+output/*.log
+
+# ── 7. Python, Virtual Environments & Caches ─────────────────────────────────
 __pycache__/
 *.py[cod]
 *$py.class
@@ -7,38 +64,23 @@ __pycache__/
 venv/
 env/
 ENV/
-
-# Environment & Secrets (NEVER COMMIT)
-.env
-*.env
-.env.local
-
-# Database files
-*.db
-*.sqlite
-*.sqlite3
-jobscraper.db
-
-# Excel Outputs (Avoid binary git bloat - use DB & artifact uploads)
-output/*.xlsx
-!output/.gitkeep
-
-# State file (Migrated to DB)
-scraper_state.json
-
-# Test & Coverage
+build/
+dist/
+*.egg-info/
 .pytest_cache/
 .coverage
 htmlcov/
 
-# Logs
-logs/
-*.log
+# ── 8. Frontend Node & Build ─────────────────────────────────────────────────
+frontend/node_modules/
+frontend/dist/
+frontend/.env*
+!frontend/.env.example
 
-# IDE & OS
+# ── 9. OS & IDE Configurations ───────────────────────────────────────────────
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
 *.swp
 *.swo
-.DS_Store
-Thumbs.db

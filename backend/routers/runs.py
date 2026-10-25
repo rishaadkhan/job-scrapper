@@ -1,16 +1,25 @@
 """Scrape run history and trigger endpoints: Telemetry inspection and run orchestration"""
+import os
 import asyncio
 import logging
 from fastapi import APIRouter, Depends, Query, BackgroundTasks, status
+from fastapi.responses import FileResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.database import get_db, AsyncSessionLocal
 from backend.models import User
-from backend.schemas import ScrapeRunListResponse, ScrapeRunResponse, ScrapeTriggerResponse
+from backend.schemas import (
+    ScrapeRunListResponse, ScrapeRunResponse, ScrapeTriggerResponse,
+    BulkActionRequest, BulkActionResponse
+)
 from backend.auth import get_current_user, require_admin
-from backend.crud import get_scrape_runs, get_active_scrape_run, create_scrape_run, update_scrape_run
-from backend.exceptions import ConflictError
+from backend.crud import (
+    get_scrape_runs, get_active_scrape_run, create_scrape_run, update_scrape_run,
+    get_scrape_run_by_id, get_scrape_runs_by_ids, delete_scrape_run, delete_scrape_runs_bulk
+)
+from backend.exceptions import ConflictError, NotFoundError
 from backend.config import utc_now
+from exporter import ExcelExporter
 
 logger = logging.getLogger("jobscraper.backend.runs")
 
@@ -71,3 +80,106 @@ async def trigger_run(
         run_id=run.id,
         status="running"
     )
+
+
+@router.post("/bulk-download")
+async def bulk_download_runs(
+    req: BulkActionRequest,
+    db: AsyncSession = Depends(get_db),
+    _: User = Depends(get_current_user)
+):
+    """Generate and download a formatted Excel report for selected scrape runs."""
+    runs = await get_scrape_runs_by_ids(db, req.ids)
+    if not runs:
+        raise NotFoundError(message="No matching scrape runs found for export")
+
+    run_payloads = [
+        {
+            "id": r.id,
+            "started_at": r.started_at.strftime("%Y-%m-%d %H:%M:%S") if r.started_at else "",
+            "completed_at": r.completed_at.strftime("%Y-%m-%d %H:%M:%S") if r.completed_at else "",
+            "status": r.status,
+            "duration_sec": r.duration_sec,
+            "total_companies": r.total_companies,
+            "companies_with_jobs": r.companies_with_jobs,
+            "companies_zero_jobs": r.companies_zero_jobs,
+            "total_raw_jobs": r.total_raw_jobs,
+            "total_valid_leads": r.total_valid_leads,
+            "avg_match_score": r.avg_match_score,
+            "error_log": r.error_log or ""
+        }
+        for r in runs
+    ]
+
+    exporter = ExcelExporter()
+    prefix = f"scrape_run_{runs[0].id}_report" if len(runs) == 1 else "scrape_runs_report"
+    filepath = exporter.export_scrape_runs(run_payloads, filename_prefix=prefix)
+    filename = os.path.basename(filepath)
+
+    return FileResponse(
+        path=filepath,
+        filename=filename,
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
+
+
+@router.get("/{run_id}/download")
+async def download_run(
+    run_id: int,
+    db: AsyncSession = Depends(get_db),
+    _: User = Depends(get_current_user)
+):
+    """Download a formatted Excel report for a single scrape run."""
+    run = await get_scrape_run_by_id(db, run_id)
+    if not run:
+        raise NotFoundError(message=f"Scrape run #{run_id} not found")
+
+    run_payload = {
+        "id": run.id,
+        "started_at": run.started_at.strftime("%Y-%m-%d %H:%M:%S") if run.started_at else "",
+        "completed_at": run.completed_at.strftime("%Y-%m-%d %H:%M:%S") if run.completed_at else "",
+        "status": run.status,
+        "duration_sec": run.duration_sec,
+        "total_companies": run.total_companies,
+        "companies_with_jobs": run.companies_with_jobs,
+        "companies_zero_jobs": run.companies_zero_jobs,
+        "total_raw_jobs": run.total_raw_jobs,
+        "total_valid_leads": run.total_valid_leads,
+        "avg_match_score": run.avg_match_score,
+        "error_log": run.error_log or ""
+    }
+
+    exporter = ExcelExporter()
+    filepath = exporter.export_scrape_runs([run_payload], filename_prefix=f"scrape_run_{run.id}_report")
+    filename = os.path.basename(filepath)
+
+    return FileResponse(
+        path=filepath,
+        filename=filename,
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
+
+
+@router.post("/bulk-delete", response_model=BulkActionResponse)
+async def bulk_delete_runs(
+    req: BulkActionRequest,
+    db: AsyncSession = Depends(get_db),
+    _: User = Depends(get_current_user)
+):
+    """Delete multiple scrape runs from history. Cannot delete running jobs."""
+    deleted_count = await delete_scrape_runs_bulk(db, req.ids)
+    return BulkActionResponse(
+        message=f"Successfully deleted {deleted_count} scrape run(s)",
+        affected_count=deleted_count
+    )
+
+
+@router.delete("/{run_id}")
+async def delete_run(
+    run_id: int,
+    db: AsyncSession = Depends(get_db),
+    _: User = Depends(get_current_user)
+):
+    """Delete a single scrape run from history."""
+    await delete_scrape_run(db, run_id)
+    return {"message": f"Scrape run #{run_id} successfully deleted"}

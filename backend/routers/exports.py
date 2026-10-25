@@ -1,16 +1,21 @@
 """Export and spreadsheet download endpoints: On-demand Excel generation and file serving"""
 import os
-from typing import Optional
+import zipfile
+from datetime import datetime
+from typing import Optional, List
 from fastapi import APIRouter, Depends, status
 from fastapi.responses import FileResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.database import get_db
 from backend.models import User
-from backend.schemas import ExportRequest, ExportResponse, ExportListResponse
+from backend.schemas import (
+    ExportRequest, ExportResponse, ExportListResponse, BulkActionRequest, BulkActionResponse
+)
 from backend.auth import get_current_user, require_admin
 from backend.crud import (
-    get_jobs, create_export_record, get_exports, get_export_by_id, delete_export_record
+    get_jobs, create_export_record, get_exports, get_export_by_id, delete_export_record,
+    get_exports_by_ids, delete_exports_bulk
 )
 from backend.exceptions import NotFoundError, ValidationError
 from exporter import ExcelExporter
@@ -124,13 +129,84 @@ async def download_export(
     )
 
 
+@router.post("/bulk-download")
+async def bulk_download_exports(
+    req: BulkActionRequest,
+    db: AsyncSession = Depends(get_db),
+    _: User = Depends(get_current_user)
+):
+    """Download multiple export files bundled as a ZIP archive (or single Excel if only one)."""
+    records = await get_exports_by_ids(db, req.ids)
+    if not records:
+        raise NotFoundError(message="No matching exports found for download")
+
+    valid_records = [r for r in records if os.path.exists(r.filepath)]
+    if not valid_records:
+        raise NotFoundError(message="Selected export spreadsheets could not be found on server")
+
+    if len(valid_records) == 1:
+        single = valid_records[0]
+        return FileResponse(
+            path=single.filepath,
+            filename=single.filename,
+            media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
+
+    # Bundle into a zip file
+    zip_dir = os.path.join("output", "temp_downloads")
+    os.makedirs(zip_dir, exist_ok=True)
+    timestamp_str = datetime.now().strftime("%Y%m%d_%H%M%S")
+    zip_path = os.path.join(zip_dir, f"exports_bundle_{timestamp_str}.zip")
+
+    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zipf:
+        used_names = set()
+        for r in valid_records:
+            arcname = r.filename
+            if arcname in used_names:
+                base, ext = os.path.splitext(arcname)
+                arcname = f"{base}_{r.id}{ext}"
+            used_names.add(arcname)
+            zipf.write(r.filepath, arcname=arcname)
+
+    return FileResponse(
+        path=zip_path,
+        filename=f"exports_bundle_{timestamp_str}.zip",
+        media_type="application/zip"
+    )
+
+
+@router.post("/bulk-delete", response_model=BulkActionResponse)
+async def bulk_delete_exports(
+    req: BulkActionRequest,
+    db: AsyncSession = Depends(get_db),
+    _: User = Depends(get_current_user)
+):
+    """Delete multiple export records and remove their spreadsheet files from disk."""
+    records = await get_exports_by_ids(db, req.ids)
+    if not records:
+        return BulkActionResponse(message="No exports found to delete", affected_count=0)
+
+    for r in records:
+        if os.path.exists(r.filepath):
+            try:
+                os.remove(r.filepath)
+            except OSError:
+                pass
+
+    count = await delete_exports_bulk(db, req.ids)
+    return BulkActionResponse(
+        message=f"Successfully deleted {count} export(s)",
+        affected_count=count
+    )
+
+
 @router.delete("/{export_id}")
 async def delete_export(
     export_id: int,
     db: AsyncSession = Depends(get_db),
-    _: User = Depends(require_admin)
+    _: User = Depends(get_current_user)
 ):
-    """Delete an export record and remove its generated spreadsheet file (Admin only)."""
+    """Delete an export record and remove its generated spreadsheet file."""
     record = await get_export_by_id(db, export_id)
     if not record:
         raise NotFoundError(message=f"Export spreadsheet {export_id} not found")

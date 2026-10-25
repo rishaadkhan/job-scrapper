@@ -165,3 +165,93 @@ class ExcelExporter:
         print(f"Exported {len(jobs)} scored leads to {filepath}")
 
         return filepath
+
+    def export_scrape_runs(self, runs: List[Dict[str, Any]], filename_prefix: str = "scrape_runs_report") -> str:
+        """Export scrape run telemetry metrics to a formatted Excel workbook."""
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Scrape Runs Telemetry"
+
+        RUN_COLUMNS = [
+            "Run ID",
+            "Started At",
+            "Completed At",
+            "Status",
+            "Duration (s)",
+            "Total Companies",
+            "Companies With Jobs",
+            "Companies Zero Jobs",
+            "Total Raw Jobs",
+            "Total Valid Leads",
+            "Avg Match Score (%)",
+            "Error Details"
+        ]
+
+        header_font = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
+        header_fill = PatternFill(start_color="1F4E78", end_color="1F4E78", fill_type="solid")
+        header_alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+
+        ws.append(RUN_COLUMNS)
+        ws.row_dimensions[1].height = 28
+
+        for col_num in range(1, len(RUN_COLUMNS) + 1):
+            cell = ws.cell(row=1, column=col_num)
+            cell.font = header_font
+            cell.fill = header_fill
+            cell.alignment = header_alignment
+
+        center_align = Alignment(horizontal="center", vertical="center")
+        wrap_align = Alignment(horizontal="left", vertical="top", wrap_text=True)
+
+        for row_idx, r in enumerate(runs, start=2):
+            row_data = [
+                r.get("id"),
+                r.get("started_at"),
+                r.get("completed_at"),
+                r.get("status"),
+                r.get("duration_sec"),
+                r.get("total_companies"),
+                r.get("companies_with_jobs"),
+                r.get("companies_zero_jobs"),
+                r.get("total_raw_jobs"),
+                r.get("total_valid_leads"),
+                r.get("avg_match_score"),
+                r.get("error_log") or ""
+            ]
+            ws.append(row_data)
+            ws.row_dimensions[row_idx].height = 22
+
+            for col_idx in range(1, len(RUN_COLUMNS) + 1):
+                cell = ws.cell(row=row_idx, column=col_idx)
+                cell.font = Font(name="Calibri", size=10)
+                if col_idx in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]:
+                    cell.alignment = center_align
+                else:
+                    cell.alignment = wrap_align
+
+        ws.freeze_panes = "A2"
+        max_row = max(2, len(runs) + 1)
+        ws.auto_filter.ref = f"A1:{get_column_letter(len(RUN_COLUMNS))}{max_row}"
+
+        col_widths = {
+            1: 12,   # Run ID
+            2: 22,   # Started At
+            3: 22,   # Completed At
+            4: 15,   # Status
+            5: 14,   # Duration
+            6: 18,   # Total Companies
+            7: 22,   # Companies With Jobs
+            8: 22,   # Companies Zero Jobs
+            9: 16,   # Total Raw Jobs
+            10: 18,  # Total Valid Leads
+            11: 20,  # Avg Match Score
+            12: 50   # Error Details
+        }
+        for col_idx, width in col_widths.items():
+            ws.column_dimensions[get_column_letter(col_idx)].width = width
+
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        filename = f"{filename_prefix}_{timestamp}.xlsx"
+        filepath = os.path.join(OUTPUT_DIR, filename)
+        wb.save(filepath)
+        return filepath

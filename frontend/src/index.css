@@ -691,3 +691,77 @@ tbody tr:hover { background: var(--bg-raised); }
   font-size: 13px;
 }
 .empty-state svg { opacity: 0.3; }
+
+/* ── Bulk Actions & Selection ────────────────────────────── */
+.bulk-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(22, 28, 45, 0.95), rgba(28, 36, 56, 0.95));
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  animation: slide-up 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bulk-count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 13px;
+}
+
+.bulk-badge {
+  background: var(--accent);
+  color: #0a0d14;
+  font-weight: 700;
+  border-radius: 99px;
+  padding: 2px 9px;
+  font-size: 11px;
+  letter-spacing: 0.2px;
+}
+
+.bulk-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.checkbox-cell {
+  width: 44px;
+  min-width: 44px;
+  max-width: 44px;
+  text-align: center;
+  padding: 11px 8px !important;
+  vertical-align: middle;
+}
+
+.custom-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  border-radius: 4px;
+  vertical-align: middle;
+  transition: transform 0.12s ease;
+}
+
+.custom-checkbox:hover {
+  transform: scale(1.1);
+}
+
+tbody tr.selected-row {
+  background: rgba(99, 179, 237, 0.08) !important;
+}
+
+tbody tr.selected-row:hover {
+  background: rgba(99, 179, 237, 0.14) !important;
+}

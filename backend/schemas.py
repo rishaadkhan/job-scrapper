@@ -217,6 +217,16 @@ class ExportListResponse(BaseModel):
     total: int
 
 
+# --- Bulk Operation Schemas ---
+class BulkActionRequest(BaseModel):
+    ids: List[int] = Field(..., min_length=1, description="List of target entity IDs for bulk operation")
+
+
+class BulkActionResponse(BaseModel):
+    message: str
+    affected_count: int
+
+
 # --- Resume Schemas ---
 class ResumeBase(BaseModel):
     label: str = Field(..., min_length=1, max_length=255)

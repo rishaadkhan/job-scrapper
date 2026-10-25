@@ -370,6 +370,49 @@ async def update_scrape_run(db: AsyncSession, run_id: int, updates: dict) -> Scr
     return run
 
 
+async def get_scrape_run_by_id(db: AsyncSession, run_id: int) -> Optional[ScrapeRun]:
+    stmt = select(ScrapeRun).where(ScrapeRun.id == run_id)
+    result = await db.execute(stmt)
+    return result.scalar_one_or_none()
+
+
+async def get_scrape_runs_by_ids(db: AsyncSession, run_ids: List[int]) -> List[ScrapeRun]:
+    if not run_ids:
+        return []
+    stmt = select(ScrapeRun).where(ScrapeRun.id.in_(run_ids)).order_by(desc(ScrapeRun.started_at))
+    result = await db.execute(stmt)
+    return list(result.scalars().all())
+
+
+async def delete_scrape_run(db: AsyncSession, run_id: int) -> bool:
+    stmt = select(ScrapeRun).where(ScrapeRun.id == run_id)
+    run = (await db.execute(stmt)).scalar_one_or_none()
+    if not run:
+        raise NotFoundError(message=f"ScrapeRun {run_id} not found")
+    if run.status == "running":
+        raise ConflictError(message=f"Cannot delete scrape run #{run_id} because it is currently running")
+
+    await db.delete(run)
+    await db.commit()
+    return True
+
+
+async def delete_scrape_runs_bulk(db: AsyncSession, run_ids: List[int]) -> int:
+    if not run_ids:
+        return 0
+    stmt = select(ScrapeRun).where(ScrapeRun.id.in_(run_ids))
+    runs = list((await db.execute(stmt)).scalars().all())
+    deleted_count = 0
+    for run in runs:
+        if run.status == "running":
+            continue
+        await db.delete(run)
+        deleted_count += 1
+    if deleted_count > 0:
+        await db.commit()
+    return deleted_count
+
+
 # --- User Operations ---
 
 async def get_user_by_email(db: AsyncSession, email: str) -> Optional[User]:
@@ -444,6 +487,33 @@ async def delete_export_record(db: AsyncSession, export_id: int) -> bool:
     record.deleted_at = utc_now()
     await db.commit()
     return True
+
+
+async def get_exports_by_ids(db: AsyncSession, export_ids: List[int]) -> List[ExportRecord]:
+    if not export_ids:
+        return []
+    stmt = select(ExportRecord).where(
+        and_(ExportRecord.id.in_(export_ids), ExportRecord.deleted_at.is_(None))
+    ).order_by(desc(ExportRecord.created_at))
+    result = await db.execute(stmt)
+    return list(result.scalars().all())
+
+
+async def delete_exports_bulk(db: AsyncSession, export_ids: List[int]) -> int:
+    if not export_ids:
+        return 0
+    stmt = select(ExportRecord).where(
+        and_(ExportRecord.id.in_(export_ids), ExportRecord.deleted_at.is_(None))
+    )
+    records = list((await db.execute(stmt)).scalars().all())
+    now = utc_now()
+    count = 0
+    for record in records:
+        record.deleted_at = now
+        count += 1
+    if count > 0:
+        await db.commit()
+    return count
 
 
 # --- Resume Operations ---
